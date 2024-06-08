@@ -1,0 +1,593 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		28BC85692C13D81F00E3B62F /* Dima_MundoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28BC85682C13D81F00E3B62F /* Dima_MundoApp.swift */; };
+		28BC856B2C13D81F00E3B62F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28BC856A2C13D81F00E3B62F /* ContentView.swift */; };
+		28BC856D2C13D82200E3B62F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28BC856C2C13D82200E3B62F /* Assets.xcassets */; };
+		28BC85702C13D82200E3B62F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28BC856F2C13D82200E3B62F /* Preview Assets.xcassets */; };
+		28BC857A2C13D82200E3B62F /* Dima_MundoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28BC85792C13D82200E3B62F /* Dima_MundoTests.swift */; };
+		28BC85842C13D82200E3B62F /* Dima_MundoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28BC85832C13D82200E3B62F /* Dima_MundoUITests.swift */; };
+		28BC85862C13D82200E3B62F /* Dima_MundoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28BC85852C13D82200E3B62F /* Dima_MundoUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		28BC85762C13D82200E3B62F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 28BC855D2C13D81F00E3B62F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 28BC85642C13D81F00E3B62F;
+			remoteInfo = "Dima Mundo";
+		};
+		28BC85802C13D82200E3B62F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 28BC855D2C13D81F00E3B62F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 28BC85642C13D81F00E3B62F;
+			remoteInfo = "Dima Mundo";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		28BC85652C13D81F00E3B62F /* Dima Mundo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Dima Mundo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		28BC85682C13D81F00E3B62F /* Dima_MundoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dima_MundoApp.swift; sourceTree = "<group>"; };
+		28BC856A2C13D81F00E3B62F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		28BC856C2C13D82200E3B62F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		28BC856F2C13D82200E3B62F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		28BC85752C13D82200E3B62F /* Dima MundoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Dima MundoTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		28BC85792C13D82200E3B62F /* Dima_MundoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dima_MundoTests.swift; sourceTree = "<group>"; };
+		28BC857F2C13D82200E3B62F /* Dima MundoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Dima MundoUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		28BC85832C13D82200E3B62F /* Dima_MundoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dima_MundoUITests.swift; sourceTree = "<group>"; };
+		28BC85852C13D82200E3B62F /* Dima_MundoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dima_MundoUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		28BC85622C13D81F00E3B62F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		28BC85722C13D82200E3B62F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		28BC857C2C13D82200E3B62F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		28BC855C2C13D81F00E3B62F = {
+			isa = PBXGroup;
+			children = (
+				28BC85672C13D81F00E3B62F /* Dima Mundo */,
+				28BC85782C13D82200E3B62F /* Dima MundoTests */,
+				28BC85822C13D82200E3B62F /* Dima MundoUITests */,
+				28BC85662C13D81F00E3B62F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		28BC85662C13D81F00E3B62F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				28BC85652C13D81F00E3B62F /* Dima Mundo.app */,
+				28BC85752C13D82200E3B62F /* Dima MundoTests.xctest */,
+				28BC857F2C13D82200E3B62F /* Dima MundoUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		28BC85672C13D81F00E3B62F /* Dima Mundo */ = {
+			isa = PBXGroup;
+			children = (
+				28BC85682C13D81F00E3B62F /* Dima_MundoApp.swift */,
+				28BC856A2C13D81F00E3B62F /* ContentView.swift */,
+				28BC856C2C13D82200E3B62F /* Assets.xcassets */,
+				28BC856E2C13D82200E3B62F /* Preview Content */,
+			);
+			path = "Dima Mundo";
+			sourceTree = "<group>";
+		};
+		28BC856E2C13D82200E3B62F /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				28BC856F2C13D82200E3B62F /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		28BC85782C13D82200E3B62F /* Dima MundoTests */ = {
+			isa = PBXGroup;
+			children = (
+				28BC85792C13D82200E3B62F /* Dima_MundoTests.swift */,
+			);
+			path = "Dima MundoTests";
+			sourceTree = "<group>";
+		};
+		28BC85822C13D82200E3B62F /* Dima MundoUITests */ = {
+			isa = PBXGroup;
+			children = (
+				28BC85832C13D82200E3B62F /* Dima_MundoUITests.swift */,
+				28BC85852C13D82200E3B62F /* Dima_MundoUITestsLaunchTests.swift */,
+			);
+			path = "Dima MundoUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		28BC85642C13D81F00E3B62F /* Dima Mundo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 28BC85892C13D82200E3B62F /* Build configuration list for PBXNativeTarget "Dima Mundo" */;
+			buildPhases = (
+				28BC85612C13D81F00E3B62F /* Sources */,
+				28BC85622C13D81F00E3B62F /* Frameworks */,
+				28BC85632C13D81F00E3B62F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Dima Mundo";
+			productName = "Dima Mundo";
+			productReference = 28BC85652C13D81F00E3B62F /* Dima Mundo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		28BC85742C13D82200E3B62F /* Dima MundoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 28BC858C2C13D82200E3B62F /* Build configuration list for PBXNativeTarget "Dima MundoTests" */;
+			buildPhases = (
+				28BC85712C13D82200E3B62F /* Sources */,
+				28BC85722C13D82200E3B62F /* Frameworks */,
+				28BC85732C13D82200E3B62F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				28BC85772C13D82200E3B62F /* PBXTargetDependency */,
+			);
+			name = "Dima MundoTests";
+			productName = "Dima MundoTests";
+			productReference = 28BC85752C13D82200E3B62F /* Dima MundoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		28BC857E2C13D82200E3B62F /* Dima MundoUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 28BC858F2C13D82200E3B62F /* Build configuration list for PBXNativeTarget "Dima MundoUITests" */;
+			buildPhases = (
+				28BC857B2C13D82200E3B62F /* Sources */,
+				28BC857C2C13D82200E3B62F /* Frameworks */,
+				28BC857D2C13D82200E3B62F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				28BC85812C13D82200E3B62F /* PBXTargetDependency */,
+			);
+			name = "Dima MundoUITests";
+			productName = "Dima MundoUITests";
+			productReference = 28BC857F2C13D82200E3B62F /* Dima MundoUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		28BC855D2C13D81F00E3B62F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1530;
+				LastUpgradeCheck = 1530;
+				TargetAttributes = {
+					28BC85642C13D81F00E3B62F = {
+						CreatedOnToolsVersion = 15.3;
+					};
+					28BC85742C13D82200E3B62F = {
+						CreatedOnToolsVersion = 15.3;
+						TestTargetID = 28BC85642C13D81F00E3B62F;
+					};
+					28BC857E2C13D82200E3B62F = {
+						CreatedOnToolsVersion = 15.3;
+						TestTargetID = 28BC85642C13D81F00E3B62F;
+					};
+				};
+			};
+			buildConfigurationList = 28BC85602C13D81F00E3B62F /* Build configuration list for PBXProject "Dima Mundo" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 28BC855C2C13D81F00E3B62F;
+			productRefGroup = 28BC85662C13D81F00E3B62F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				28BC85642C13D81F00E3B62F /* Dima Mundo */,
+				28BC85742C13D82200E3B62F /* Dima MundoTests */,
+				28BC857E2C13D82200E3B62F /* Dima MundoUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		28BC85632C13D81F00E3B62F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28BC85702C13D82200E3B62F /* Preview Assets.xcassets in Resources */,
+				28BC856D2C13D82200E3B62F /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		28BC85732C13D82200E3B62F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		28BC857D2C13D82200E3B62F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		28BC85612C13D81F00E3B62F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28BC856B2C13D81F00E3B62F /* ContentView.swift in Sources */,
+				28BC85692C13D81F00E3B62F /* Dima_MundoApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		28BC85712C13D82200E3B62F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28BC857A2C13D82200E3B62F /* Dima_MundoTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		28BC857B2C13D82200E3B62F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28BC85842C13D82200E3B62F /* Dima_MundoUITests.swift in Sources */,
+				28BC85862C13D82200E3B62F /* Dima_MundoUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		28BC85772C13D82200E3B62F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 28BC85642C13D81F00E3B62F /* Dima Mundo */;
+			targetProxy = 28BC85762C13D82200E3B62F /* PBXContainerItemProxy */;
+		};
+		28BC85812C13D82200E3B62F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 28BC85642C13D81F00E3B62F /* Dima Mundo */;
+			targetProxy = 28BC85802C13D82200E3B62F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		28BC85872C13D82200E3B62F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		28BC85882C13D82200E3B62F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		28BC858A2C13D82200E3B62F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Dima Mundo/Preview Content\"";
+				DEVELOPMENT_TEAM = X9FRX99HPJ;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "clxsrdev.Dima-Mundo";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		28BC858B2C13D82200E3B62F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Dima Mundo/Preview Content\"";
+				DEVELOPMENT_TEAM = X9FRX99HPJ;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "clxsrdev.Dima-Mundo";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		28BC858D2C13D82200E3B62F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = X9FRX99HPJ;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "clxsrdev.Dima-MundoTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Dima Mundo.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Dima Mundo";
+			};
+			name = Debug;
+		};
+		28BC858E2C13D82200E3B62F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = X9FRX99HPJ;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "clxsrdev.Dima-MundoTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Dima Mundo.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Dima Mundo";
+			};
+			name = Release;
+		};
+		28BC85902C13D82200E3B62F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = X9FRX99HPJ;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "clxsrdev.Dima-MundoUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Dima Mundo";
+			};
+			name = Debug;
+		};
+		28BC85912C13D82200E3B62F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = X9FRX99HPJ;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "clxsrdev.Dima-MundoUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Dima Mundo";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		28BC85602C13D81F00E3B62F /* Build configuration list for PBXProject "Dima Mundo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				28BC85872C13D82200E3B62F /* Debug */,
+				28BC85882C13D82200E3B62F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		28BC85892C13D82200E3B62F /* Build configuration list for PBXNativeTarget "Dima Mundo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				28BC858A2C13D82200E3B62F /* Debug */,
+				28BC858B2C13D82200E3B62F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		28BC858C2C13D82200E3B62F /* Build configuration list for PBXNativeTarget "Dima MundoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				28BC858D2C13D82200E3B62F /* Debug */,
+				28BC858E2C13D82200E3B62F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		28BC858F2C13D82200E3B62F /* Build configuration list for PBXNativeTarget "Dima MundoUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				28BC85902C13D82200E3B62F /* Debug */,
+				28BC85912C13D82200E3B62F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 28BC855D2C13D81F00E3B62F /* Project object */;
+}
