@@ -8,12 +8,31 @@
 
 /* Begin PBXBuildFile section */
 		28BC85692C13D81F00E3B62F /* Dima_MundoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28BC85682C13D81F00E3B62F /* Dima_MundoApp.swift */; };
-		28BC856B2C13D81F00E3B62F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28BC856A2C13D81F00E3B62F /* ContentView.swift */; };
+		28BC856B2C13D81F00E3B62F /* Fondo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28BC856A2C13D81F00E3B62F /* Fondo.swift */; };
 		28BC856D2C13D82200E3B62F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28BC856C2C13D82200E3B62F /* Assets.xcassets */; };
 		28BC85702C13D82200E3B62F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28BC856F2C13D82200E3B62F /* Preview Assets.xcassets */; };
 		28BC857A2C13D82200E3B62F /* Dima_MundoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28BC85792C13D82200E3B62F /* Dima_MundoTests.swift */; };
 		28BC85842C13D82200E3B62F /* Dima_MundoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28BC85832C13D82200E3B62F /* Dima_MundoUITests.swift */; };
 		28BC85862C13D82200E3B62F /* Dima_MundoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28BC85852C13D82200E3B62F /* Dima_MundoUITestsLaunchTests.swift */; };
+		28BC85942C13DB1300E3B62F /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28BC85932C13DB1300E3B62F /* Color.swift */; };
+		28BC85962C13EC9D00E3B62F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28BC85952C13EC9D00E3B62F /* ContentView.swift */; };
+		28BC85982C16359400E3B62F /* NameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28BC85972C16359400E3B62F /* NameView.swift */; };
+		6C12CA4F2C33C896005909E0 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6C12CA4D2C33C896005909E0 /* Model.xcdatamodeld */; };
+		6C12CA512C345205005909E0 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C12CA502C345205005909E0 /* DataManager.swift */; };
+		6C12CA532C345681005909E0 /* PerfilesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C12CA522C345681005909E0 /* PerfilesViewModel.swift */; };
+		6C12CA552C345720005909E0 /* PerfilesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C12CA542C34571F005909E0 /* PerfilesView.swift */; };
+		6C12CA572C345768005909E0 /* CrearPerfilView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C12CA562C345768005909E0 /* CrearPerfilView.swift */; };
+		6C12CA592C3481B4005909E0 /* ColorOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C12CA582C3481B4005909E0 /* ColorOption.swift */; };
+		6C12CA672C372AD4005909E0 /* RifficFree-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6C12CA662C372AD3005909E0 /* RifficFree-Bold.ttf */; };
+		6C12CA692C373EA5005909E0 /* CustomKeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C12CA682C373EA5005909E0 /* CustomKeyboardView.swift */; };
+		6C12CA6A2C378505005909E0 /* RifficFree-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6C12CA662C372AD3005909E0 /* RifficFree-Bold.ttf */; };
+		6C12CA6B2C378506005909E0 /* RifficFree-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6C12CA662C372AD3005909E0 /* RifficFree-Bold.ttf */; };
+		6C12CA6D2C378C6B005909E0 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C12CA6C2C378C6B005909E0 /* MainView.swift */; };
+		6C3558422C424CEB0085D615 /* selectNumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3558412C424CEB0085D615 /* selectNumberView.swift */; };
+		6C5BC8652C3E55EC00CE95F1 /* Jack.riv in Resources */ = {isa = PBXBuildFile; fileRef = 6C5BC8642C3E55EC00CE95F1 /* Jack.riv */; };
+		6C5BC8662C3E55EC00CE95F1 /* Jack.riv in Resources */ = {isa = PBXBuildFile; fileRef = 6C5BC8642C3E55EC00CE95F1 /* Jack.riv */; };
+		6C5BC8672C3E55EC00CE95F1 /* Jack.riv in Resources */ = {isa = PBXBuildFile; fileRef = 6C5BC8642C3E55EC00CE95F1 /* Jack.riv */; };
+		6C78E6EE2C39DD7400D18852 /* RiveRuntime in Frameworks */ = {isa = PBXBuildFile; productRef = 6C78E6ED2C39DD7400D18852 /* RiveRuntime */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +55,7 @@
 /* Begin PBXFileReference section */
 		28BC85652C13D81F00E3B62F /* Dima Mundo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Dima Mundo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		28BC85682C13D81F00E3B62F /* Dima_MundoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dima_MundoApp.swift; sourceTree = "<group>"; };
-		28BC856A2C13D81F00E3B62F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		28BC856A2C13D81F00E3B62F /* Fondo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fondo.swift; sourceTree = "<group>"; };
 		28BC856C2C13D82200E3B62F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		28BC856F2C13D82200E3B62F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		28BC85752C13D82200E3B62F /* Dima MundoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Dima MundoTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,6 +63,23 @@
 		28BC857F2C13D82200E3B62F /* Dima MundoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Dima MundoUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		28BC85832C13D82200E3B62F /* Dima_MundoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dima_MundoUITests.swift; sourceTree = "<group>"; };
 		28BC85852C13D82200E3B62F /* Dima_MundoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dima_MundoUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		28BC85932C13DB1300E3B62F /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		28BC85952C13EC9D00E3B62F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		28BC85972C16359400E3B62F /* NameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameView.swift; sourceTree = "<group>"; };
+		6C12CA4E2C33C896005909E0 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		6C12CA502C345205005909E0 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		6C12CA522C345681005909E0 /* PerfilesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfilesViewModel.swift; sourceTree = "<group>"; };
+		6C12CA542C34571F005909E0 /* PerfilesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfilesView.swift; sourceTree = "<group>"; };
+		6C12CA562C345768005909E0 /* CrearPerfilView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrearPerfilView.swift; sourceTree = "<group>"; };
+		6C12CA582C3481B4005909E0 /* ColorOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorOption.swift; sourceTree = "<group>"; };
+		6C12CA5F2C372299005909E0 /* Dima-MundoUITests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Dima-MundoUITests-Info.plist"; sourceTree = SOURCE_ROOT; };
+		6C12CA642C372795005909E0 /* Dima-Mundo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Dima-Mundo-Info.plist"; sourceTree = SOURCE_ROOT; };
+		6C12CA652C3728D5005909E0 /* Dima-MundoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Dima-MundoTests-Info.plist"; sourceTree = SOURCE_ROOT; };
+		6C12CA662C372AD3005909E0 /* RifficFree-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RifficFree-Bold.ttf"; sourceTree = "<group>"; };
+		6C12CA682C373EA5005909E0 /* CustomKeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomKeyboardView.swift; sourceTree = "<group>"; };
+		6C12CA6C2C378C6B005909E0 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		6C3558412C424CEB0085D615 /* selectNumberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = selectNumberView.swift; sourceTree = "<group>"; };
+		6C5BC8642C3E55EC00CE95F1 /* Jack.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = Jack.riv; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +87,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6C78E6EE2C39DD7400D18852 /* RiveRuntime in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +111,8 @@
 		28BC855C2C13D81F00E3B62F = {
 			isa = PBXGroup;
 			children = (
+				6C5BC84A2C3C7C1900CE95F1 /* RiveFiles */,
+				6C12CA5A2C3720E5005909E0 /* Fonts */,
 				28BC85672C13D81F00E3B62F /* Dima Mundo */,
 				28BC85782C13D82200E3B62F /* Dima MundoTests */,
 				28BC85822C13D82200E3B62F /* Dima MundoUITests */,
@@ -94,8 +133,11 @@
 		28BC85672C13D81F00E3B62F /* Dima Mundo */ = {
 			isa = PBXGroup;
 			children = (
+				6C12CA642C372795005909E0 /* Dima-Mundo-Info.plist */,
 				28BC85682C13D81F00E3B62F /* Dima_MundoApp.swift */,
-				28BC856A2C13D81F00E3B62F /* ContentView.swift */,
+				6C12CA4A2C33C4E1005909E0 /* Model */,
+				6C12CA482C33C4CB005909E0 /* View */,
+				28BC85922C13DAF100E3B62F /* Extras */,
 				28BC856C2C13D82200E3B62F /* Assets.xcassets */,
 				28BC856E2C13D82200E3B62F /* Preview Content */,
 			);
@@ -113,6 +155,7 @@
 		28BC85782C13D82200E3B62F /* Dima MundoTests */ = {
 			isa = PBXGroup;
 			children = (
+				6C12CA652C3728D5005909E0 /* Dima-MundoTests-Info.plist */,
 				28BC85792C13D82200E3B62F /* Dima_MundoTests.swift */,
 			);
 			path = "Dima MundoTests";
@@ -121,10 +164,93 @@
 		28BC85822C13D82200E3B62F /* Dima MundoUITests */ = {
 			isa = PBXGroup;
 			children = (
+				6C12CA5F2C372299005909E0 /* Dima-MundoUITests-Info.plist */,
 				28BC85832C13D82200E3B62F /* Dima_MundoUITests.swift */,
 				28BC85852C13D82200E3B62F /* Dima_MundoUITestsLaunchTests.swift */,
 			);
 			path = "Dima MundoUITests";
+			sourceTree = "<group>";
+		};
+		28BC85922C13DAF100E3B62F /* Extras */ = {
+			isa = PBXGroup;
+			children = (
+				28BC85952C13EC9D00E3B62F /* ContentView.swift */,
+				28BC85932C13DB1300E3B62F /* Color.swift */,
+				6C12CA582C3481B4005909E0 /* ColorOption.swift */,
+			);
+			path = Extras;
+			sourceTree = "<group>";
+		};
+		6C12CA482C33C4CB005909E0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				6C3558442C424D6F0085D615 /* Navigation */,
+				6C3558432C424D570085D615 /* inGame */,
+				6C5BC84F2C3C7DBF00CE95F1 /* Rive */,
+				6C12CA6C2C378C6B005909E0 /* MainView.swift */,
+				6C12CA562C345768005909E0 /* CrearPerfilView.swift */,
+				6C3558412C424CEB0085D615 /* selectNumberView.swift */,
+				6C12CA542C34571F005909E0 /* PerfilesView.swift */,
+				28BC85972C16359400E3B62F /* NameView.swift */,
+				6C12CA682C373EA5005909E0 /* CustomKeyboardView.swift */,
+				6C12CA4B2C33C4FD005909E0 /* Backgrounds */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		6C12CA4A2C33C4E1005909E0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				6C12CA4D2C33C896005909E0 /* Model.xcdatamodeld */,
+				6C12CA502C345205005909E0 /* DataManager.swift */,
+				6C12CA522C345681005909E0 /* PerfilesViewModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		6C12CA4B2C33C4FD005909E0 /* Backgrounds */ = {
+			isa = PBXGroup;
+			children = (
+				28BC856A2C13D81F00E3B62F /* Fondo.swift */,
+			);
+			path = Backgrounds;
+			sourceTree = "<group>";
+		};
+		6C12CA5A2C3720E5005909E0 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				6C12CA662C372AD3005909E0 /* RifficFree-Bold.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		6C3558432C424D570085D615 /* inGame */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = inGame;
+			sourceTree = "<group>";
+		};
+		6C3558442C424D6F0085D615 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
+		6C5BC84A2C3C7C1900CE95F1 /* RiveFiles */ = {
+			isa = PBXGroup;
+			children = (
+				6C5BC8642C3E55EC00CE95F1 /* Jack.riv */,
+			);
+			path = RiveFiles;
+			sourceTree = "<group>";
+		};
+		6C5BC84F2C3C7DBF00CE95F1 /* Rive */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Rive;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -143,6 +269,9 @@
 			dependencies = (
 			);
 			name = "Dima Mundo";
+			packageProductDependencies = (
+				6C78E6ED2C39DD7400D18852 /* RiveRuntime */,
+			);
 			productName = "Dima Mundo";
 			productReference = 28BC85652C13D81F00E3B62F /* Dima Mundo.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +344,9 @@
 				Base,
 			);
 			mainGroup = 28BC855C2C13D81F00E3B62F;
+			packageReferences = (
+				6C78E6EC2C39DD7400D18852 /* XCRemoteSwiftPackageReference "rive-ios" */,
+			);
 			productRefGroup = 28BC85662C13D81F00E3B62F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -232,6 +364,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				28BC85702C13D82200E3B62F /* Preview Assets.xcassets in Resources */,
+				6C12CA672C372AD4005909E0 /* RifficFree-Bold.ttf in Resources */,
+				6C5BC8652C3E55EC00CE95F1 /* Jack.riv in Resources */,
 				28BC856D2C13D82200E3B62F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -240,6 +374,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6C12CA6B2C378506005909E0 /* RifficFree-Bold.ttf in Resources */,
+				6C5BC8662C3E55EC00CE95F1 /* Jack.riv in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -247,6 +383,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6C12CA6A2C378505005909E0 /* RifficFree-Bold.ttf in Resources */,
+				6C5BC8672C3E55EC00CE95F1 /* Jack.riv in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,8 +395,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				28BC856B2C13D81F00E3B62F /* ContentView.swift in Sources */,
+				6C12CA532C345681005909E0 /* PerfilesViewModel.swift in Sources */,
+				6C3558422C424CEB0085D615 /* selectNumberView.swift in Sources */,
+				6C12CA6D2C378C6B005909E0 /* MainView.swift in Sources */,
+				28BC856B2C13D81F00E3B62F /* Fondo.swift in Sources */,
+				6C12CA692C373EA5005909E0 /* CustomKeyboardView.swift in Sources */,
 				28BC85692C13D81F00E3B62F /* Dima_MundoApp.swift in Sources */,
+				28BC85982C16359400E3B62F /* NameView.swift in Sources */,
+				6C12CA512C345205005909E0 /* DataManager.swift in Sources */,
+				6C12CA552C345720005909E0 /* PerfilesView.swift in Sources */,
+				6C12CA592C3481B4005909E0 /* ColorOption.swift in Sources */,
+				28BC85962C13EC9D00E3B62F /* ContentView.swift in Sources */,
+				28BC85942C13DB1300E3B62F /* Color.swift in Sources */,
+				6C12CA572C345768005909E0 /* CrearPerfilView.swift in Sources */,
+				6C12CA4F2C33C896005909E0 /* Model.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -422,24 +572,27 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Dima Mundo/Preview Content\"";
-				DEVELOPMENT_TEAM = X9FRX99HPJ;
+				DEVELOPMENT_TEAM = APGYXJC8A8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Dima-Mundo-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "clxsrdev.Dima-Mundo";
+				PRODUCT_BUNDLE_IDENTIFIER = "bipo.Dima-Mundo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -451,24 +604,27 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Dima Mundo/Preview Content\"";
-				DEVELOPMENT_TEAM = X9FRX99HPJ;
+				DEVELOPMENT_TEAM = APGYXJC8A8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Dima-Mundo-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "clxsrdev.Dima-Mundo";
+				PRODUCT_BUNDLE_IDENTIFIER = "bipo.Dima-Mundo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};
@@ -479,11 +635,12 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = X9FRX99HPJ;
+				DEVELOPMENT_TEAM = ZKS2NRWRZN;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Dima-MundoTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "clxsrdev.Dima-MundoTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "bipo.Dima-MundoTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -499,11 +656,12 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = X9FRX99HPJ;
+				DEVELOPMENT_TEAM = ZKS2NRWRZN;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Dima-MundoTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "clxsrdev.Dima-MundoTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "bipo.Dima-MundoTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -518,10 +676,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = X9FRX99HPJ;
+				DEVELOPMENT_TEAM = ZKS2NRWRZN;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Dima-MundoUITests-Info.plist";
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "clxsrdev.Dima-MundoUITests";
+				PRODUCT_BUNDLE_IDENTIFIER = "bipo.Dima-MundoUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -536,10 +695,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = X9FRX99HPJ;
+				DEVELOPMENT_TEAM = ZKS2NRWRZN;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Dima-MundoUITests-Info.plist";
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "clxsrdev.Dima-MundoUITests";
+				PRODUCT_BUNDLE_IDENTIFIER = "bipo.Dima-MundoUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -588,6 +748,39 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		6C78E6EC2C39DD7400D18852 /* XCRemoteSwiftPackageReference "rive-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/rive-app/rive-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.14.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		6C78E6ED2C39DD7400D18852 /* RiveRuntime */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6C78E6EC2C39DD7400D18852 /* XCRemoteSwiftPackageReference "rive-ios" */;
+			productName = RiveRuntime;
+		};
+/* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		6C12CA4D2C33C896005909E0 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				6C12CA4E2C33C896005909E0 /* Model.xcdatamodel */,
+			);
+			currentVersion = 6C12CA4E2C33C896005909E0 /* Model.xcdatamodel */;
+			name = Model.xcdatamodeld;
+			path = "/Users/grandybipo/Downloads/Dima Mundo/Dima Mundo/Model/Model.xcdatamodeld";
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 28BC855D2C13D81F00E3B62F /* Project object */;
 }
