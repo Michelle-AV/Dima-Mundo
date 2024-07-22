@@ -9,16 +9,20 @@ import SwiftUI
 import RiveRuntime
 
 struct ContentView: View {
-    @State private var selectedCharacter = "Jack"
-    @State private var artboardName = "walkingAB"
+    @State private var selectedCharacter = "jack3"
+    @State private var artboardName = "podiumAB"
     @State private var stepperValue = 0
     
     var body: some View {
         let rive = RiveViewModel(fileName: "\(selectedCharacter)", stateMachineName: "Actions", artboardName: "\(artboardName)")
         
         VStack {
-            rive.view()
-                .scaleEffect(1)
+            
+            HStack {
+                rive.view()
+                    .scaleEffect(1)
+
+            }
 
             Stepper("Value: \(stepperValue)", value: $stepperValue, in: 0...10)
                 .onChange(of: stepperValue) { newValue in

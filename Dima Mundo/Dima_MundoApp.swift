@@ -1,17 +1,19 @@
 //
-//  Dima_MundoApp.swift
-//  Dima Mundo
+// MARK:  Dima_MundoApp.swift
 //
-//  Created by Chema Padilla Fdez on 07/06/24.
+///MARK:  Created by Chema Padilla Fdez && Pedro Prado on 07/06/24.
 //
 
 import SwiftUI
 
 @main
-struct Dima_MundoApp: App {
+struct MyApp: App {
+    @StateObject private var appData = AppData()
+
     var body: some Scene {
         WindowGroup {
             MainView()
+                .environmentObject(appData)
         }
     }
 }

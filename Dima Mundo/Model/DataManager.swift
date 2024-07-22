@@ -34,11 +34,10 @@ class DataManager {
         }
     }
 
-    // Modificar para incluir avatar
     func addPerfil(nombre: String, avatarNombre: String) {
         let context = persistentContainer.viewContext
         let perfil = Perfil(context: context)
-        perfil.id = UUID()  // Asegúrate de asignar un UUID nuevo si no está automatizado
+        perfil.id = UUID()
         perfil.nombre = nombre
         perfil.ejerciciosCompletados = 0
         perfil.avatarNombre = avatarNombre
@@ -54,6 +53,12 @@ class DataManager {
         saveContext()
     }
     
+    func incrementEjerciciosCompletados(for perfil: Perfil) {
+        let context = persistentContainer.viewContext
+        perfil.ejerciciosCompletados += 1
+        saveContext()
+    }
+    
     func deleteAllPerfiles() {
         let context = persistentContainer.viewContext
         let fetchRequest: NSFetchRequest<NSFetchRequestResult> = Perfil.fetchRequest()
@@ -66,5 +71,4 @@ class DataManager {
             print("Error al borrar todos los perfiles: \(error), \(error.userInfo)")
         }
     }
-
 }
