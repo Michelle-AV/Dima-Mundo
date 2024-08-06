@@ -26,5 +26,12 @@ extension Color {
     // MARK: -PerfilesView
     public static let MoradoCount: Color = Color(UIColor(red: 111/255, green: 76/255, blue: 159/255, alpha: 1.00))
     public static let MoradoFondo: Color = Color(UIColor(red: 171/255, green: 104/255, blue: 171/255, alpha: 1.00))
+    
+    // MARK: -EjerciciosView
+    
+    public static let Cafe: Color = Color(UIColor(red: 0.51, green: 0.22, blue: 0.15, alpha: 1.00))
+    public static let VerdePiz: Color = Color(UIColor(red: 0.15, green: 0.31, blue: 0.22, alpha: 1.00))
+    public static let VerdeAns: Color = Color(UIColor(red: 0.24, green: 0.58, blue: 0.41, alpha: 1.00))
+    public static let AmarilloAns: Color = Color(UIColor(red: 0.97, green: 0.93, blue: 0.36, alpha: 1.00))
 
 }

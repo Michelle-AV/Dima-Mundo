@@ -13,6 +13,9 @@ struct SelectTableView: View {
     @State private var currentIndex: Int = 0
     @State private var selectedCard: Int? = nil
     @State private var isExpanded = false
+    @State var Exercise: Bool = false
+    @State var Tabla: Int = 0
+
     var selectedAvatar: String
     var perfilName: String
     @Binding var perfil: Perfil
@@ -77,7 +80,7 @@ struct SelectTableView: View {
 
                     HStack(spacing: 35) {
                         ForEach(currentCards(), id: \.id) { card in
-                            CardView(card: card, isSelected: selectedCard == card.id, incrementExercises: incrementExercises)
+                            CardView(Exercise: $Exercise, Tabla: $Tabla, card: card, isSelected: selectedCard == card.id, incrementExercises: incrementExercises)
                                 .onTapGesture {
                                     selectCard(card.id)
                                 }
@@ -111,6 +114,11 @@ struct SelectTableView: View {
 
                 expandedProfileView
                     .matchedGeometryEffect(id: "profileHeader", in: animation)
+            }
+            
+            if(Exercise){
+                TablesExView(table: $Tabla, back: $Exercise, incrementExercises: incrementExercises)
+                    .frame(width: appData.UISW, height: appData.UISH)
             }
         }
     }

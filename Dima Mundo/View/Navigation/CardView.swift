@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct CardView: View {
+    
+    @Binding var Exercise: Bool
+    @Binding var Tabla: Int
+    
     var card: Card
     var isSelected: Bool
     @EnvironmentObject var appData: AppData
@@ -23,8 +27,12 @@ struct CardView: View {
 
             if isSelected {
                 Button(action: {
-                    incrementExercises()
-                    print("Iniciar \(card.label)")
+                    withAnimation(.easeInOut(duration: 0.3)) {
+                        Exercise = true
+                    }
+                    if let tableNumber = numberFromLabel(card.label){
+                        Tabla = tableNumber
+                    }
                 }) {
                     Text("Iniciar")
                         .font(.title2)
@@ -36,5 +44,22 @@ struct CardView: View {
                 }
             }
         }
+    }
+    
+    func numberFromLabel(_ label: String) -> Int? {
+        let mapping: [String: Int] = [
+            "Uno": 1,
+            "Dos": 2,
+            "Tres": 3,
+            "Cuatro": 4,
+            "Cinco": 5,
+            "Seis": 6,
+            "Siete": 7,
+            "Ocho": 8,
+            "Nueve": 9,
+            "Diez": 10,
+            "Once": 11
+        ]
+        return mapping[label]
     }
 }
