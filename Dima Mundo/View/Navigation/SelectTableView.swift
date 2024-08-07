@@ -34,7 +34,7 @@ struct SelectTableView: View {
         Card(id: 7, label: "Ocho", imageName: "tabla8"),
         Card(id: 8, label: "Nueve", imageName: "tabla9"),
         Card(id: 9, label: "Diez", imageName: "tabla10"),
-        Card(id: 10, label: "Once", imageName: "tabla11")
+        Card(id: 10, label: "Once", imageName: "tablaReto")
     ]
 
     var body: some View {
@@ -57,9 +57,9 @@ struct SelectTableView: View {
                             .matchedGeometryEffect(id: "profileHeader", in: animation)
                     }
                     
+                    // Rive animation for avatar
                     RiveViewModel(fileName: riveModel.fileName, stateMachineName: "Actions", artboardName: "walkingAB").view()
                         .id(riveModel.fileName)
-                        .background(.blue.opacity(0.2))
                         .scaleEffect(0.6)
                         .allowsHitTesting(false)
                         .position(x: appData.UISW * 0.5, y: appData.UISH * 0.84)
@@ -78,7 +78,7 @@ struct SelectTableView: View {
                     .disabled(currentIndex == 0)
                     .position(x: appData.UISW * 0.1, y: appData.UISH * 0.5)
 
-                    HStack(spacing: 35) {
+                    HStack(spacing: 40) {
                         ForEach(currentCards(), id: \.id) { card in
                             CardView(Exercise: $Exercise, Tabla: $Tabla, card: card, isSelected: selectedCard == card.id, incrementExercises: incrementExercises)
                                 .onTapGesture {
@@ -107,7 +107,7 @@ struct SelectTableView: View {
                 Color.black.opacity(0.5)
                     .ignoresSafeArea()
                     .onTapGesture {
-                        withAnimation (.easeInOut(duration: 1)){
+                        withAnimation {
                             isExpanded = false
                         }
                     }
@@ -116,9 +116,18 @@ struct SelectTableView: View {
                     .matchedGeometryEffect(id: "profileHeader", in: animation)
             }
             
-            if(Exercise){
-                TablesExView(table: $Tabla, back: $Exercise, incrementExercises: incrementExercises)
+            if(Exercise && Tabla < 11){
+                // Passing riveModel to TablesExView
+                TablesExView(table: $Tabla, back: $Exercise, riveModel: riveModel, selectedAvatar: selectedAvatar, incrementExercises: incrementExercises)
                     .frame(width: appData.UISW, height: appData.UISH)
+                    .ignoresSafeArea()
+                    .offset(x: -14.5)
+            }else if(Exercise && Tabla == 11){
+                RetoView(back: $Exercise, riveModel: riveModel, selectedAvatar: selectedAvatar, incrementExercises: incrementExercises)
+                    .frame(width: appData.UISW, height: appData.UISH)
+                    .ignoresSafeArea()
+                    .offset(x: -14.5)
+
             }
         }
     }
@@ -157,8 +166,6 @@ struct SelectTableView: View {
     
     private var expandedProfileView: some View {
         ZStack {
-            
-            
             RoundedRectangle(cornerRadius: 20)
                 .fill(Color.white)
                 .frame(width: 200, height: 250)
@@ -203,12 +210,11 @@ struct SelectTableView: View {
         let totalSections = totalSections()
         let startIndex = currentIndex * 3
 
-        if currentIndex == totalSections - 2 {
-            return [cards[9]]
-        } else if currentIndex == totalSections - 1 {
-            return [cards[10]]
+        if currentIndex == totalSections - 1 {
+            // Show 10 and 11 together
+            return [cards[9], cards[10]]
         } else {
-            let endIndex = min(startIndex + 3, cards.count - 2)  // Adjust to prevent showing 10 and 11 together
+            let endIndex = min(startIndex + 3, cards.count)
             return Array(cards[startIndex..<endIndex])
         }
     }
@@ -226,7 +232,8 @@ struct SelectTableView: View {
     }
 
     func totalSections() -> Int {
-        return (cards.count - 2 + 2) / 3 + 2  // Adjust to account for the separate sections for 10 and 11
+        // Correct the section calculation to ensure 10 and 11 are shown together at the end
+        return (cards.count - 2) / 3 + 1
     }
 
     func selectCard(_ id: Int) {
@@ -239,18 +246,8 @@ struct SelectTableView: View {
 }
 
 
-//#Preview {
-//    SelectTableView(
-//        selectedAvatar: "default_avatar",
-//        perfilName: "Nombre",
-//        perfil: .constant(Perfil()),
-//        riveModel: RiveModel()
-//    )
-//    .environmentObject(AppData())
-//}
-
-
 #Preview {
-    PerfilesView()
+    PerfilesView(onHome: {})
         .environmentObject(AppData())
 }
+

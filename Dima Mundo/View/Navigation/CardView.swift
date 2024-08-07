@@ -27,7 +27,7 @@ struct CardView: View {
 
             if isSelected {
                 Button(action: {
-                    withAnimation(.easeInOut(duration: 0.3)) {
+                    withAnimation(.easeInOut(duration: 0)) {
                         Exercise = true
                     }
                     if let tableNumber = numberFromLabel(card.label){

@@ -22,7 +22,7 @@ struct CrearPerfilView: View {
     let initialPositions: [CGFloat]
     @State var positions: [CGFloat]
     @State var isSelected: [Bool] = [false, false, true, false, false]
-    let riveFileNames = ["molly", "monin", "molly", "jack3", "jack3"]
+    let riveFileNames = ["molly", "monin", "melody", "pablo", "jack3"]
 
     init(onSave: @escaping () -> Void, onCancel: @escaping () -> Void) {
         self.onSave = onSave
@@ -50,6 +50,7 @@ struct CrearPerfilView: View {
                         .resizable()
                         .scaledToFit()
                         .frame(width: 30)
+                        .padding()
                         .foregroundColor(.white)
                 }
                 .position(x:appData.UISW * 0.9, y:appData.UISH * 0.1)
@@ -85,11 +86,11 @@ struct CrearPerfilView: View {
                 
             }
             
-            Image("podio")
+            Image("podioXL")
                 .resizable()
                 .scaledToFit()
                 .frame(width: 265)
-                .position(x: appData.UISW * 0.5, y: appData.UISH * 0.65 + 160)
+                .position(x: appData.UISW * 0.5, y: appData.UISH * 0.65 + 314)
         
             ForEach(0..<5, id: \.self) { index in
                 Image("avatar\(index + 1)")
@@ -134,18 +135,17 @@ struct CrearPerfilView: View {
                         Text("Agregar")
                             .font(.custom("RifficFree-Bold", size: 25))
                             .foregroundColor(.white)
-                            .position(x: appData.UISW * 0.5, y: appData.UISH * 0.925)
+                            .position(x: appData.UISW * 0.5, y: appData.UISH * 0.939)
                     }
                     .opacity(buttonVisible ? 1 : 0)
                     .animation(.easeOut(duration: 0.35), value: buttonVisible)
                     
                     RiveViewModel(fileName: riveModel.fileName, stateMachineName: "Actions", artboardName: "podiumAB").view()
                         .id(riveModel.fileName)
-                        .background(.blue.opacity(0.2))
 //                        .frame(width: 600 * 0.75, height: 900 * 0.75)
                         .scaleEffect(0.6)
                         .allowsHitTesting(false)
-                        .position(x: appData.UISW * 0.5, y: appData.UISH * 0.56)
+                        .position(x: appData.UISW * 0.5, y: appData.UISH * 0.589)
                         
                 }
             }

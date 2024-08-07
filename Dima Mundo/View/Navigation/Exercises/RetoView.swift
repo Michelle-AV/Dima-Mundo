@@ -1,4 +1,5 @@
 import SwiftUI
+import RiveRuntime
 
 struct RetoView: View {
     
@@ -7,15 +8,13 @@ struct RetoView: View {
     @EnvironmentObject var appData: AppData
     @ObservedObject var viewModel = PerfilesViewModel()
     @State private var selectedPerfil: Perfil?
-    @StateObject private var riveModel = RiveModel()
-    
+    @StateObject var riveModel: RiveModel
     @State var sound: Bool = true
     @State var isTapped: Bool = false
     @State private var inputNumbers: [String] = ["", "", ""]
     @State private var selectedInputIndex: Int? = nil
     @State private var resultMessage: String = ""
     @State var round: Int = 1
-    
     @State private var randomNumbers: [Int] = [
         Int.random(in: 2...9),     // randomNumber1
         Int.random(in: 100...1000), // randomNumber2
@@ -28,7 +27,8 @@ struct RetoView: View {
     @State private var usedRandomNumbers: [Int] = []
     @State private var results: [Bool] = [Bool](repeating: false, count: 9)
     @State private var showResults: Bool = false
-    
+    @State private var correctCount: Int = 0  // Count of correct answers
+    var selectedAvatar: String
     var UISW: CGFloat = UIScreen.main.bounds.width
     var UISH: CGFloat = UIScreen.main.bounds.height
     
@@ -38,12 +38,59 @@ struct RetoView: View {
     let numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", ""]
     
     var body: some View {
-        ZStack{
-            Image("reto-fondo")
+        ZStack {
+            Image("retof")
                 .resizable()
-                .scaledToFit()
+                .scaledToFill()
                 .frame(width: UISW * 1, height: UISH * 1)
             
+            ForEach(0..<3) { index in
+                ZStack {
+                    RoundedRectangle(cornerRadius: 5)
+                        .fill(Color.VerdePiz)
+                        .frame(width: 110, height: 110)
+                    
+                    Text("\(randomNumbers[index * 2])")
+                        .font(.custom("RifficFree-Bold", size: 65))
+                        .foregroundColor(.white)
+                }.position(x: UISW * 0.32, y: UISH * CGFloat(0.2 + (Double(index) * 0.18)))
+                
+                ZStack {
+                    RoundedRectangle(cornerRadius: 5)
+                        .fill(Color.VerdePiz)
+                        .frame(width: 110, height: 110)
+                    
+                    Text("\(randomNumbers[index * 2 + 1])")
+                        .font(.custom("RifficFree-Bold", size: 50))
+                        .foregroundColor(.white)
+                }.position(x: UISW * 0.48, y: UISH * CGFloat(0.2 + (Double(index) * 0.18)))
+                
+                ZStack {
+                    RoundedRectangle(cornerRadius: 5)
+                        .fill(Color.VerdePiz)
+                        .frame(width: 140, height: 110)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 5)
+                                .stroke(selectedInputIndex == index ? Color.white : Color.clear, lineWidth: 7)
+                        )
+                    
+                    Text(inputNumbers[index])
+                        .font(.custom("RifficFree-Bold", size: 50))
+                        .foregroundColor(.white)
+                }
+                .position(x: UISW * 0.66, y: UISH * CGFloat(0.2 + (Double(index) * 0.18)))
+                .onTapGesture {
+                    selectedInputIndex = index
+                }
+            }
+            
+            RiveViewModel(fileName: riveModel.fileName, stateMachineName: "Actions", artboardName: "inGameAB").view()
+                .id(riveModel.fileName)
+                .background(.clear)
+                .scaleEffect(0.6)
+                .allowsHitTesting(false)
+                .position(x: UISW * 0.14, y: UISH * 0.57)
+
             ForEach(positions.indices, id: \.self) { index in
                 ZStack {
                     Button {
@@ -107,6 +154,7 @@ struct RetoView: View {
                 } else {
                     showResults = true
                     incrementExercises()
+                    correctCount = results.filter { $0 }.count
                 }
                 
             } label: {
@@ -119,45 +167,7 @@ struct RetoView: View {
             .disabled(inputNumbers.contains("") || selectedInputIndex == nil)
             .position(x: UISW * 0.93, y: UISH * 0.855)
             
-            ForEach(0..<3) { index in
-                ZStack {
-                    RoundedRectangle(cornerRadius: 5)
-                        .fill(Color.VerdePiz)
-                        .frame(width: 110, height: 110)
-                    
-                    Text("\(randomNumbers[index * 2])")
-                        .font(.custom("RifficFree-Bold", size: 65))
-                        .foregroundColor(.white)
-                }.position(x: UISW * 0.32, y: UISH * CGFloat(0.2 + (Double(index) * 0.18)))
-                
-                ZStack {
-                    RoundedRectangle(cornerRadius: 5)
-                        .fill(Color.VerdePiz)
-                        .frame(width: 110, height: 110)
-                    
-                    Text("\(randomNumbers[index * 2 + 1])")
-                        .font(.custom("RifficFree-Bold", size: 50))
-                        .foregroundColor(.white)
-                }.position(x: UISW * 0.48, y: UISH * CGFloat(0.2 + (Double(index) * 0.18)))
-                
-                ZStack {
-                    RoundedRectangle(cornerRadius: 5)
-                        .fill(Color.VerdePiz)
-                        .frame(width: 140, height: 110)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 5)
-                                .stroke(selectedInputIndex == index ? Color.white : Color.clear, lineWidth: 7)
-                        )
-                    
-                    Text(inputNumbers[index])
-                        .font(.custom("RifficFree-Bold", size: 50))
-                        .foregroundColor(.white)
-                }
-                .position(x: UISW * 0.66, y: UISH * CGFloat(0.2 + (Double(index) * 0.18)))
-                .onTapGesture {
-                    selectedInputIndex = index
-                }
-            }
+            
             
             ZStack {
                 RoundedRectangle(cornerRadius: 30)
@@ -169,20 +179,11 @@ struct RetoView: View {
                     .foregroundColor(Color.AmarilloAns)
             }.position(x: UISW * 0.8, y: UISH * 0.195)
             
-            if showResults {
-                VStack {
-                    Text("Resultados:")
-                        .font(.title)
-                        .foregroundColor(.white)
-                    
-                    ForEach(results.indices, id: \.self) { index in
-                        Text("Ejercicio \(index + 1): \(results[index] ? "Correcto" : "Incorrecto")")
-                            .foregroundColor(.white)
-                            .font(.headline)
-                    }
-                }
-                .position(x: UISW * 0.5, y: UISH * 0.5)
-            }
+                
+            Text("Ronda")
+                .font(.custom("RifficFree-Bold", size: 29))
+                .foregroundColor(Color.AmarilloAns)
+                .position(x: UISW * 0.8, y: UISH * 0.14)
             
             Button {
                 withAnimation(.easeInOut(duration: 0.1)) {
@@ -193,18 +194,7 @@ struct RetoView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: 60)
-            }.position(x: UISW * 0.936, y: UISH * 0.09)
-            
-            Button {
-                withAnimation(.easeInOut(duration: 0.1)) {
-                    back = true
-                }
-            } label: {
-                Image("back")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 60)
-            }.position(x: UISW * 0.063, y: UISH * 0.09)
+            }.position(x: UISW * 0.955, y: UISH * 0.09)
             
             Image("retog")
                 .resizable()
@@ -212,16 +202,111 @@ struct RetoView: View {
                 .frame(width: UISW * 1, height: UISH * 1)
                 .opacity(0)
                 .allowsHitTesting(false)
+            ZStack {
+                Image("times")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 40, height: 40, alignment: .center)
+                    .position(x: appData.UISW * 0.40, y: appData.UISH * 0.20)
+                
+                Image("times")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 40, height: 40, alignment: .center)
+                    .position(x: appData.UISW * 0.40, y: appData.UISH * 0.56)
+                
+                Image("times")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 40, height: 40, alignment: .center)
+                    .position(x: appData.UISW * 0.40, y: appData.UISH * 0.38)
+                
+                Image("equal")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 40, height: 40, alignment: .center)
+                    .position(x: appData.UISW * 0.565, y: appData.UISH * 0.56)
+                
+                Image("equal")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 40, height: 40, alignment: .center)
+                    .position(x: appData.UISW * 0.565, y: appData.UISH * 0.20)
+                
+                Image("equal")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 40, height: 40, alignment: .center)
+                    .position(x: appData.UISW * 0.565, y: appData.UISH * 0.38)
+            }
             
-        }.ignoresSafeArea()
+            
+            
+            if showResults {
+                Color.black.opacity(0.7)
+                    .ignoresSafeArea()
+                
+                let inputForRive = calculateRiveInput(from: correctCount)
+                let rive = RiveViewModel(fileName: "cal-reto", stateMachineName: "Actions", artboardName: selectedAvatar)
+                rive.view()
+                    .scaleEffect(1)
+                    .allowsHitTesting(false)
+                    .onAppear {
+                        rive.setInput("Number 1", value: inputForRive)
+                    }
+            }
+            
+            Button {
+                withAnimation(.easeInOut(duration: 0)) {
+                    back = false  // Cambia a false para regresar
+                }
+            } label: {
+                Image("back")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 60)
+            }.position(x: UISW * 0.040, y: UISH * 0.09)
+            
+        }
+        .ignoresSafeArea()
         .onAppear {
             usedRandomNumbers.append(contentsOf: randomNumbers)
         }
     }
+    
+    func calculateRiveInput(from correctCount: Int) -> Double {
+        switch correctCount {
+        case 0...2:
+            return 1.0
+        case 3...5:
+            return 3.0
+        case 6...8:
+            return 6.0
+        case 9:
+            return 9.0
+        default:
+            return 0.0
+        }
+    }
 }
 
-//#Preview {
-//    let back = State(initialValue: false)
-//    return RetoView(back: back.projectedValue)
-//}
+#Preview {
+    // Define initial state variables
+    @State var previewBack = true
 
+    // Define the Rive model to be used
+    let previewRiveModel = RiveModel()
+
+    // Define a dummy incrementExercises function
+    let previewIncrementExercises: () -> Void = {
+       
+    }
+
+    return RetoView(
+        back: $previewBack,
+        riveModel: previewRiveModel,
+        selectedAvatar: "avatar1",
+        incrementExercises: previewIncrementExercises
+    )
+    .environmentObject(AppData())
+}

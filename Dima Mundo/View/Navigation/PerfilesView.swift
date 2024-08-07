@@ -4,7 +4,6 @@
 //
 //  Created by Pedro Prado on 02/07/24.
 //
-
 // MARK: - Probablemente ocupe separar PerfilesView y perfilView en archivos y renombrar a PerfilSelectorManager al momento de agregar los audios
 import SwiftUI
 
@@ -17,12 +16,11 @@ struct PerfilesView: View {
     @State private var circleScale: CGFloat = 0.001
     @State private var showSelectTableView = false
     @StateObject private var riveModel = RiveModel()
+    
+    var onHome: () -> Void
 
     var body: some View {
         ZStack {
-//            Color.MoradoFondo
-//            FondoCP()
-//                .scaleEffect(x:-1)
             if showSelectTableView {
                 if let selectedPerfil = selectedPerfil {
                     SelectTableView(
@@ -81,15 +79,15 @@ struct PerfilesView: View {
             }
             
             Button(action: {
+   //             DataManager.shared.deleteAllPerfiles()
                 viewModel.cargarPerfiles()
-                //DataManager.shared.deleteAllPerfiles()
                 withAnimation(.easeInOut(duration: 0.55)) {
-                    expandButton.toggle()
+                    expandButton = true
                     circleScale = expandButton ? 3 : 0.001
                 }
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
                     withAnimation(.easeInOut(duration: 0.45)) {
-                        showCrearPerfil.toggle()
+                        showCrearPerfil = true
                     }
                 }
             }) {
@@ -105,7 +103,7 @@ struct PerfilesView: View {
             .padding(10)
             .background(expandButton ? Color.Azul : Color.MoradoBtn)
             .cornerRadius(15)
-            .position(x: appData.UISW * 0.08, y: appData.UISH * 0.80)
+            .position(x: appData.UISW * 0.1, y: appData.UISH * 0.80)
             .zIndex(2)
             
             if expandButton {
@@ -113,7 +111,7 @@ struct PerfilesView: View {
                     .fill(Color.Azul)
                     .frame(width: appData.UISW * 2, height: appData.UISH * 2)
                     .scaleEffect(circleScale)
-                    .position(x: appData.UISW * 0.08, y: appData.UISH * 0.80)
+                    .position(x: appData.UISW * 0.1, y: appData.UISH * 0.80)
                     .animation(.bouncy(duration: 0.5), value: circleScale)
                     .transition(.scale)
             }
@@ -128,8 +126,8 @@ struct PerfilesView: View {
                     }
                 }, onCancel: {
                     withAnimation(.easeInOut(duration: 0.5)) {
-                        showCrearPerfil.toggle()
-                        expandButton.toggle()
+                        showCrearPerfil = false
+                        expandButton = false
                         circleScale = 3
                     }
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
@@ -144,10 +142,23 @@ struct PerfilesView: View {
                     Circle()
                         .scale(circleScale)
                         .frame(width: appData.UISW * 2, height: appData.UISH * 2)
-                        .position(x: appData.UISW * 0.08, y: appData.UISH * 0.80)
+                        .position(x: appData.UISW * 0.1, y: appData.UISH * 0.80)
                         .animation(.easeInOut(duration: 0.5), value: circleScale)
                 )
             }
+
+            // Botón de "Home"
+            Button(action: onHome) {
+                Image("inicio")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 60)
+                .foregroundColor(.white)
+            }
+            .position(x:appData.UISW * 0.1, y: appData.UISH * 0.1)
+                    
+                
+            
         }
     }
     
@@ -194,9 +205,9 @@ struct PerfilesView: View {
         case "avatar2":
             riveModel.fileName = "monin"
         case "avatar3":
-            riveModel.fileName = "jack3"
+            riveModel.fileName = "melody"
         case "avatar4":
-            riveModel.fileName = "jack3"
+            riveModel.fileName = "pablo"
         case "avatar5":
             riveModel.fileName = "jack3"
         default:
@@ -206,6 +217,6 @@ struct PerfilesView: View {
 }
 
 #Preview {
-    PerfilesView()
+    PerfilesView(onHome: {})
         .environmentObject(AppData())
 }

@@ -1,4 +1,5 @@
 import SwiftUI
+import RiveRuntime
 
 struct TablesExView: View {
     
@@ -8,10 +9,9 @@ struct TablesExView: View {
     @EnvironmentObject var appData: AppData
     @ObservedObject var viewModel = PerfilesViewModel()
     @State private var selectedPerfil: Perfil?
-    @StateObject private var riveModel = RiveModel()
+    @StateObject var riveModel: RiveModel  // Use the passed RiveModel here
     
     @State var sound: Bool = true
-    
     @State var isTapped: Bool = false
     @State private var inputNumber: String = ""
     @State private var resultMessage: String = ""
@@ -20,7 +20,10 @@ struct TablesExView: View {
     @State private var usedRandomNumbers: [Int] = []
     @State private var results: [Bool] = [Bool](repeating: false, count: 5)
     @State private var showResults: Bool = false
-    
+    @State private var correctCount: Int = 0  // Count of correct answers
+
+    var selectedAvatar: String // Add selectedAvatar to the view
+
     var incrementExercises: () -> Void
     
     var UISW: CGFloat = UIScreen.main.bounds.width
@@ -31,10 +34,30 @@ struct TablesExView: View {
     
     var body: some View {
         ZStack{
-            Image("tablas-base")
+            Image("retof")
+                .resizable()
+                .scaledToFill()
+                .frame(width: UISW, height: UISH)
+            
+            // Rive animation at the bottom
+            RiveViewModel(fileName: riveModel.fileName, stateMachineName: "Actions", artboardName: "inGameAB").view()
+                .id(riveModel.fileName)
+                .background(.clear)
+                .scaleEffect(0.6)
+                .allowsHitTesting(false)
+                .position(x: UISW * 0.14, y: UISH * 0.57)
+            
+            Image("times")
                 .resizable()
                 .scaledToFit()
-                .frame(width: UISW * 1, height: UISH * 1)
+                .frame(width: 40, height: 40, alignment: .center)
+                .position(x: appData.UISW * 0.405, y: appData.UISH * 0.34)
+            
+            Image("equal")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 40, height: 40, alignment: .center)
+                .position(x: appData.UISW * 0.565, y: appData.UISH * 0.34)
             
             ForEach(positions.indices, id: \.self) { index in
                 ZStack {
@@ -88,14 +111,13 @@ struct TablesExView: View {
                 } else {
                     showResults = true
                     incrementExercises()
+                    correctCount = results.filter { $0 }.count  // Count correct answers
                 }
             } label: {
-                
                 Image("done")
                     .resizable()
                     .scaledToFit()
                     .frame(width: 85)
-                   
             } .position(x: UISW * 0.93, y: UISH * 0.855)
             
             ZStack {
@@ -129,18 +151,7 @@ struct TablesExView: View {
                     .foregroundColor(.white)
             }.position(x: UISW * 0.66, y: UISH * 0.34)
 
-//            Image("fondo-tablas-medidas")
-//                .resizable()
-//                .scaledToFit()
-//                .frame(width: UISW * 1, height: UISH * 1)
-//                .opacity(0.5)
-//            
-//            Text(resultMessage)
-//                .font(.custom("RifficFree-Bold", size: 65))
-//                .foregroundColor(.white)
-//                .position(x: UISW * 0.5, y: UISH * 0.7)
-            
-            ZStack{
+            ZStack {
                 RoundedRectangle(cornerRadius: 30)
                     .foregroundColor(Color.VerdeAns)
                     .frame(width: 100, height: 50)
@@ -148,23 +159,12 @@ struct TablesExView: View {
                 Text("\(exercise) / 5")
                     .font(.custom("RifficFree-Bold", size: 29))
                     .foregroundColor(Color.AmarilloAns)
-                    
-            }.position(x: UISW * 0.826, y: UISH * 0.156)
-
-            if showResults {
-                VStack {
-                    Text("Resultados:")
-                        .font(.title)
-                        .foregroundColor(.white)
-                    
-                    ForEach(results.indices, id: \.self) { index in
-                        Text("Ejercicio \(index + 1): \(results[index] ? "Correcto" : "Incorrecto")")
-                            .foregroundColor(.white)
-                            .font(.headline)
-                    }
-                }
-                .position(x: UISW * 0.5, y: UISH * 0.5)
-            }
+            }.position(x: UISW * 0.8, y: UISH * 0.195)
+            
+            Text("Ronda")
+                .font(.custom("RifficFree-Bold", size: 29))
+                .foregroundColor(Color.AmarilloAns)
+                .position(x: UISW * 0.8, y: UISH * 0.14)
             
             Button{
                 withAnimation(.easeInOut(duration: 0.1)) {
@@ -176,10 +176,24 @@ struct TablesExView: View {
                     .scaledToFit()
                     .frame(width: 60)
                    
-            }.position(x: UISW * 0.936, y: UISH * 0.09)
+            }.position(x: UISW * 0.955, y: UISH * 0.09)
+           
+            if showResults {
+                Color.black.opacity(0.7)
+                
+                let correctCountDouble = Double(correctCount)
+                let rive = RiveViewModel(fileName: "cal-ejercicios", stateMachineName: "State Machine 1", artboardName: selectedAvatar)
+                
+                rive.view()
+                    .scaleEffect(1)
+                    .allowsHitTesting(false)
+                    .onAppear {
+                        rive.setInput("Number 1", value: correctCountDouble)
+                    }
+            }
             
             Button{
-                withAnimation(.easeInOut(duration: 0.1)) {
+                withAnimation(.easeInOut(duration: 0)) {
                     back = false
                 }
             } label: {
@@ -188,8 +202,8 @@ struct TablesExView: View {
                     .scaledToFit()
                     .frame(width: 60)
                     
-            }.position(x: UISW * 0.063, y: UISH * 0.09)
-           
+            }.position(x: UISW * 0.04, y: UISH * 0.09)
+            
         }.ignoresSafeArea()
         .onAppear {
             usedRandomNumbers.append(randomNumber)
@@ -197,9 +211,20 @@ struct TablesExView: View {
     }
 }
 
-//#Preview {
-//    let table = State(initialValue: 1)
-//    let back = State(initialValue: false)
-//    return TablesExView(table: table.projectedValue, back: back.projectedValue)
-//}
+#Preview {
+    @State var previewBack = true
 
+    let previewRiveModel = RiveModel()
+
+    let previewIncrementExercises: () -> Void = {
+       
+    }
+
+    return TablesExView(
+        table: .constant(1), back: $previewBack,
+        riveModel: previewRiveModel,
+        selectedAvatar: "avatar1", 
+        incrementExercises: previewIncrementExercises
+    )
+    .environmentObject(AppData())
+}
