@@ -16,7 +16,9 @@ struct PerfilesView: View {
     @State private var circleScale: CGFloat = 0.001
     @State private var showSelectTableView = false
     @StateObject private var riveModel = RiveModel()
+    @State var sound: Bool = true
     
+
     var onHome: () -> Void
 
     var body: some View {
@@ -79,7 +81,7 @@ struct PerfilesView: View {
             }
             
             Button(action: {
-   //             DataManager.shared.deleteAllPerfiles()
+ //               DataManager.shared.deleteAllPerfiles()
                 viewModel.cargarPerfiles()
                 withAnimation(.easeInOut(duration: 0.55)) {
                     expandButton = true
@@ -103,9 +105,21 @@ struct PerfilesView: View {
             .padding(10)
             .background(expandButton ? Color.Azul : Color.MoradoBtn)
             .cornerRadius(15)
-            .position(x: appData.UISW * 0.1, y: appData.UISH * 0.80)
+            .position(x: appData.UISW * 0.06, y: appData.UISH * 0.80)
             .zIndex(2)
             
+            Button{
+                withAnimation(.easeInOut(duration: 0.1)) {
+                    sound.toggle()
+                }
+            } label: {
+                Image(sound ? "sound" : "mute")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 60)
+                   
+            }.position(x: appData.UISW * 0.94, y: appData.UISH * 0.09)
+
             if expandButton {
                 Circle()
                     .fill(Color.Azul)
@@ -155,7 +169,7 @@ struct PerfilesView: View {
                 .frame(width: 60)
                 .foregroundColor(.white)
             }
-            .position(x:appData.UISW * 0.1, y: appData.UISH * 0.1)
+            .position(x:appData.UISW * 0.06, y: appData.UISH * 0.1)
                     
                 
             

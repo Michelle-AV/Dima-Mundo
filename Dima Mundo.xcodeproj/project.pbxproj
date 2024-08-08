@@ -118,7 +118,7 @@
 		6C3D33A92C6309AF0097FDC1 /* pablo.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = pablo.riv; sourceTree = "<group>"; };
 		6C3D33AD2C6313400097FDC1 /* cal-reto.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = "cal-reto.riv"; sourceTree = "<group>"; };
 		6C3D33B12C63161B0097FDC1 /* cal-ejercicios.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = "cal-ejercicios.riv"; sourceTree = "<group>"; };
-		6C3D33B52C632F950097FDC1 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
+		6C3D33B52C632F950097FDC1 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InfoView.swift; path = "Dima Mundo/View/Navigation/InfoView.swift"; sourceTree = SOURCE_ROOT; };
 		6C84950F2C61C61300FA8EC6 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		6CA094BD2C430279000EDBE0 /* rivebg.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = rivebg.riv; sourceTree = "<group>"; };
 		6CA094C72C430434000EDBE0 /* Fondos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fondos.swift; sourceTree = "<group>"; };

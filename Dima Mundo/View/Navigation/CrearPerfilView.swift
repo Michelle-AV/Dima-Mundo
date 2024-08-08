@@ -16,6 +16,8 @@ struct CrearPerfilView: View {
     @State private var textWidth: CGFloat = 100
     @State private var buttonVisible: Bool = true
     @State private var keyboardVisible: Bool = false
+    @State var sound: Bool = true
+
     var onSave: () -> Void
     var onCancel: () -> Void
 
@@ -44,17 +46,28 @@ struct CrearPerfilView: View {
                 .animation(.easeInOut, value: selectedColor)
             FondoMP()
                 .frame(width: appData.UISW, height: appData.UISH)
-            HStack {
+            Button{
+                withAnimation(.easeInOut(duration: 0.1)) {
+                    sound.toggle()
+                }
+            } label: {
+                Image(sound ? "sound" : "mute")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 60)
+                   
+            }.position(x: appData.UISW * 0.94, y: appData.UISH * 0.09)
+            
                 Button(action: onCancel) {
-                    Image(systemName: "xmark")
+                    Image("back")
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 30)
+                        .frame(width: 60)
                         .padding()
                         .foregroundColor(.white)
                 }
-                .position(x:appData.UISW * 0.9, y:appData.UISH * 0.1)
-            }
+                .position(x:appData.UISW * 0.06, y:appData.UISH * 0.1)
+            
             ZStack {
                 Text("Ingresa tu nombre")
                     .font(.custom("RifficFree-Bold", size: 65))

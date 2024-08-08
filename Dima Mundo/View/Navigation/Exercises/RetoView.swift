@@ -115,14 +115,14 @@ struct RetoView: View {
                                 .foregroundColor(Color.Cafe)
                         }
                     }
-                }.position(x: UISW * positions[index], y: UISH * 0.855)
+                }.position(x: UISW * positions[index], y: UISH * 0.9)
             }
             
             Image("borrar")
                 .resizable()
                 .scaledToFit()
                 .frame(width: 60)
-                .position(x: UISW * 0.84, y: UISH * 0.855)
+                .position(x: UISW * 0.84, y: UISH * 0.9)
                 .allowsHitTesting(false)
             
             Button {
@@ -165,7 +165,7 @@ struct RetoView: View {
             }
             .opacity(inputNumbers.contains("") || selectedInputIndex == nil ? 0.5 : 1.0)
             .disabled(inputNumbers.contains("") || selectedInputIndex == nil)
-            .position(x: UISW * 0.93, y: UISH * 0.855)
+            .position(x: UISW * 0.93, y: UISH * 0.9)
             
             
             
@@ -194,7 +194,7 @@ struct RetoView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: 60)
-            }.position(x: UISW * 0.955, y: UISH * 0.09)
+            }.position(x: UISW * 0.94, y: UISH * 0.09)
             
             Image("retog")
                 .resizable()
@@ -265,7 +265,7 @@ struct RetoView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: 60)
-            }.position(x: UISW * 0.040, y: UISH * 0.09)
+            }.position(x: UISW * 0.06, y: UISH * 0.09)
             
         }
         .ignoresSafeArea()

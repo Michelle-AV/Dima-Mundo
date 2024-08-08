@@ -22,6 +22,8 @@ struct SelectTableView: View {
     @Binding var showSelectTableView: Bool
     @ObservedObject var riveModel: RiveModel
     @Namespace private var animation
+    @State var sound: Bool = true
+
 
     let cards = [
         Card(id: 0, label: "Uno", imageName: "tabla1"),
@@ -50,12 +52,25 @@ struct SelectTableView: View {
                     Text("Elige una tabla para practicar")
                         .font(.custom("RifficFree-Bold", size: 50))
                         .foregroundColor(.white)
-                        .position(CGPoint(x: appData.UISW * 0.53, y: appData.UISH * 0.1))
+                        .position(CGPoint(x: appData.UISW * 0.5, y: appData.UISH * 0.1))
 
                     if !isExpanded {
                         profileHeader
                             .matchedGeometryEffect(id: "profileHeader", in: animation)
                     }
+                    
+                    Button{
+                        withAnimation(.easeInOut(duration: 0.1)) {
+                            sound.toggle()
+                        }
+                    } label: {
+                        Image(sound ? "sound" : "mute")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 60)
+                           
+                    }.position(x: appData.UISW * 0.94, y: appData.UISH * 0.09)
+
                     
                     // Rive animation for avatar
                     RiveViewModel(fileName: riveModel.fileName, stateMachineName: "Actions", artboardName: "walkingAB").view()
@@ -107,7 +122,7 @@ struct SelectTableView: View {
                 Color.black.opacity(0.5)
                     .ignoresSafeArea()
                     .onTapGesture {
-                        withAnimation {
+                        withAnimation (.easeInOut (duration: 0)) {
                             isExpanded = false
                         }
                     }
@@ -121,12 +136,12 @@ struct SelectTableView: View {
                 TablesExView(table: $Tabla, back: $Exercise, riveModel: riveModel, selectedAvatar: selectedAvatar, incrementExercises: incrementExercises)
                     .frame(width: appData.UISW, height: appData.UISH)
                     .ignoresSafeArea()
-                    .offset(x: -14.5)
+                    
             }else if(Exercise && Tabla == 11){
                 RetoView(back: $Exercise, riveModel: riveModel, selectedAvatar: selectedAvatar, incrementExercises: incrementExercises)
                     .frame(width: appData.UISW, height: appData.UISH)
                     .ignoresSafeArea()
-                    .offset(x: -14.5)
+                    
 
             }
         }
@@ -140,69 +155,68 @@ struct SelectTableView: View {
                 .frame(width: 80, height: 80)
                 .clipShape(Circle())
                 .onTapGesture {
-                    withAnimation {
-                        isExpanded.toggle()
+                    withAnimation (.bouncy(duration: 0)){
+                        isExpanded = true
                     }
                 }
 
             RoundedRectangle(cornerRadius: 5)
-                .fill(Color.white)
+                .fill(Color.AvatarPopColor)
                 .frame(width: 100, height: 20)
                 .overlay(
                     Text(perfilName)
                         .font(.custom("RifficFree-Bold", size: 15))
-                        .foregroundColor(.black)
+                        .foregroundColor(.white)
                         .padding(.horizontal)
                 )
                 .onTapGesture {
-                    withAnimation {
-                        isExpanded.toggle()
+                    withAnimation (.bouncy(duration: 0)){
+                        isExpanded = true
                     }
                 }
                 .padding(.top, 70)
         }
-        .position(CGPoint(x: appData.UISW * 0.13, y: appData.UISH * 0.1))
+        .position(CGPoint(x: appData.UISW * 0.06, y: appData.UISH * 0.1))
     }
     
     private var expandedProfileView: some View {
         ZStack {
-            RoundedRectangle(cornerRadius: 20)
-                .fill(Color.white)
-                .frame(width: 200, height: 250)
-                .overlay(
-                    VStack {
-                        Text(perfilName)
-                            .font(.custom("RifficFree-Bold", size: 25))
-                            .foregroundColor(.black)
-
-                        Text("Ejercicios: \(perfil.ejerciciosCompletados)")
-                            .font(.custom("RifficFree-Bold", size: 20))
-                            .foregroundColor(.white)
-                            .padding()
-                            .background(Color.secondary.cornerRadius(10.0))
-
-                        Button("Salir") {
-                            withAnimation {
-                                isExpanded = false
-                                showSelectTableView = false
-                            }
-                        }
-                        .font(.custom("RifficFree-Bold", size: 20))
-                        .foregroundColor(.white)
-                        .padding()
-                        .background(Color.red)
-                        .cornerRadius(10)
-                    }
-                        .padding(.horizontal)
-                )
-                .position(CGPoint(x: appData.UISW * 0.13, y: appData.UISH * 0.29))
-            
             Image(uiImage: UIImage(named: selectedAvatar) ?? UIImage())
                 .resizable()
                 .scaledToFit()
                 .frame(width: 80, height: 80)
                 .clipShape(Circle())
-                .position(CGPoint(x: appData.UISW * 0.13, y: appData.UISH * 0.1))
+                .position(CGPoint(x: appData.UISW * 0.09, y: appData.UISH * 0.1))
+            
+            RoundedRectangle(cornerRadius: 20)
+                .fill(Color.AvatarPopColor)
+                .frame(width: 170, height: 200)
+                .overlay(
+                    VStack {
+                        Text(perfilName)
+                            .font(.custom("RifficFree-Bold", size: 20))
+                            .foregroundColor(.white)
+
+                        Text("Intentos: \(perfil.ejerciciosCompletados)")
+                            .font(.custom("RifficFree-Bold", size: 20))
+                            .foregroundColor(.white)
+                            .padding()
+                            .background(Color.secondary.cornerRadius(10.0))
+
+                        Button("Salir", systemImage: "arrow.turn.down.left") {
+                            withAnimation {
+                                isExpanded = false
+                                showSelectTableView = false
+                            }
+                        }.font(.custom("RifficFree-Bold", size: 20))
+                            .foregroundColor(.red)
+                            .frame(width: 130, height: 50, alignment: .center)                        .background(Color.white)
+                            .cornerRadius(10)
+                        
+                    }
+                        .padding(.horizontal)
+                )
+                .position(CGPoint(x: appData.UISW * 0.09, y: appData.UISH * 0.255))
         }
     }
 

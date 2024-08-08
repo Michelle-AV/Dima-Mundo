@@ -81,14 +81,14 @@ struct TablesExView: View {
                                 .foregroundColor(Color.Cafe)
                         }
                     }
-                }.position(x: UISW * positions[index], y: UISH * 0.855)
+                }.position(x: UISW * positions[index], y: UISH * 0.9)
             }
             
             Image("borrar")
                 .resizable()
                 .scaledToFit()
                 .frame(width: 60)
-                .position(x: UISW * 0.84, y: UISH * 0.855)
+                .position(x: UISW * 0.84, y: UISH * 0.9)
                 .allowsHitTesting(false)
             
             Button{
@@ -118,7 +118,7 @@ struct TablesExView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: 85)
-            } .position(x: UISW * 0.93, y: UISH * 0.855)
+            } .position(x: UISW * 0.93, y: UISH * 0.9)
             
             ZStack {
                 RoundedRectangle(cornerRadius: 5)
@@ -176,7 +176,7 @@ struct TablesExView: View {
                     .scaledToFit()
                     .frame(width: 60)
                    
-            }.position(x: UISW * 0.955, y: UISH * 0.09)
+            }.position(x: UISW * 0.94, y: UISH * 0.09)
            
             if showResults {
                 Color.black.opacity(0.7)
@@ -202,7 +202,7 @@ struct TablesExView: View {
                     .scaledToFit()
                     .frame(width: 60)
                     
-            }.position(x: UISW * 0.04, y: UISH * 0.09)
+            }.position(x: UISW * 0.06, y: UISH * 0.09)
             
         }.ignoresSafeArea()
         .onAppear {
