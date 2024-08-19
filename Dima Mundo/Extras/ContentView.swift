@@ -32,13 +32,13 @@ struct ContentView: View {
                         variablestar = false
                     }
                     
-//            Stepper("Value: \(stepperValue)", value: $stepperValue, in: 0...10)
-//                .onChange(of: stepperValue) { newValue in
-//                    if newValue == 1 {
-//                        rive.setInput("Number 1", value: 1.0)
-//                    }
-//                }
-//                .padding()
+            Stepper("Value: \(stepperValue)", value: $stepperValue, in: 0...10)
+                .onChange(of: stepperValue) { newValue in
+                    if newValue == 1 {
+                        rive.setInput("Number 1", value: 1.0)
+                    }
+                }
+                .padding()
         }
     }
 }

@@ -37,7 +37,12 @@ extension Color {
     
     
     // MARK: -SelectTableView
-    
     public static let AvatarPopColor: Color = Color(UIColor(red: 0.29, green: 0.54, blue: 0.78, alpha: 1.00))
     
+    // MARK: -Dima's Colors
+    public static let melodyColor: Color = Color(UIColor(red: 0.95, green: 0.47, blue: 0.61, alpha: 1.00))
+    public static let mollyColor: Color = Color(UIColor(red: 0.91, green: 0.35, blue: 0.53, alpha: 1.00))
+    public static let moninColor: Color = Color(UIColor(red: 0.03, green: 0.52, blue: 0.78, alpha: 1.00))
+    public static let jackColor: Color = Color(UIColor(red: 0.16, green: 0.71, blue: 0.91, alpha: 1.00))
+    public static let pabloColor: Color = Color(UIColor(red: 0.23, green: 0.29, blue: 0.62, alpha: 1.00))
 }

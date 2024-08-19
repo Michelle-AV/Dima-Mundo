@@ -8,5 +8,5 @@ import SwiftUI
 import RiveRuntime
 
 class RiveModel: ObservableObject {
-    @Published var fileName: String = "melody"
+    @Published var fileName: String = "molly"
 }

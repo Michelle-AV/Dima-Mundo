@@ -8,11 +8,11 @@ import SwiftUI
 
 struct MainView: View {
     @EnvironmentObject var appData: AppData
+    @EnvironmentObject var perfilesViewModel: PerfilesViewModel
     @State private var showPerfilesView = false
-    @State private var showInfoView = false // Estado para mostrar InfoView
+    @State private var showInfoView = false 
     @State private var backgroundOpacity = 0.0
     @State private var viewOpacity = 0.0
-    @State var sound: Bool = true
 
     var body: some View {
         ZStack {
@@ -28,10 +28,10 @@ struct MainView: View {
 
             Button{
                 withAnimation(.easeInOut(duration: 0.1)) {
-                    sound.toggle()
+                    appData.sound.toggle()
                 }
             } label: {
-                Image(sound ? "sound" : "mute")
+                Image(appData.sound ? "sound" : "mute")
                     .resizable()
                     .scaledToFit()
                     .frame(width: 60)
@@ -58,8 +58,10 @@ struct MainView: View {
                                 withAnimation(.easeIn(duration: 0.5)) {
                                     showPerfilesView = true
                                     viewOpacity = 1.0
+                                    SoundManager.instance.stopDialog()
                                 }
-                            }                        }
+                            }
+                        }
                     
                     Color.VerdeBtn
                         .frame(width: 200, height: 60, alignment: .center)
@@ -85,6 +87,7 @@ struct MainView: View {
                 .padding()
                 .background(Color.VerdeClaroBtn)
                 .cornerRadius(10)
+                .offset(y: 14)
             }
             .position(x: appData.UISW * 0.5, y: appData.UISH * 0.85)
 
@@ -111,16 +114,38 @@ struct MainView: View {
                     .ignoresSafeArea()
                     .transition(.opacity)
 
-//                InfoView(back: $showInfoView)
-//                    .transition(.move(edge: .top))
-//                    .zIndex(1)
+                InfoView(back: $showInfoView)
+                    .transition(.move(edge: .top))
+                    .zIndex(1)
+                    .position(x: appData.UISW * 0.5, y: appData.UISH * 0.5)
             }
         }
         .ignoresSafeArea()
+        .onAppear{
+            if appData.sound {
+                SoundManager.instance.playSound(sound: .MainTheme)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.8) {
+                    if appData.sound {
+                        SoundManager.instance.playDialogES(sound: .Bienvenido, loop: false)
+                    }
+                }
+            }
+        }
+        .onChange(of: appData.sound) { newValue in
+            if newValue {
+                if appData.sound{
+                    SoundManager.instance.resumeActiveSound()
+                }
+            } else {
+                SoundManager.instance.pauseActiveSound()
+                SoundManager.instance.stopDialog()
+            }
+        }
     }
 }
 
 #Preview{
     MainView()
         .environmentObject(AppData())
+        .environmentObject(PerfilesViewModel())
 }

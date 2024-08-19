@@ -22,8 +22,6 @@ struct SelectTableView: View {
     @Binding var showSelectTableView: Bool
     @ObservedObject var riveModel: RiveModel
     @Namespace private var animation
-    @State var sound: Bool = true
-
 
     let cards = [
         Card(id: 0, label: "Uno", imageName: "tabla1"),
@@ -61,10 +59,22 @@ struct SelectTableView: View {
                     
                     Button{
                         withAnimation(.easeInOut(duration: 0.1)) {
-                            sound.toggle()
+                            appData.isTuto = true
                         }
                     } label: {
-                        Image(sound ? "sound" : "mute")
+                        Image("tutorialIcon")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 60)
+                           
+                    }.position(x: appData.UISW * 0.87, y: appData.UISH * 0.09)
+                    
+                    Button{
+                        withAnimation(.easeInOut(duration: 0.1)) {
+                            appData.sound.toggle()
+                        }
+                    } label: {
+                        Image(appData.sound ? "sound" : "mute")
                             .resizable()
                             .scaledToFit()
                             .frame(width: 60)
@@ -124,6 +134,7 @@ struct SelectTableView: View {
                     .onTapGesture {
                         withAnimation (.easeInOut (duration: 0)) {
                             isExpanded = false
+                            appData.FlagTuto = 7
                         }
                     }
 
@@ -131,20 +142,77 @@ struct SelectTableView: View {
                     .matchedGeometryEffect(id: "profileHeader", in: animation)
             }
             
-            if(Exercise && Tabla < 11){
-                // Passing riveModel to TablesExView
+            if appData.isTuto && !Exercise {
+                TutorialView(viewType: .elegirTabla)
+            }
+            
+            if Exercise && Tabla < 11 {
                 TablesExView(table: $Tabla, back: $Exercise, riveModel: riveModel, selectedAvatar: selectedAvatar, incrementExercises: incrementExercises)
                     .frame(width: appData.UISW, height: appData.UISH)
                     .ignoresSafeArea()
-                    
-            }else if(Exercise && Tabla == 11){
+                    .onAppear {
+                        SoundManager.instance.stopSound(for: .MainTheme)
+                        SoundManager.instance.stopSound(for: .ChallengeFinal)
+
+                        SoundManager.instance.playSound(sound: .Exercise)
+                        SoundManager.instance.setVolume(for: .Exercise, volume: 0.1)
+
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
+                            if appData.sound {
+                                SoundManager.instance.setVolume(for: .Exercise, volume: 1.0)
+                                SoundManager.instance.resumeActiveSound()
+                            } else {
+                                SoundManager.instance.setVolume(for: .Exercise, volume: 0)
+                            }
+                        }
+                    }
+                    .onChange(of: appData.sound) { newValue in
+                        if newValue {
+                            SoundManager.instance.setVolume(for: .Exercise, volume: 1.0)
+                            SoundManager.instance.resumeActiveSound()
+                        } else {
+                            SoundManager.instance.setVolume(for: .Exercise, volume: 0)
+                            SoundManager.instance.pauseActiveSound()
+                            SoundManager.instance.stopDialog()
+                        }
+                    }
+
+
+
+            } else if Exercise && Tabla == 11 {
                 RetoView(back: $Exercise, riveModel: riveModel, selectedAvatar: selectedAvatar, incrementExercises: incrementExercises)
                     .frame(width: appData.UISW, height: appData.UISH)
                     .ignoresSafeArea()
-                    
+                    .onAppear {
+                        SoundManager.instance.stopSound(for: .MainTheme)
+                        SoundManager.instance.stopSound(for: .Exercise)
+
+                        SoundManager.instance.playSound(sound: .ChallengeFinal)
+                        SoundManager.instance.setVolume(for: .ChallengeFinal, volume: 0)
+
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
+                            if appData.sound {
+                                SoundManager.instance.setVolume(for: .ChallengeFinal, volume: 1.0)
+                                SoundManager.instance.resumeActiveSound()
+                            } else {
+                                SoundManager.instance.setVolume(for: .ChallengeFinal, volume: 0)
+                            }
+                        }
+                    }
+                    .onChange(of: appData.sound) { newValue in
+                        if newValue {
+                            SoundManager.instance.setVolume(for: .ChallengeFinal, volume: 1.0)
+                            SoundManager.instance.resumeActiveSound()
+                        } else {
+                            SoundManager.instance.setVolume(for: .ChallengeFinal, volume: 0)
+                            SoundManager.instance.pauseActiveSound()
+                            SoundManager.instance.stopDialog()
+                        }
+                    }
 
             }
-        }
+            
+        }.ignoresSafeArea()
     }
 
     private var profileHeader: some View {
@@ -158,6 +226,7 @@ struct SelectTableView: View {
                     withAnimation (.bouncy(duration: 0)){
                         isExpanded = true
                     }
+                    appData.FlagTuto = 8
                 }
 
             RoundedRectangle(cornerRadius: 5)
@@ -173,6 +242,7 @@ struct SelectTableView: View {
                     withAnimation (.bouncy(duration: 0)){
                         isExpanded = true
                     }
+                    appData.FlagTuto = 8
                 }
                 .padding(.top, 70)
         }
@@ -207,6 +277,8 @@ struct SelectTableView: View {
                             withAnimation {
                                 isExpanded = false
                                 showSelectTableView = false
+                                appData.isTuto = false
+                                appData.FlagTuto = 7
                             }
                         }.font(.custom("RifficFree-Bold", size: 20))
                             .foregroundColor(.red)
@@ -260,8 +332,29 @@ struct SelectTableView: View {
 }
 
 
-#Preview {
-    PerfilesView(onHome: {})
+//#Preview {
+//   PerfilesView(onHome: {})
+//     .environmentObject(AppData())
+//}
+
+struct SelectTableView_Previews: PreviewProvider {
+    static var previews: some View {
+        let examplePerfil = Perfil(context: DataManager.shared.persistentContainer.viewContext)
+        
+        @State var showSelectTableView = true
+        let riveModel = RiveModel()
+        
+        SelectTableView(
+            selectedAvatar: "avatar1",
+            perfilName: "Test",
+            perfil: .constant(examplePerfil),
+            showSelectTableView: $showSelectTableView,
+            riveModel: riveModel
+        )
         .environmentObject(AppData())
+        .environmentObject(PerfilesViewModel())
+    }
 }
+
+
 

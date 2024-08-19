@@ -16,8 +16,8 @@ struct PerfilesView: View {
     @State private var circleScale: CGFloat = 0.001
     @State private var showSelectTableView = false
     @StateObject private var riveModel = RiveModel()
-    @State var sound: Bool = true
     
+    @State var indexTuto: Double = 0
 
     var onHome: () -> Void
 
@@ -39,9 +39,12 @@ struct PerfilesView: View {
                 perfilesContent
                     .transition(.move(edge: .leading))
             }
-        }
+            
+            
+        }.ignoresSafeArea()
         .animation(.bouncy, value: showSelectTableView)
         .onAppear {
+//            DataManager.shared.deleteAllPerfiles()
             if let selectedPerfil = selectedPerfil {
                 updateRiveModel(for: selectedPerfil.avatarNombre ?? "default_avatar")
             }
@@ -68,9 +71,11 @@ struct PerfilesView: View {
             
             
             if selectedPerfil != nil {
-                Button("Continuar") {
+                Button("Iniciar") {
                     updateRiveModel(for: selectedPerfil!.avatarNombre ?? "default_avatar")
                     showSelectTableView = true
+                    appData.isTuto = false
+                    indexTuto = 0
                 }
                 .font(.custom("RifficFree-Bold", size: 30))
                 .foregroundColor(.white)
@@ -81,7 +86,7 @@ struct PerfilesView: View {
             }
             
             Button(action: {
- //               DataManager.shared.deleteAllPerfiles()
+//                DataManager.shared.deleteAllPerfiles()
                 viewModel.cargarPerfiles()
                 withAnimation(.easeInOut(duration: 0.55)) {
                     expandButton = true
@@ -92,6 +97,9 @@ struct PerfilesView: View {
                         showCrearPerfil = true
                     }
                 }
+                appData.isTuto = false
+                indexTuto = 0
+                SoundManager.instance.stopDialog()
             }) {
                 Image(systemName: "plus")
                     .resizable()
@@ -110,15 +118,33 @@ struct PerfilesView: View {
             
             Button{
                 withAnimation(.easeInOut(duration: 0.1)) {
-                    sound.toggle()
+                    appData.isTuto = true
+                    indexTuto = 20
                 }
             } label: {
-                Image(sound ? "sound" : "mute")
+                Image("tutorialIcon")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 60)
+                   
+            }.position(x: appData.UISW * 0.87, y: appData.UISH * 0.09)
+            
+            Button{
+                withAnimation(.easeInOut(duration: 0.1)) {
+                    appData.sound.toggle()
+                }
+            } label: {
+                Image(appData.sound ? "sound" : "mute")
                     .resizable()
                     .scaledToFit()
                     .frame(width: 60)
                    
             }.position(x: appData.UISW * 0.94, y: appData.UISH * 0.09)
+            
+            if appData.isTuto {
+                TutorialView(viewType: .elegirPerfil)
+                    .zIndex(indexTuto)
+            }
 
             if expandButton {
                 Circle()
@@ -136,7 +162,16 @@ struct PerfilesView: View {
                     withAnimation(.easeInOut(duration: 0)) {
                         showCrearPerfil.toggle()
                         expandButton.toggle()
-                        circleScale = 0.001
+                        circleScale = 0.001 
+                        if viewModel.perfiles.count == 1 {
+                            appData.isTuto = true
+                            appData.FlagTuto = 18
+                            indexTuto = 20
+                        } else {
+                            appData.isTuto = false
+                            appData.FlagTuto = 18
+                            indexTuto = 0
+                        }
                     }
                 }, onCancel: {
                     withAnimation(.easeInOut(duration: 0.5)) {
@@ -173,6 +208,19 @@ struct PerfilesView: View {
                     
                 
             
+        }.onAppear{
+            if viewModel.perfiles.count == 0 {
+                viewModel.cargarPerfiles()
+                withAnimation(.easeInOut(duration: 0.55)) {
+                    expandButton = true
+                    circleScale = expandButton ? 3 : 0.001
+                }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
+                    withAnimation(.easeInOut(duration: 0.45)) {
+                        showCrearPerfil = true
+                    }
+                }
+            }
         }
     }
     
@@ -233,4 +281,5 @@ struct PerfilesView: View {
 #Preview {
     PerfilesView(onHome: {})
         .environmentObject(AppData())
+        .environmentObject(PerfilesViewModel())
 }
