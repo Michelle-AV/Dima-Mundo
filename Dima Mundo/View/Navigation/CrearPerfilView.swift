@@ -13,12 +13,16 @@ struct CrearPerfilView: View {
     @StateObject private var riveModel = RiveModel()
     @State private var selectedAvatarIndex: Int = 2
     @State private var selectedColor: ColorOption = .azul
-    @State private var userName: String = ""
+    @State private var userName: String = "" {
+        didSet {
+            if userName.count > 8 {
+                userName = String(userName.prefix(8))
+            }
+        }
+    }
     @State private var textWidth: CGFloat = 100
     @State private var buttonVisible: Bool = true
     @State private var keyboardVisible: Bool = false
-//    @State var sound: Bool = true
-    @State private var textFieldFrame: CGRect = .zero
 
     var onSave: () -> Void
     var onCancel: () -> Void
@@ -49,7 +53,7 @@ struct CrearPerfilView: View {
             FondoMP()
                 .frame(width: appData.UISW, height: appData.UISH)
             
-            Button{
+            Button {
                 withAnimation(.easeInOut(duration: 0.1)) {
                     appData.isTuto = true
                 }
@@ -58,10 +62,9 @@ struct CrearPerfilView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: 60)
-                   
             }.position(x: appData.UISW * 0.87, y: appData.UISH * 0.09)
             
-            Button{
+            Button {
                 withAnimation(.easeInOut(duration: 0.1)) {
                     appData.sound.toggle()
                 }
@@ -70,30 +73,34 @@ struct CrearPerfilView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: 60)
-                   
             }.position(x: appData.UISW * 0.94, y: appData.UISH * 0.09)
             
-                Button(action: onCancel) {
-                    Image("back")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 60)
-                        .padding()
-                        .foregroundColor(.white)
-                }
-                .position(x:appData.UISW * 0.06, y:appData.UISH * 0.1)
+            Button(action: onCancel) {
+                Image("back")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 60)
+                    .padding()
+                    .foregroundColor(.white)
+            }
+            .position(x: appData.UISW * 0.06, y: appData.UISH * 0.1)
             
             ZStack {
                 Text(appData.localizationManager.localizedString(for: "CrearPerfilTitle" ))
                     .font(.custom("RifficFree-Bold", size: 65))
                     .foregroundColor(.white)
-                    .position(x:appData.UISW * 0.5, y:appData.UISH * 0.1)
+                    .position(x: appData.UISW * 0.5, y: appData.UISH * 0.1)
 
                 TextField(appData.localizationManager.localizedString(for: "CrearPerfilTextfield" ), text: $userName)
                     .disabled(true)
                     .onChange(of: userName) { newValue in
                         DispatchQueue.main.async {
-                            userName = newValue.capitalizingFirstLetterAfterSpace()
+                            // Limitar el número de caracteres a 8
+                            if newValue.count <= 8 {
+                                userName = newValue.capitalizingFirstLetterAfterSpace()
+                            } else {
+                                userName = String(newValue.prefix(8))
+                            }
                         }
                     }
                     .font(.custom("RifficFree-Bold", size: 45))
@@ -110,7 +117,7 @@ struct CrearPerfilView: View {
                             appData.FlagTuto = 1
                         }
                     }
-                    .position(x:appData.UISW * 0.5, y:appData.UISH * 0.25)
+                    .position(x: appData.UISW * 0.5, y: appData.UISH * 0.25)
             }
             
             Image("podioXL")
@@ -176,7 +183,6 @@ struct CrearPerfilView: View {
                     
                     RiveViewModel(fileName: riveModel.fileName, stateMachineName: "Actions", artboardName: "podiumAB").view()
                         .id(riveModel.fileName)
-//                        .frame(width: 600 * 0.75, height: 900 * 0.75)
                         .scaleEffect(0.6)
                         .allowsHitTesting(false)
                         .position(x: appData.UISW * 0.5, y: appData.UISH * 0.589)
@@ -195,7 +201,7 @@ struct CrearPerfilView: View {
             }
         }
         .ignoresSafeArea()
-        .onAppear{
+        .onAppear {
             if viewModel.perfiles.count == 0 {
                 appData.isTuto = true
             }
