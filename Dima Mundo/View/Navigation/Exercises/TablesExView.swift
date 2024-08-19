@@ -9,9 +9,8 @@ struct TablesExView: View {
     @EnvironmentObject var appData: AppData
     @ObservedObject var viewModel = PerfilesViewModel()
     @State private var selectedPerfil: Perfil?
-    @StateObject var riveModel: RiveModel  // Use the passed RiveModel here
+    @StateObject var riveModel: RiveModel
     
-    @State var sound: Bool = true
     @State var isTapped: Bool = false
     @State private var inputNumber: String = ""
     @State private var resultMessage: String = ""
@@ -40,7 +39,9 @@ struct TablesExView: View {
                 .frame(width: UISW, height: UISH)
             
             // Rive animation at the bottom
-            RiveViewModel(fileName: riveModel.fileName, stateMachineName: "Actions", artboardName: "inGameAB").view()
+            let rive = RiveViewModel(fileName: riveModel.fileName, stateMachineName: "Actions", artboardName: "inGameAB")
+            
+            rive.view()
                 .id(riveModel.fileName)
                 .background(.clear)
                 .scaleEffect(0.6)
@@ -92,6 +93,13 @@ struct TablesExView: View {
                 .allowsHitTesting(false)
             
             Button{
+                if inputNumber.isEmpty {
+                    rive.setInput("selectedState", value: 1.0)
+                    print("Selected: 1")
+                } else {
+                    rive.setInput("selectedState", value: 2.0)
+                    print("Selected: 2")
+                }
                 let expectedValue = table * randomNumber
                 if let inputValue = Int(inputNumber), inputValue == expectedValue {
                     resultMessage = "Correcto"
@@ -118,7 +126,10 @@ struct TablesExView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: 85)
-            } .position(x: UISW * 0.93, y: UISH * 0.9)
+            }
+//            .disabled(inputNumber.isEmpty)
+            .opacity(inputNumber.isEmpty ? 0.5 : 1.0)
+            .position(x: UISW * 0.93, y: UISH * 0.9)
             
             ZStack {
                 RoundedRectangle(cornerRadius: 5)
@@ -161,17 +172,29 @@ struct TablesExView: View {
                     .foregroundColor(Color.AmarilloAns)
             }.position(x: UISW * 0.8, y: UISH * 0.195)
             
-            Text("Ronda")
+            Text("Ejercicio")
                 .font(.custom("RifficFree-Bold", size: 29))
-                .foregroundColor(Color.AmarilloAns)
+                .foregroundColor(.white)
                 .position(x: UISW * 0.8, y: UISH * 0.14)
             
             Button{
                 withAnimation(.easeInOut(duration: 0.1)) {
-                    sound.toggle()
+                    appData.isTuto = true
                 }
             } label: {
-                Image(sound ? "sound" : "mute")
+                Image("tutorialIcon")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 60)
+                   
+            }.position(x: appData.UISW * 0.94, y: appData.UISH * 0.19)
+            
+            Button{
+                withAnimation(.easeInOut(duration: 0.1)) {
+                    appData.sound.toggle()
+                }
+            } label: {
+                Image(appData.sound ? "sound" : "mute")
                     .resizable()
                     .scaledToFit()
                     .frame(width: 60)
@@ -189,12 +212,22 @@ struct TablesExView: View {
                     .allowsHitTesting(false)
                     .onAppear {
                         rive.setInput("Number 1", value: correctCountDouble)
+                        
+                        if appData.sound{
+                            SoundManager.instance.stopSound(for: .Exercise)
+                            SoundManager.instance.playSoundFromStart(sound: .ExerciseResult, loop: false)
+                        }
                     }
             }
             
             Button{
                 withAnimation(.easeInOut(duration: 0)) {
                     back = false
+                    SoundManager.instance.stopSound(for: .ExerciseResult)
+                    SoundManager.instance.stopSound(for: .Exercise)
+                    if appData.sound {
+                        SoundManager.instance.playSound(sound: .MainTheme)
+                    }
                 }
             } label: {
                 Image("back")
@@ -203,6 +236,10 @@ struct TablesExView: View {
                     .frame(width: 60)
                     
             }.position(x: UISW * 0.06, y: UISH * 0.09)
+            
+            if appData.isTuto {
+                TutorialView(viewType: .ejercicios)
+            }
             
         }.ignoresSafeArea()
         .onAppear {
@@ -223,8 +260,10 @@ struct TablesExView: View {
     return TablesExView(
         table: .constant(1), back: $previewBack,
         riveModel: previewRiveModel,
-        selectedAvatar: "avatar1", 
+        selectedAvatar: "avatar1",
         incrementExercises: previewIncrementExercises
     )
     .environmentObject(AppData())
+    .environmentObject(PerfilesViewModel())
 }
+

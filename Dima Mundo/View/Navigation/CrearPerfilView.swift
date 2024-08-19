@@ -9,6 +9,7 @@ import RiveRuntime
 
 struct CrearPerfilView: View {
     @EnvironmentObject var appData: AppData
+    @ObservedObject var viewModel = PerfilesViewModel()
     @StateObject private var riveModel = RiveModel()
     @State private var selectedAvatarIndex: Int = 2
     @State private var selectedColor: ColorOption = .azul
@@ -16,7 +17,8 @@ struct CrearPerfilView: View {
     @State private var textWidth: CGFloat = 100
     @State private var buttonVisible: Bool = true
     @State private var keyboardVisible: Bool = false
-    @State var sound: Bool = true
+//    @State var sound: Bool = true
+    @State private var textFieldFrame: CGRect = .zero
 
     var onSave: () -> Void
     var onCancel: () -> Void
@@ -46,12 +48,25 @@ struct CrearPerfilView: View {
                 .animation(.easeInOut, value: selectedColor)
             FondoMP()
                 .frame(width: appData.UISW, height: appData.UISH)
+            
             Button{
                 withAnimation(.easeInOut(duration: 0.1)) {
-                    sound.toggle()
+                    appData.isTuto = true
                 }
             } label: {
-                Image(sound ? "sound" : "mute")
+                Image("tutorialIcon")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 60)
+                   
+            }.position(x: appData.UISW * 0.87, y: appData.UISH * 0.09)
+            
+            Button{
+                withAnimation(.easeInOut(duration: 0.1)) {
+                    appData.sound.toggle()
+                }
+            } label: {
+                Image(appData.sound ? "sound" : "mute")
                     .resizable()
                     .scaledToFit()
                     .frame(width: 60)
@@ -92,11 +107,10 @@ struct CrearPerfilView: View {
                     .onTapGesture {
                         withAnimation(.easeInOut(duration: 0.35)) {
                             keyboardVisible = true
+                            appData.FlagTuto = 1
                         }
                     }
                     .position(x:appData.UISW * 0.5, y:appData.UISH * 0.25)
-
-                
             }
             
             Image("podioXL")
@@ -163,6 +177,10 @@ struct CrearPerfilView: View {
                 }
             }
             
+            if appData.isTuto {
+                TutorialView(viewType: .crearPerfil(self.userName))
+            }
+            
             if keyboardVisible {
                 CustomKeyboardView(text: $userName, keyboardVisible: $keyboardVisible)
                     .scaleEffect(1.2)
@@ -170,6 +188,12 @@ struct CrearPerfilView: View {
             }
         }
         .ignoresSafeArea()
+        .onAppear{
+            if viewModel.perfiles.count == 0 {
+                appData.isTuto = true
+            }
+            appData.FlagTuto = 0
+        }
     }
 
     func selectAvatar(at index: Int) {
@@ -240,4 +264,5 @@ extension String {
 #Preview {
     CrearPerfilView(onSave: {}, onCancel: {})
         .environmentObject(AppData())
+        .environmentObject(PerfilesViewModel())
 }

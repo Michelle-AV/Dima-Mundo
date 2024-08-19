@@ -9,7 +9,6 @@ struct RetoView: View {
     @ObservedObject var viewModel = PerfilesViewModel()
     @State private var selectedPerfil: Perfil?
     @StateObject var riveModel: RiveModel
-    @State var sound: Bool = true
     @State var isTapped: Bool = false
     @State private var inputNumbers: [String] = ["", "", ""]
     @State private var selectedInputIndex: Int? = nil
@@ -182,19 +181,31 @@ struct RetoView: View {
                 
             Text("Ronda")
                 .font(.custom("RifficFree-Bold", size: 29))
-                .foregroundColor(Color.AmarilloAns)
+                .foregroundColor(Color.white)
                 .position(x: UISW * 0.8, y: UISH * 0.14)
             
             Button {
                 withAnimation(.easeInOut(duration: 0.1)) {
-                    sound.toggle()
+                    appData.sound.toggle()
                 }
             } label: {
-                Image(sound ? "sound" : "mute")
+                Image(appData.sound ? "sound" : "mute")
                     .resizable()
                     .scaledToFit()
                     .frame(width: 60)
             }.position(x: UISW * 0.94, y: UISH * 0.09)
+            
+            Button{
+                withAnimation(.easeInOut(duration: 0.1)) {
+                    appData.isTuto = true
+                }
+            } label: {
+                Image("tutorialIcon")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 60)
+                   
+            }.position(x: appData.UISW * 0.94, y: appData.UISH * 0.19)
             
             Image("retog")
                 .resizable()
@@ -253,12 +264,21 @@ struct RetoView: View {
                     .allowsHitTesting(false)
                     .onAppear {
                         rive.setInput("Number 1", value: inputForRive)
+                        SoundManager.instance.stopSound(for: .ChallengeFinal)
+                        if appData.sound {
+                            SoundManager.instance.playSoundFromStart(sound: .ExerciseResult, loop: false)
+                        }
                     }
             }
             
             Button {
                 withAnimation(.easeInOut(duration: 0)) {
-                    back = false  // Cambia a false para regresar
+                    back = false
+                    SoundManager.instance.stopSound(for: .ChallengeFinal)
+                    SoundManager.instance.stopSound(for: .ExerciseResult)
+                    if appData.sound {
+                        SoundManager.instance.playSound(sound: .MainTheme)
+                    }
                 }
             } label: {
                 Image("back")
@@ -267,10 +287,24 @@ struct RetoView: View {
                     .frame(width: 60)
             }.position(x: UISW * 0.06, y: UISH * 0.09)
             
+            if appData.isTuto {
+                TutorialView(viewType: .reto)
+            }
+            
         }
         .ignoresSafeArea()
         .onAppear {
             usedRandomNumbers.append(contentsOf: randomNumbers)
+        }
+        .onChange(of: appData.sound) { newValue in
+            if newValue {
+                if appData.sound{
+                    SoundManager.instance.resumeActiveSound()
+                }
+            } else {
+                SoundManager.instance.pauseActiveSound()
+                SoundManager.instance.stopDialog()
+            }
         }
     }
     
@@ -309,4 +343,5 @@ struct RetoView: View {
         incrementExercises: previewIncrementExercises
     )
     .environmentObject(AppData())
+    .environmentObject(PerfilesViewModel())
 }

@@ -5,12 +5,16 @@
 //  Created by Pedro Prado on 04/07/24.
 //
 import SwiftUI
+import Speech
+import AVFoundation
 
 struct CustomKeyboardView: View {
     @EnvironmentObject var appData: AppData
     @Binding var text: String
     @Binding var keyboardVisible: Bool
     @State private var isUppercase: Bool = false
+    
+    @State private var isListening = false
     
     let rows = ["QWERTYUIOP", "ASDFGHJKL", "ZXCVBNM"]
 
@@ -33,7 +37,7 @@ struct CustomKeyboardView: View {
                 }
             }
             HStack(spacing: 10) {
-                MicButton()
+                MicButton(text: $text, isListening: $isListening)
                 SpacerButton(text: $text)
                 DoneButton(text: $text, keyboardVisible: $keyboardVisible)
             }
@@ -110,19 +114,117 @@ struct DeleteButton: View {
 }
 
 struct MicButton: View {
+    @Binding var text: String
+    @Binding var isListening: Bool
+    
+    @State private var speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "en-US")) // Cambiado a inglés
+    @State private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
+    @State private var recognitionTask: SFSpeechRecognitionTask?
+    
     var body: some View {
         Button(action: {
-            // Aquí se puede integrar funcionalidad de dictado o reconocimiento de voz
+//            if isListening {
+//                stopListening()
+//            } else {
+//                startListening()
+//            }
         }) {
-            Image(systemName: "mic.fill")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 20)
-                .padding(10)
-                .padding(.horizontal,44)
-                .background(Color.gray)
-                .cornerRadius(5)
-                .foregroundColor(.white)
+            if isListening {
+                Image(systemName: "waveform.circle.fill")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 30)
+                    .padding(10)
+                    .padding(.horizontal, 39)
+                    .background(Color.red)
+                    .cornerRadius(5)
+                    .foregroundColor(.white)
+            } else {
+                Image(systemName: "mic.fill")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 20)
+                    .padding(10)
+                    .padding(.horizontal, 44)
+                    .background(Color.gray)
+                    .cornerRadius(5)
+                    .foregroundColor(.white)
+            }
+        }
+        .onAppear {
+            requestSpeechAuthorization()
+        }
+    }
+    
+    func requestSpeechAuthorization() {
+        SFSpeechRecognizer.requestAuthorization { authStatus in
+            DispatchQueue.main.async {
+                switch authStatus {
+                case .authorized:
+                    print("Speech recognition authorized")
+                case .denied:
+                    print("Speech recognition authorization denied")
+                case .restricted:
+                    print("Speech recognition restricted on this device")
+                case .notDetermined:
+                    print("Speech recognition not determined")
+                @unknown default:
+                    print("Unknown authorization status")
+                }
+            }
+        }
+    }
+
+    func startListening() {
+        print("Starting to listen...")
+        isListening = true
+        text = ""
+
+        recognitionRequest = SFSpeechAudioBufferRecognitionRequest()
+        guard let recognitionRequest = recognitionRequest else {
+            print("Failed to create recognition request")
+            return
+        }
+        
+        recognitionTask = speechRecognizer?.recognitionTask(with: recognitionRequest) { result, error in
+            if let result = result {
+                self.text = result.bestTranscription.formattedString
+                print("Recognized text: \(self.text)")
+            }
+            if let error = error {
+                print("Recognition error: \(error.localizedDescription)")
+                self.stopListening()
+            }
+            if result?.isFinal == true {
+                print("Final recognition result")
+                self.stopListening()
+            }
+        }
+
+        let audioSession = AVAudioSession.sharedInstance()
+        do {
+            try audioSession.setCategory(.record, mode: .measurement, options: .duckOthers)
+            try audioSession.setActive(true)
+            print("Audio session activated")
+        } catch {
+            print("Audio session setup failed: \(error.localizedDescription)")
+            stopListening()
+        }
+    }
+
+    func stopListening() {
+        print("Stopping listening...")
+        isListening = false
+        recognitionRequest?.endAudio()
+        recognitionTask?.cancel()
+        recognitionTask = nil
+
+        let audioSession = AVAudioSession.sharedInstance()
+        do {
+            try audioSession.setActive(false)
+            print("Audio session deactivated")
+        } catch {
+            print("Error deactivating audio session: \(error.localizedDescription)")
         }
     }
 }
@@ -153,12 +255,13 @@ struct SpacerButton: View {
 struct DoneButton: View {
     @Binding var text: String
     @Binding var keyboardVisible: Bool
-
+    @EnvironmentObject var appData: AppData
 
     var body: some View {
         Button(action: {
-            withAnimation(.easeInOut(duration: 1.35)) {
+            withAnimation(.easeInOut(duration: 0.35)) {
                 keyboardVisible = false
+                appData.FlagTuto = 0
             }
         }) {
             Image(systemName: "keyboard.chevron.compact.down.fill")
@@ -177,4 +280,5 @@ struct DoneButton: View {
 #Preview {
     CustomKeyboardView(text: .constant(""), keyboardVisible: .constant(true))
         .environmentObject(AppData())
+        .environmentObject(PerfilesViewModel())
 }
