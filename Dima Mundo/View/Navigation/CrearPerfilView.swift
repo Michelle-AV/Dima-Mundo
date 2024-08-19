@@ -26,7 +26,7 @@ struct CrearPerfilView: View {
     let initialPositions: [CGFloat]
     @State var positions: [CGFloat]
     @State var isSelected: [Bool] = [false, false, true, false, false]
-    let riveFileNames = ["molly", "monin", "melody", "pablo", "jack3"]
+    let riveFileNames = ["molly", "monin", "melody", "Jacobo", "jack"]
 
     init(onSave: @escaping () -> Void, onCancel: @escaping () -> Void) {
         self.onSave = onSave
@@ -84,12 +84,12 @@ struct CrearPerfilView: View {
                 .position(x:appData.UISW * 0.06, y:appData.UISH * 0.1)
             
             ZStack {
-                Text("Ingresa tu nombre")
+                Text(appData.localizationManager.localizedString(for: "CrearPerfilTitle" ))
                     .font(.custom("RifficFree-Bold", size: 65))
                     .foregroundColor(.white)
                     .position(x:appData.UISW * 0.5, y:appData.UISH * 0.1)
 
-                TextField("Escribe acá", text: $userName)
+                TextField(appData.localizationManager.localizedString(for: "CrearPerfilTextfield" ), text: $userName)
                     .disabled(true)
                     .onChange(of: userName) { newValue in
                         DispatchQueue.main.async {
@@ -141,8 +141,15 @@ struct CrearPerfilView: View {
                 ZStack {
                     ZStack {
                         Button(action: {
-                            saveProfile()
-                            onSave()  // Llamar a la función onSave al guardar el perfil
+                            if viewModel.perfiles.count == 0 {
+                                appData.firstTime = true
+                            } else {
+                                appData.firstTime = false
+                            }
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                                saveProfile()
+                                onSave()  // Llamar a la función onSave al guardar el perfil
+                            }
                         }) {
                             Image(systemName: "plus")
                                 .resizable()
@@ -159,7 +166,7 @@ struct CrearPerfilView: View {
                         .opacity(buttonVisible ? 1 : 0)
                         .animation(.easeOut(duration: 0.35), value: buttonVisible)
                         
-                        Text("Agregar")
+                        Text(appData.localizationManager.localizedString(for: "CrearPerfilButton" ))
                             .font(.custom("RifficFree-Bold", size: 25))
                             .foregroundColor(.white)
                             .position(x: appData.UISW * 0.5, y: appData.UISH * 0.939)

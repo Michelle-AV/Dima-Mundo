@@ -16,7 +16,8 @@ struct PerfilesView: View {
     @State private var circleScale: CGFloat = 0.001
     @State private var showSelectTableView = false
     @StateObject private var riveModel = RiveModel()
-    
+    @State var selectedPerfilBool: Bool = false
+
     @State var indexTuto: Double = 0
 
     var onHome: () -> Void
@@ -39,23 +40,21 @@ struct PerfilesView: View {
                 perfilesContent
                     .transition(.move(edge: .leading))
             }
-            
-            
-        }.ignoresSafeArea()
+        }
+        .ignoresSafeArea()
         .animation(.bouncy, value: showSelectTableView)
         .onAppear {
-//            DataManager.shared.deleteAllPerfiles()
             if let selectedPerfil = selectedPerfil {
-                updateRiveModel(for: selectedPerfil.avatarNombre ?? "default_avatar")
+                updateRiveModels(for: selectedPerfil.avatarNombre ?? "default_avatar")
             }
         }
     }
-    
+
     var perfilesContent: some View {
         ZStack {
             Color.MoradoFondo.edgesIgnoringSafeArea(.all)
             FondoCP()
-            Text("¿Quién eres?")
+            Text(appData.localizationManager.localizedString(for: "PerfilesTitle" ))
                 .font(.custom("RifficFree-Bold", size: 83))
                 .foregroundColor(.white)
                 .position(x: appData.UISW * 0.5, y: appData.UISH * 0.19)
@@ -68,14 +67,17 @@ struct PerfilesView: View {
             .frame(width: appData.UISW, height: appData.UISH, alignment: .center)
             .position(x: appData.UISW * 0.5, y: appData.UISH * 0.49)
 
-            
-            
             if selectedPerfil != nil {
-                Button("Iniciar") {
-                    updateRiveModel(for: selectedPerfil!.avatarNombre ?? "default_avatar")
+                Button(appData.localizationManager.localizedString(for: "start" )) {
+                    updateRiveModels(for: selectedPerfil!.avatarNombre ?? "default_avatar")
                     showSelectTableView = true
-                    appData.isTuto = false
-                    indexTuto = 0
+                    if appData.firstTime {
+                        appData.FlagTuto = 17
+                        indexTuto = 0
+                    } else {
+                        appData.isTuto = false
+                        indexTuto = 0
+                    }
                 }
                 .font(.custom("RifficFree-Bold", size: 30))
                 .foregroundColor(.white)
@@ -83,10 +85,18 @@ struct PerfilesView: View {
                 .background(Color.MoradoBtn)
                 .cornerRadius(10)
                 .position(x: appData.UISW * 0.5, y: appData.UISH * 0.8)
+                .onAppear{
+                    selectedPerfilBool = true
+                }
+            } else {
+                Circle()
+                    .foregroundColor(.clear)
+                    .onAppear{
+                        selectedPerfilBool = false
+                    }
             }
             
             Button(action: {
-//                DataManager.shared.deleteAllPerfiles()
                 viewModel.cargarPerfiles()
                 withAnimation(.easeInOut(duration: 0.55)) {
                     expandButton = true
@@ -109,6 +119,8 @@ struct PerfilesView: View {
                     .frame(width: expandButton ? 0 : 40)
 
             }
+            .disabled(viewModel.perfiles.count == 5 ? true : false)
+            .opacity(viewModel.perfiles.count == 5 ? 0.5 : 1.0)
             .frame(width: expandButton ? 0 : 40)
             .padding(10)
             .background(expandButton ? Color.Azul : Color.MoradoBtn)
@@ -142,7 +154,7 @@ struct PerfilesView: View {
             }.position(x: appData.UISW * 0.94, y: appData.UISH * 0.09)
             
             if appData.isTuto {
-                TutorialView(viewType: .elegirPerfil)
+                TutorialView(viewType: .elegirPerfil(selectedPerfilBool))
                     .zIndex(indexTuto)
             }
 
@@ -162,7 +174,7 @@ struct PerfilesView: View {
                     withAnimation(.easeInOut(duration: 0)) {
                         showCrearPerfil.toggle()
                         expandButton.toggle()
-                        circleScale = 0.001 
+                        circleScale = 0.001
                         if viewModel.perfiles.count == 1 {
                             appData.isTuto = true
                             appData.FlagTuto = 18
@@ -205,10 +217,8 @@ struct PerfilesView: View {
                 .foregroundColor(.white)
             }
             .position(x:appData.UISW * 0.06, y: appData.UISH * 0.1)
-                    
-                
-            
-        }.onAppear{
+        }
+        .onAppear {
             if viewModel.perfiles.count == 0 {
                 viewModel.cargarPerfiles()
                 withAnimation(.easeInOut(duration: 0.55)) {
@@ -260,7 +270,9 @@ struct PerfilesView: View {
         .padding()
     }
     
-    func updateRiveModel(for avatarName: String) {
+    /// Updates both RiveModel and RiveManager with the correct file based on the avatarName
+    func updateRiveModels(for avatarName: String) {
+        // Update RiveModel
         switch avatarName {
         case "avatar1":
             riveModel.fileName = "molly"
@@ -269,12 +281,15 @@ struct PerfilesView: View {
         case "avatar3":
             riveModel.fileName = "melody"
         case "avatar4":
-            riveModel.fileName = "pablo"
+            riveModel.fileName = "Jacobo"
         case "avatar5":
-            riveModel.fileName = "jack3"
+            riveModel.fileName = "jack"
         default:
-            riveModel.fileName = "jack3"
+            riveModel.fileName = "jack"
         }
+        
+        // Update RiveManager
+        RiveManager.shared.updateRiveModel(for: avatarName)
     }
 }
 

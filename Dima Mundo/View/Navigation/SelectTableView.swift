@@ -47,7 +47,7 @@ struct SelectTableView: View {
             ZStack {
                 // MARK: - Header
                 ZStack {
-                    Text("Elige una tabla para practicar")
+                    Text(appData.localizationManager.localizedString(for: "SelectTableTitle" ))
                         .font(.custom("RifficFree-Bold", size: 50))
                         .foregroundColor(.white)
                         .position(CGPoint(x: appData.UISW * 0.5, y: appData.UISH * 0.1))
@@ -147,7 +147,7 @@ struct SelectTableView: View {
             }
             
             if Exercise && Tabla < 11 {
-                TablesExView(table: $Tabla, back: $Exercise, riveModel: riveModel, selectedAvatar: selectedAvatar, incrementExercises: incrementExercises)
+                TablesExView(table: $Tabla, back: $Exercise, selectedAvatar: selectedAvatar, incrementExercises: incrementExercises, selectedPerfil: perfil)
                     .frame(width: appData.UISW, height: appData.UISH)
                     .ignoresSafeArea()
                     .onAppear {
@@ -176,11 +176,12 @@ struct SelectTableView: View {
                             SoundManager.instance.stopDialog()
                         }
                     }
+//                    .offset(x:-1.5)
 
 
 
             } else if Exercise && Tabla == 11 {
-                RetoView(back: $Exercise, riveModel: riveModel, selectedAvatar: selectedAvatar, incrementExercises: incrementExercises)
+                RetoView(back: $Exercise, selectedAvatar: selectedAvatar, selectedPerfil: perfil, incrementExercises: incrementExercises)
                     .frame(width: appData.UISW, height: appData.UISH)
                     .ignoresSafeArea()
                     .onAppear {
@@ -209,6 +210,7 @@ struct SelectTableView: View {
                             SoundManager.instance.stopDialog()
                         }
                     }
+//                    .offset(x:-1.5)
 
             }
             
@@ -266,14 +268,14 @@ struct SelectTableView: View {
                         Text(perfilName)
                             .font(.custom("RifficFree-Bold", size: 20))
                             .foregroundColor(.white)
-
-                        Text("Intentos: \(perfil.ejerciciosCompletados)")
+                        let attslbl = appData.localizationManager.localizedString(for: "AttemptsLbl" )
+                        Text("\(attslbl) \(perfil.ejerciciosCompletados)")
                             .font(.custom("RifficFree-Bold", size: 20))
                             .foregroundColor(.white)
                             .padding()
                             .background(Color.secondary.cornerRadius(10.0))
 
-                        Button("Salir", systemImage: "arrow.turn.down.left") {
+                        Button(appData.localizationManager.localizedString(for: "ExitButton" ), systemImage: "arrow.turn.down.left") {
                             withAnimation {
                                 isExpanded = false
                                 showSelectTableView = false

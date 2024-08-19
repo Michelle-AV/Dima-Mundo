@@ -4,7 +4,7 @@ enum TutorialViewType {
     case crearPerfil(String)
     case ejercicios
     case elegirTabla
-    case elegirPerfil
+    case elegirPerfil(Bool)
     case reto
 }
 
@@ -1033,7 +1033,7 @@ struct TutorialView: View {
                 }.onAppear{
                     appData.FlagTuto = 17
                 }
-            case .elegirPerfil:
+            case .elegirPerfil (let selectedPerfil):
                 ZStack {
                     Color.black
                         .opacity(0.77)
@@ -1079,8 +1079,19 @@ struct TutorialView: View {
                             .position(x: appData.UISW * 0.5, y: appData.UISH * 0.85)
                             .onAppear {
                                 degrees = 50
-                                positionX = appData.UISW * 0.3
-                                positionY = appData.UISH * 0.5
+                                if selectedPerfil && isEven {
+                                    positionX = appData.UISW * 0.23
+                                    positionY = appData.UISH * 0.5
+                                } else if selectedPerfil {
+                                    positionX = appData.UISW * 0.25
+                                    positionY = appData.UISH * 0.5
+                                } else if isEven {
+                                    positionX = appData.UISW * 0.3
+                                    positionY = appData.UISH * 0.5
+                                } else {
+                                    positionX = appData.UISW * 0.3
+                                    positionY = appData.UISH * 0.5
+                                }
                                 tiltOffsetX = 0
                                 tiltOffsetY = 20
                                 withAnimation(Animation.easeInOut(duration: 1.0).repeatForever(autoreverses: true)) {
@@ -1096,14 +1107,59 @@ struct TutorialView: View {
                             .position(x: appData.UISW * 0.91, y: appData.UISH * 0.8)
                             .onAppear{
                                 dialog = "Para empezar la aventura, selecciona tu perfil."
-                                appData.FlagTuto = 18
                                 if isEven {
-                                    self.frame = CGRect(x: appData.UISW * 0.5, y: appData.UISH * 0.48, width: 320, height: 210)
+                                    if selectedPerfil {
+                                        self.frame = CGRect(x: appData.UISW * 0.5, y: appData.UISH * 0.48, width: 320, height: 210)
+                                    } else {
+                                        self.frame = CGRect(x: appData.UISW * 0.5, y: appData.UISH * 0.48, width: 320, height: 210)
+                                    }
                                 } else {
-                                    self.frame = CGRect(x: appData.UISW * 0.5, y: appData.UISH * 0.48, width: 150, height: 210)
+                                    if selectedPerfil {
+                                        self.frame = CGRect(x: appData.UISW * 0.5, y: appData.UISH * 0.48, width: 300, height: 300)
+                                    } else {
+                                        self.frame = CGRect(x: appData.UISW * 0.5, y: appData.UISH * 0.48, width: 150, height: 210)
+                                    }
                                 }
                                 if appData.sound {
                                     SoundManager.instance.playDialogES(sound: .AP1, loop: false)
+                                }
+                            }
+                            .onChange(of: selectedPerfil) { newValue in
+                                withAnimation (.smooth(duration: 0.3)){
+                                    if isEven {
+                                        if newValue {
+                                            self.frame = CGRect(x: appData.UISW * 0.5, y: appData.UISH * 0.48, width: 320, height: 300)
+                                        } else {
+                                            self.frame = CGRect(x: appData.UISW * 0.5, y: appData.UISH * 0.48, width: 320, height: 210)
+                                        }
+                                    } else {
+                                        if newValue {
+                                            self.frame = CGRect(x: appData.UISW * 0.5, y: appData.UISH * 0.48, width: 300, height: 300)
+                                            positionX = appData.UISW * 0.25
+                                        } else {
+                                            self.frame = CGRect(x: appData.UISW * 0.5, y: appData.UISH * 0.48, width: 150, height: 210)
+                                            positionX = appData.UISW * 0.3
+                                        }
+                                    }
+                                    if newValue && isEven {
+                                        positionX = appData.UISW * 0.23
+                                        positionY = appData.UISH * 0.5
+                                    } else if newValue {
+                                        positionX = appData.UISW * 0.25
+                                        positionY = appData.UISH * 0.5
+                                    } else if isEven {
+                                        positionX = appData.UISW * 0.3
+                                        positionY = appData.UISH * 0.5
+                                    } else {
+                                        positionX = appData.UISW * 0.3
+                                        positionY = appData.UISH * 0.5
+                                    }
+                                    tiltOffsetX = 0
+                                    tiltOffsetY = 20
+                                    withAnimation(Animation.easeInOut(duration: 1.0).repeatForever(autoreverses: true)) {
+                                        tiltOffsetX = 20
+                                        tiltOffsetY = 20
+                                    }
                                 }
                             }
                         
@@ -1138,10 +1194,11 @@ struct TutorialView: View {
                                 .padding(.horizontal)
                                 .padding(.vertical, 10)
                                 .foregroundColor(.white)
-                        }
+                        }.disabled(!selectedPerfil)
                             .background(selectedColor)
                             .cornerRadius(8)
                             .position(x: appData.UISW * 0.74, y: appData.UISH * 0.88)
+                            .opacity(!selectedPerfil ? 0 : 1)
                         
                     } else if appData.FlagTuto == 4 {
                         
@@ -1210,7 +1267,7 @@ struct TutorialView: View {
                         
                         Button{
                             withAnimation (.spring(duration: 0.2)){
-                                appData.isTuto = false 
+                                appData.isTuto = false
                                 SoundManager.instance.stopDialog()
                             }
                         } label: {
@@ -1219,9 +1276,11 @@ struct TutorialView: View {
                                 .padding(.horizontal)
                                 .padding(.vertical, 10)
                                 .foregroundColor(.white)
-                        }.background(selectedColor)
+                        }.disabled(appData.firstTime)
+                        .background(selectedColor)
                             .cornerRadius(8)
                             .position(x: appData.UISW * 0.72, y: appData.UISH * 0.32)
+                            .opacity(appData.firstTime ? 0 : 1)
                         
                     } else if appData.FlagTuto == 5 {
                         
@@ -1351,7 +1410,7 @@ struct TutorialView: View {
                     
                     if appData.FlagTuto == 19{
                         
-                        Rectangle()          
+                        Rectangle()
                             .foregroundColor(.white.opacity(0.0000000000000001))
                             .frame(width: appData.UISW, height: appData.UISH)
                             .position(x: appData.UISW * 0.5, y: appData.UISH * 0.5)
@@ -1692,6 +1751,7 @@ struct TutorialView: View {
                 .offset(x: -tiltOffsetX, y: tiltOffsetY)
                 .opacity(opacity)
             
+//            Text("\(appData.FlagTuto)")
         }
         .ignoresSafeArea()
         .onAppear {
@@ -1720,7 +1780,8 @@ struct TutorialView: View {
 }
 
 #Preview {
-    TutorialView(viewType: .reto)
+    TutorialView(viewType: .elegirTabla)
         .environmentObject(AppData())
         .environmentObject(PerfilesViewModel())
 }
+

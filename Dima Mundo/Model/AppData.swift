@@ -11,6 +11,13 @@ class AppData: ObservableObject {
     
     /// 1 = Teclado visible en pantalla
     @Published var FlagTuto: Int = 0
+    
+    @Published var firstTime: Bool = false
+    
+    @Published var currentLanguage: Language = .spanish
+        var localizationManager: LocalizationManager {
+            LocalizationManager(currentLanguage: currentLanguage)
+        }
 }
 
 // MARK: - USO DE AppData: ObservableObject

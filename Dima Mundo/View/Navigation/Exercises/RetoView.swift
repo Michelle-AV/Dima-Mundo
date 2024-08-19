@@ -7,20 +7,18 @@ struct RetoView: View {
     
     @EnvironmentObject var appData: AppData
     @ObservedObject var viewModel = PerfilesViewModel()
-    @State private var selectedPerfil: Perfil?
-    @StateObject var riveModel: RiveModel
     @State var isTapped: Bool = false
     @State private var inputNumbers: [String] = ["", "", ""]
     @State private var selectedInputIndex: Int? = nil
     @State private var resultMessage: String = ""
     @State var round: Int = 1
     @State private var randomNumbers: [Int] = [
-        Int.random(in: 2...9),     // randomNumber1
-        Int.random(in: 100...1000), // randomNumber2
-        Int.random(in: 2...9),     // randomNumber3
-        Int.random(in: 100...1000), // randomNumber4
-        Int.random(in: 2...9),     // randomNumber5
-        Int.random(in: 100...1000)  // randomNumber6
+        Int.random(in: 2...9),
+        Int.random(in: 100...1000),
+        Int.random(in: 2...9),
+        Int.random(in: 100...1000),
+        Int.random(in: 2...9),
+        Int.random(in: 100...1000)
     ]
     
     @State private var usedRandomNumbers: [Int] = []
@@ -28,6 +26,7 @@ struct RetoView: View {
     @State private var showResults: Bool = false
     @State private var correctCount: Int = 0  // Count of correct answers
     var selectedAvatar: String
+    var selectedPerfil: Perfil // Recibe el perfil seleccionado
     var UISW: CGFloat = UIScreen.main.bounds.width
     var UISH: CGFloat = UIScreen.main.bounds.height
     
@@ -83,9 +82,8 @@ struct RetoView: View {
                 }
             }
             
-            RiveViewModel(fileName: riveModel.fileName, stateMachineName: "Actions", artboardName: "inGameAB").view()
-                .id(riveModel.fileName)
-                .background(.clear)
+            // Usamos el RiveManager compartido para la animación
+            RiveManager.shared.riveModel.view()
                 .scaleEffect(0.6)
                 .allowsHitTesting(false)
                 .position(x: UISW * 0.14, y: UISH * 0.57)
@@ -125,37 +123,52 @@ struct RetoView: View {
                 .allowsHitTesting(false)
             
             Button {
-                let expectedValues = [
-                    randomNumbers[0] * randomNumbers[1],
-                    randomNumbers[2] * randomNumbers[3],
-                    randomNumbers[4] * randomNumbers[5]
-                ]
-                
-                for i in 0..<3 {
-                    if let inputValue = Int(inputNumbers[i]), inputValue == expectedValues[i] {
-                        results[(round - 1) * 3 + i] = true
+                if inputNumbers.contains("") || selectedInputIndex == nil {
+                    RiveManager.shared.setInput("selectedState", value: 1.0)
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                        RiveManager.shared.setInput("selectedState", value: 0.0)
+                    }
+                } else {
+                    RiveManager.shared.setInput("selectedState", value: 2.0)
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                        RiveManager.shared.setInput("selectedState", value: 0.0)
+                    }
+                    
+                    let expectedValues = [
+                        randomNumbers[0] * randomNumbers[1],
+                        randomNumbers[2] * randomNumbers[3],
+                        randomNumbers[4] * randomNumbers[5]
+                    ]
+                    
+                    for i in 0..<3 {
+                        if let inputValue = Int(inputNumbers[i]), inputValue == expectedValues[i] {
+                            results[(round - 1) * 3 + i] = true
+                        } else {
+                            results[(round - 1) * 3 + i] = false
+                        }
+                    }
+                    
+                    if round < 3 {
+                        round += 1
+                        inputNumbers = ["", "", ""]
+                        randomNumbers = [
+                            Int.random(in: 2...9),
+                            Int.random(in: 100...1000),
+                            Int.random(in: 2...9),
+                            Int.random(in: 100...1000),
+                            Int.random(in: 2...9),
+                            Int.random(in: 100...1000)
+                        ]
                     } else {
-                        results[(round - 1) * 3 + i] = false
+                        showResults = true
+                        correctCount = results.filter { $0 }.count
+                        
+                        // Guardar los resultados en Core Data
+                        saveChallengeResults()
+                        
+                        incrementExercises()
                     }
                 }
-                
-                if round < 3 {
-                    round += 1
-                    inputNumbers = ["", "", ""]
-                    randomNumbers = [
-                        Int.random(in: 2...9),
-                        Int.random(in: 100...1000),
-                        Int.random(in: 2...9),
-                        Int.random(in: 100...1000),
-                        Int.random(in: 2...9),
-                        Int.random(in: 100...1000)
-                    ]
-                } else {
-                    showResults = true
-                    incrementExercises()
-                    correctCount = results.filter { $0 }.count
-                }
-                
             } label: {
                 Image("done")
                     .resizable()
@@ -163,10 +176,7 @@ struct RetoView: View {
                     .frame(width: 85)
             }
             .opacity(inputNumbers.contains("") || selectedInputIndex == nil ? 0.5 : 1.0)
-            .disabled(inputNumbers.contains("") || selectedInputIndex == nil)
             .position(x: UISW * 0.93, y: UISH * 0.9)
-            
-            
             
             ZStack {
                 RoundedRectangle(cornerRadius: 30)
@@ -178,7 +188,6 @@ struct RetoView: View {
                     .foregroundColor(Color.AmarilloAns)
             }.position(x: UISW * 0.8, y: UISH * 0.195)
             
-                
             Text("Ronda")
                 .font(.custom("RifficFree-Bold", size: 29))
                 .foregroundColor(Color.white)
@@ -204,7 +213,6 @@ struct RetoView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: 60)
-                   
             }.position(x: appData.UISW * 0.94, y: appData.UISH * 0.19)
             
             Image("retog")
@@ -213,6 +221,7 @@ struct RetoView: View {
                 .frame(width: UISW * 1, height: UISH * 1)
                 .opacity(0)
                 .allowsHitTesting(false)
+
             ZStack {
                 Image("times")
                     .resizable()
@@ -251,8 +260,6 @@ struct RetoView: View {
                     .position(x: appData.UISW * 0.565, y: appData.UISH * 0.38)
             }
             
-            
-            
             if showResults {
                 Color.black.opacity(0.7)
                     .ignoresSafeArea()
@@ -290,7 +297,6 @@ struct RetoView: View {
             if appData.isTuto {
                 TutorialView(viewType: .reto)
             }
-            
         }
         .ignoresSafeArea()
         .onAppear {
@@ -306,6 +312,20 @@ struct RetoView: View {
                 SoundManager.instance.stopDialog()
             }
         }
+    }
+    
+    // MARK: - Guardar los resultados del reto en Core Data
+    private func saveChallengeResults() {
+        let aciertos = Int16(correctCount)
+        let errores = Int16(9 - correctCount)
+        
+        DataManager.shared.addEjercicio(
+            to: selectedPerfil,
+            aciertos: aciertos,
+            errores: errores,
+            tabla: 0, // El valor de tabla no aplica para el reto, así que lo establecemos en 0
+            tipo: "Reto"
+        )
     }
     
     func calculateRiveInput(from correctCount: Int) -> Double {
@@ -328,19 +348,16 @@ struct RetoView: View {
     // Define initial state variables
     @State var previewBack = true
 
-    // Define the Rive model to be used
-    let previewRiveModel = RiveModel()
-
     // Define a dummy incrementExercises function
-    let previewIncrementExercises: () -> Void = {
-       
-    }
+    let previewIncrementExercises: () -> Void = {}
+
+    // Create a dummy profile for preview purposes
+    let dummyPerfil = Perfil(context: DataManager.shared.persistentContainer.viewContext)
 
     return RetoView(
         back: $previewBack,
-        riveModel: previewRiveModel,
         selectedAvatar: "avatar1",
-        incrementExercises: previewIncrementExercises
+        selectedPerfil: dummyPerfil, incrementExercises: previewIncrementExercises
     )
     .environmentObject(AppData())
     .environmentObject(PerfilesViewModel())

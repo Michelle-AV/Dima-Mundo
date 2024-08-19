@@ -12,12 +12,10 @@
 		2845B4A72C5F4F8A009C12FD /* RetoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B4A62C5F4F8A009C12FD /* RetoView.swift */; };
 		2851EAFB2C6D0B58003D16DA /* TutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2851EAFA2C6D0B58003D16DA /* TutorialView.swift */; };
 		285346B42C5AB2F500707411 /* TablesExView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285346B32C5AB2F500707411 /* TablesExView.swift */; };
-		288B3B2C2C66725600231B23 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288B3B2B2C66725600231B23 /* SoundManager.swift */; };
 		288B3B322C6672A300231B23 /* MainTheme.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 288B3B2E2C6672A300231B23 /* MainTheme.mp3 */; };
 		288B3B332C6672A300231B23 /* ExerciseResult.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 288B3B2F2C6672A300231B23 /* ExerciseResult.mp3 */; };
 		288B3B342C6672A300231B23 /* ChallengeFinal.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 288B3B302C6672A300231B23 /* ChallengeFinal.mp3 */; };
 		288B3B352C6672A300231B23 /* Exercise.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 288B3B312C6672A300231B23 /* Exercise.mp3 */; };
-		288B3B382C6673CD00231B23 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 288B3B362C6673CD00231B23 /* Model.xcdatamodeld */; };
 		2894898D2C72A5BC004A87E9 /* AE2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 289489892C72A5BC004A87E9 /* AE2.mp3 */; };
 		2894898E2C72A5BC004A87E9 /* AE3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2894898A2C72A5BC004A87E9 /* AE3.mp3 */; };
 		2894898F2C72A5BC004A87E9 /* AE4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2894898B2C72A5BC004A87E9 /* AE4.mp3 */; };
@@ -61,6 +59,21 @@
 		6C12CA6A2C378505005909E0 /* RifficFree-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6C12CA662C372AD3005909E0 /* RifficFree-Bold.ttf */; };
 		6C12CA6B2C378506005909E0 /* RifficFree-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6C12CA662C372AD3005909E0 /* RifficFree-Bold.ttf */; };
 		6C12CA6D2C378C6B005909E0 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C12CA6C2C378C6B005909E0 /* MainView.swift */; };
+		6C18AA222C72EA310011E532 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6C18AA202C72EA310011E532 /* Model.xcdatamodeld */; };
+		6C18AA252C72EA5A0011E532 /* LocalizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C18AA232C72EA5A0011E532 /* LocalizationManager.swift */; };
+		6C18AA262C72EA5A0011E532 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C18AA242C72EA5A0011E532 /* Language.swift */; };
+		6C18AA282C72EABB0011E532 /* CustomNumericKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C18AA272C72EABB0011E532 /* CustomNumericKeyboard.swift */; };
+		6C18AA2C2C72EC250011E532 /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C18AA292C72EC250011E532 /* EditProfileView.swift */; };
+		6C18AA2D2C72EC250011E532 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C18AA2A2C72EC250011E532 /* DashboardView.swift */; };
+		6C18AA2E2C72EC250011E532 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C18AA2B2C72EC250011E532 /* LoginView.swift */; };
+		6C245C382C73B7C80035C4AE /* RiveManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C245C372C73B7C80035C4AE /* RiveManager.swift */; };
+		6C245C3C2C73CE600035C4AE /* splashScreen.riv in Resources */ = {isa = PBXBuildFile; fileRef = 6C245C392C73CE600035C4AE /* splashScreen.riv */; };
+		6C245C3D2C73CE600035C4AE /* splashScreen.riv in Resources */ = {isa = PBXBuildFile; fileRef = 6C245C392C73CE600035C4AE /* splashScreen.riv */; };
+		6C245C3E2C73CE600035C4AE /* splashScreen.riv in Resources */ = {isa = PBXBuildFile; fileRef = 6C245C392C73CE600035C4AE /* splashScreen.riv */; };
+		6C245C422C73CE600035C4AE /* jack.riv in Resources */ = {isa = PBXBuildFile; fileRef = 6C245C3B2C73CE600035C4AE /* jack.riv */; };
+		6C245C432C73CE600035C4AE /* jack.riv in Resources */ = {isa = PBXBuildFile; fileRef = 6C245C3B2C73CE600035C4AE /* jack.riv */; };
+		6C245C442C73CE600035C4AE /* jack.riv in Resources */ = {isa = PBXBuildFile; fileRef = 6C245C3B2C73CE600035C4AE /* jack.riv */; };
+		6C245C452C73D2280035C4AE /* info-view.riv in Resources */ = {isa = PBXBuildFile; fileRef = 282022DB2C6BE9B000A8551C /* info-view.riv */; };
 		6C3558422C424CEB0085D615 /* SelectTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3558412C424CEB0085D615 /* SelectTableView.swift */; };
 		6C3D33A62C6309090097FDC1 /* melody.riv in Resources */ = {isa = PBXBuildFile; fileRef = 6C3D33A52C6309090097FDC1 /* melody.riv */; };
 		6C3D33A72C6309090097FDC1 /* melody.riv in Resources */ = {isa = PBXBuildFile; fileRef = 6C3D33A52C6309090097FDC1 /* melody.riv */; };
@@ -71,6 +84,7 @@
 		6C3D33B22C63161B0097FDC1 /* cal-ejercicios.riv in Resources */ = {isa = PBXBuildFile; fileRef = 6C3D33B12C63161B0097FDC1 /* cal-ejercicios.riv */; };
 		6C3D33B32C63161B0097FDC1 /* cal-ejercicios.riv in Resources */ = {isa = PBXBuildFile; fileRef = 6C3D33B12C63161B0097FDC1 /* cal-ejercicios.riv */; };
 		6C3D33B42C63161B0097FDC1 /* cal-ejercicios.riv in Resources */ = {isa = PBXBuildFile; fileRef = 6C3D33B12C63161B0097FDC1 /* cal-ejercicios.riv */; };
+		6C55B0852C72ED6200B570BA /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C55B0842C72ED6200B570BA /* SoundManager.swift */; };
 		6C78E6EE2C39DD7400D18852 /* RiveRuntime in Frameworks */ = {isa = PBXBuildFile; productRef = 6C78E6ED2C39DD7400D18852 /* RiveRuntime */; };
 		6CA094C42C430279000EDBE0 /* rivebg.riv in Resources */ = {isa = PBXBuildFile; fileRef = 6CA094BD2C430279000EDBE0 /* rivebg.riv */; };
 		6CA094C52C430279000EDBE0 /* rivebg.riv in Resources */ = {isa = PBXBuildFile; fileRef = 6CA094BD2C430279000EDBE0 /* rivebg.riv */; };
@@ -78,16 +92,19 @@
 		6CA094C82C430434000EDBE0 /* Fondos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA094C72C430434000EDBE0 /* Fondos.swift */; };
 		6CA094C92C430434000EDBE0 /* Fondos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA094C72C430434000EDBE0 /* Fondos.swift */; };
 		6CA094CA2C430434000EDBE0 /* Fondos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA094C72C430434000EDBE0 /* Fondos.swift */; };
-		6CA094D12C430A7B000EDBE0 /* jack3.riv in Resources */ = {isa = PBXBuildFile; fileRef = 6CA094D02C430A7B000EDBE0 /* jack3.riv */; };
-		6CA094D22C430A7B000EDBE0 /* jack3.riv in Resources */ = {isa = PBXBuildFile; fileRef = 6CA094D02C430A7B000EDBE0 /* jack3.riv */; };
-		6CA094D32C430A7B000EDBE0 /* jack3.riv in Resources */ = {isa = PBXBuildFile; fileRef = 6CA094D02C430A7B000EDBE0 /* jack3.riv */; };
 		6CCEC5582C49FAE50053F025 /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CCEC5572C49FAE50053F025 /* AppData.swift */; };
 		6CD43F4E2C4D88FC00C1CE55 /* RiveModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CD43F4D2C4D88FC00C1CE55 /* RiveModel.swift */; };
 		6CD43F502C4D95D600C1CE55 /* CardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CD43F4F2C4D95D500C1CE55 /* CardModel.swift */; };
 		6CD43F522C4D95E000C1CE55 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CD43F512C4D95E000C1CE55 /* CardView.swift */; };
+		6CDAC7E92C73FA600065EAB3 /* Jacobo.riv in Resources */ = {isa = PBXBuildFile; fileRef = 6CDAC7E82C73FA600065EAB3 /* Jacobo.riv */; };
+		6CDAC7EA2C73FA600065EAB3 /* Jacobo.riv in Resources */ = {isa = PBXBuildFile; fileRef = 6CDAC7E82C73FA600065EAB3 /* Jacobo.riv */; };
+		6CDAC7EB2C73FA600065EAB3 /* Jacobo.riv in Resources */ = {isa = PBXBuildFile; fileRef = 6CDAC7E82C73FA600065EAB3 /* Jacobo.riv */; };
 		6CDF33392C4DCE1A00E9E93E /* fondos.riv in Resources */ = {isa = PBXBuildFile; fileRef = 6CDF33382C4DCE1A00E9E93E /* fondos.riv */; };
 		6CDF333A2C4DCE1A00E9E93E /* fondos.riv in Resources */ = {isa = PBXBuildFile; fileRef = 6CDF33382C4DCE1A00E9E93E /* fondos.riv */; };
 		6CDF333B2C4DCE1A00E9E93E /* fondos.riv in Resources */ = {isa = PBXBuildFile; fileRef = 6CDF33382C4DCE1A00E9E93E /* fondos.riv */; };
+		6CF889612C73D373003305EC /* pablo2.riv in Resources */ = {isa = PBXBuildFile; fileRef = 6CF889602C73D373003305EC /* pablo2.riv */; };
+		6CF889622C73D373003305EC /* pablo2.riv in Resources */ = {isa = PBXBuildFile; fileRef = 6CF889602C73D373003305EC /* pablo2.riv */; };
+		6CF889632C73D373003305EC /* pablo2.riv in Resources */ = {isa = PBXBuildFile; fileRef = 6CF889602C73D373003305EC /* pablo2.riv */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,12 +130,10 @@
 		2845B4A62C5F4F8A009C12FD /* RetoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetoView.swift; sourceTree = "<group>"; };
 		2851EAFA2C6D0B58003D16DA /* TutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialView.swift; sourceTree = "<group>"; };
 		285346B32C5AB2F500707411 /* TablesExView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TablesExView.swift; sourceTree = "<group>"; };
-		288B3B2B2C66725600231B23 /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SoundManager.swift; path = "../../../../../Library/Mobile Documents/.Trash/Dima-Mundo/Dima Mundo/Extras/SoundManager.swift"; sourceTree = "<group>"; };
 		288B3B2E2C6672A300231B23 /* MainTheme.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = MainTheme.mp3; sourceTree = "<group>"; };
 		288B3B2F2C6672A300231B23 /* ExerciseResult.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ExerciseResult.mp3; sourceTree = "<group>"; };
 		288B3B302C6672A300231B23 /* ChallengeFinal.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ChallengeFinal.mp3; sourceTree = "<group>"; };
 		288B3B312C6672A300231B23 /* Exercise.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Exercise.mp3; sourceTree = "<group>"; };
-		288B3B372C6673CD00231B23 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		289489892C72A5BC004A87E9 /* AE2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = AE2.mp3; sourceTree = "<group>"; };
 		2894898A2C72A5BC004A87E9 /* AE3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = AE3.mp3; sourceTree = "<group>"; };
 		2894898B2C72A5BC004A87E9 /* AE4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = AE4.mp3; sourceTree = "<group>"; };
@@ -162,18 +177,30 @@
 		6C12CA662C372AD3005909E0 /* RifficFree-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RifficFree-Bold.ttf"; sourceTree = "<group>"; };
 		6C12CA682C373EA5005909E0 /* CustomKeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomKeyboardView.swift; sourceTree = "<group>"; };
 		6C12CA6C2C378C6B005909E0 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		6C18AA212C72EA310011E532 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		6C18AA232C72EA5A0011E532 /* LocalizationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizationManager.swift; sourceTree = "<group>"; };
+		6C18AA242C72EA5A0011E532 /* Language.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
+		6C18AA272C72EABB0011E532 /* CustomNumericKeyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomNumericKeyboard.swift; sourceTree = "<group>"; };
+		6C18AA292C72EC250011E532 /* EditProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
+		6C18AA2A2C72EC250011E532 /* DashboardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
+		6C18AA2B2C72EC250011E532 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		6C245C372C73B7C80035C4AE /* RiveManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiveManager.swift; sourceTree = "<group>"; };
+		6C245C392C73CE600035C4AE /* splashScreen.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = splashScreen.riv; sourceTree = "<group>"; };
+		6C245C3B2C73CE600035C4AE /* jack.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = jack.riv; sourceTree = "<group>"; };
 		6C3558412C424CEB0085D615 /* SelectTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectTableView.swift; sourceTree = "<group>"; };
 		6C3D33A52C6309090097FDC1 /* melody.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = melody.riv; sourceTree = "<group>"; };
 		6C3D33AD2C6313400097FDC1 /* cal-reto.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = "cal-reto.riv"; sourceTree = "<group>"; };
 		6C3D33B12C63161B0097FDC1 /* cal-ejercicios.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = "cal-ejercicios.riv"; sourceTree = "<group>"; };
+		6C55B0842C72ED6200B570BA /* SoundManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
 		6CA094BD2C430279000EDBE0 /* rivebg.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = rivebg.riv; sourceTree = "<group>"; };
 		6CA094C72C430434000EDBE0 /* Fondos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fondos.swift; sourceTree = "<group>"; };
-		6CA094D02C430A7B000EDBE0 /* jack3.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = jack3.riv; sourceTree = "<group>"; };
 		6CCEC5572C49FAE50053F025 /* AppData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppData.swift; sourceTree = "<group>"; };
 		6CD43F4D2C4D88FC00C1CE55 /* RiveModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiveModel.swift; sourceTree = "<group>"; };
 		6CD43F4F2C4D95D500C1CE55 /* CardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardModel.swift; sourceTree = "<group>"; };
 		6CD43F512C4D95E000C1CE55 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		6CDAC7E82C73FA600065EAB3 /* Jacobo.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = Jacobo.riv; sourceTree = "<group>"; };
 		6CDF33382C4DCE1A00E9E93E /* fondos.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = fondos.riv; sourceTree = "<group>"; };
+		6CF889602C73D373003305EC /* pablo2.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = pablo2.riv; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -372,11 +399,12 @@
 		28BC85922C13DAF100E3B62F /* Extras */ = {
 			isa = PBXGroup;
 			children = (
+				6C55B0842C72ED6200B570BA /* SoundManager.swift */,
+				6C12CA682C373EA5005909E0 /* CustomKeyboardView.swift */,
+				6C18AA272C72EABB0011E532 /* CustomNumericKeyboard.swift */,
 				2851EAF92C6D0B3A003D16DA /* TutorialView */,
 				288B3B2D2C66726200231B23 /* Sounds */,
-				28BC85952C13EC9D00E3B62F /* ContentView.swift */,
 				28BC85932C13DB1300E3B62F /* Color.swift */,
-				288B3B2B2C66725600231B23 /* SoundManager.swift */,
 				6C12CA582C3481B4005909E0 /* ColorOption.swift */,
 			);
 			path = Extras;
@@ -394,12 +422,15 @@
 		6C12CA4A2C33C4E1005909E0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				288B3B362C6673CD00231B23 /* Model.xcdatamodeld */,
+				6C18AA242C72EA5A0011E532 /* Language.swift */,
+				6C18AA232C72EA5A0011E532 /* LocalizationManager.swift */,
+				6C18AA202C72EA310011E532 /* Model.xcdatamodeld */,
 				6C12CA502C345205005909E0 /* DataManager.swift */,
 				6C12CA522C345681005909E0 /* PerfilesViewModel.swift */,
 				6CD43F4D2C4D88FC00C1CE55 /* RiveModel.swift */,
 				6CCEC5572C49FAE50053F025 /* AppData.swift */,
 				6CD43F4F2C4D95D500C1CE55 /* CardModel.swift */,
+				6C245C372C73B7C80035C4AE /* RiveManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -423,14 +454,17 @@
 		6C3558442C424D6F0085D615 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
-				285346B22C5AB27C00707411 /* Exercises */,
+				28BC85952C13EC9D00E3B62F /* ContentView.swift */,
 				6C12CA6C2C378C6B005909E0 /* MainView.swift */,
-				282022D72C6BE6BA00A8551C /* InfoView.swift */,
-				6C12CA562C345768005909E0 /* CrearPerfilView.swift */,
-				6CD43F512C4D95E000C1CE55 /* CardView.swift */,
-				6C3558412C424CEB0085D615 /* SelectTableView.swift */,
 				6C12CA542C34571F005909E0 /* PerfilesView.swift */,
-				6C12CA682C373EA5005909E0 /* CustomKeyboardView.swift */,
+				6C12CA562C345768005909E0 /* CrearPerfilView.swift */,
+				6C3558412C424CEB0085D615 /* SelectTableView.swift */,
+				6CD43F512C4D95E000C1CE55 /* CardView.swift */,
+				285346B22C5AB27C00707411 /* Exercises */,
+				6C18AA2A2C72EC250011E532 /* DashboardView.swift */,
+				6C18AA292C72EC250011E532 /* EditProfileView.swift */,
+				6C18AA2B2C72EC250011E532 /* LoginView.swift */,
+				282022D72C6BE6BA00A8551C /* InfoView.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -438,6 +472,10 @@
 		6C5BC84A2C3C7C1900CE95F1 /* RiveFiles */ = {
 			isa = PBXGroup;
 			children = (
+				6CDAC7E82C73FA600065EAB3 /* Jacobo.riv */,
+				6CF889602C73D373003305EC /* pablo2.riv */,
+				6C245C3B2C73CE600035C4AE /* jack.riv */,
+				6C245C392C73CE600035C4AE /* splashScreen.riv */,
 				282022DB2C6BE9B000A8551C /* info-view.riv */,
 				6C3D33B12C63161B0097FDC1 /* cal-ejercicios.riv */,
 				6C3D33AD2C6313400097FDC1 /* cal-reto.riv */,
@@ -445,7 +483,6 @@
 				6CDF33382C4DCE1A00E9E93E /* fondos.riv */,
 				6C0D20E02C4310B7005FE8BF /* molly.riv */,
 				6C0D20DC2C430E72005FE8BF /* monin.riv */,
-				6CA094D02C430A7B000EDBE0 /* jack3.riv */,
 				6CA094BD2C430279000EDBE0 /* rivebg.riv */,
 			);
 			path = RiveFiles;
@@ -562,7 +599,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				28B5F5472C72D2FF003C4FB9 /* AR5.mp3 in Resources */,
-				6CA094D12C430A7B000EDBE0 /* jack3.riv in Resources */,
 				6C0D20E12C4310B7005FE8BF /* molly.riv in Resources */,
 				288B3B352C6672A300231B23 /* Exercise.mp3 in Resources */,
 				6CDF33392C4DCE1A00E9E93E /* fondos.riv in Resources */,
@@ -575,6 +611,7 @@
 				288B3B342C6672A300231B23 /* ChallengeFinal.mp3 in Resources */,
 				28E6AF982C72C5C200B573DA /* AC1.mp3 in Resources */,
 				28B5F5482C72D2FF003C4FB9 /* AR3.mp3 in Resources */,
+				6C245C3C2C73CE600035C4AE /* splashScreen.riv in Resources */,
 				282022DC2C6BE9B000A8551C /* info-view.riv in Resources */,
 				28B5F5452C72D2FF003C4FB9 /* AR2.mp3 in Resources */,
 				288B3B322C6672A300231B23 /* MainTheme.mp3 in Resources */,
@@ -586,12 +623,15 @@
 				2894898E2C72A5BC004A87E9 /* AE3.mp3 in Resources */,
 				28E6AF992C72C5C200B573DA /* AC3.mp3 in Resources */,
 				289489982C72A619004A87E9 /* AP2.mp3 in Resources */,
+				6CF889612C73D373003305EC /* pablo2.riv in Resources */,
 				28BC856D2C13D82200E3B62F /* Assets.xcassets in Resources */,
+				6C245C422C73CE600035C4AE /* jack.riv in Resources */,
 				28B5F5462C72D2FF003C4FB9 /* AR4.mp3 in Resources */,
 				289489942C72A5F2004A87E9 /* AT2.mp3 in Resources */,
 				2894898F2C72A5BC004A87E9 /* AE4.mp3 in Resources */,
 				2894899A2C72A83C004A87E9 /* Bienvenido.mp3 in Resources */,
 				6C0D20DD2C430E72005FE8BF /* monin.riv in Resources */,
+				6CDAC7E92C73FA600065EAB3 /* Jacobo.riv in Resources */,
 				6C3D33B22C63161B0097FDC1 /* cal-ejercicios.riv in Resources */,
 				289489972C72A619004A87E9 /* AP1.mp3 in Resources */,
 				6C3D33A62C6309090097FDC1 /* melody.riv in Resources */,
@@ -603,13 +643,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6C245C452C73D2280035C4AE /* info-view.riv in Resources */,
 				6C0D20E22C4310B7005FE8BF /* molly.riv in Resources */,
-				6CA094D22C430A7B000EDBE0 /* jack3.riv in Resources */,
 				6C3D33AF2C6313400097FDC1 /* cal-reto.riv in Resources */,
 				6C3D33A72C6309090097FDC1 /* melody.riv in Resources */,
+				6C245C432C73CE600035C4AE /* jack.riv in Resources */,
+				6C245C3D2C73CE600035C4AE /* splashScreen.riv in Resources */,
 				6C12CA6B2C378506005909E0 /* RifficFree-Bold.ttf in Resources */,
 				6C0D20DE2C430E72005FE8BF /* monin.riv in Resources */,
 				6CDF333A2C4DCE1A00E9E93E /* fondos.riv in Resources */,
+				6CDAC7EA2C73FA600065EAB3 /* Jacobo.riv in Resources */,
+				6CF889622C73D373003305EC /* pablo2.riv in Resources */,
 				6CA094C52C430279000EDBE0 /* rivebg.riv in Resources */,
 				6C3D33B32C63161B0097FDC1 /* cal-ejercicios.riv in Resources */,
 			);
@@ -620,14 +664,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				6C0D20E32C4310B7005FE8BF /* molly.riv in Resources */,
-				6CA094D32C430A7B000EDBE0 /* jack3.riv in Resources */,
 				6C3D33B02C6313400097FDC1 /* cal-reto.riv in Resources */,
 				6C3D33A82C6309090097FDC1 /* melody.riv in Resources */,
+				6CDAC7EB2C73FA600065EAB3 /* Jacobo.riv in Resources */,
+				6C245C442C73CE600035C4AE /* jack.riv in Resources */,
+				6C245C3E2C73CE600035C4AE /* splashScreen.riv in Resources */,
 				6C12CA6A2C378505005909E0 /* RifficFree-Bold.ttf in Resources */,
 				6C0D20DF2C430E72005FE8BF /* monin.riv in Resources */,
 				6CDF333B2C4DCE1A00E9E93E /* fondos.riv in Resources */,
 				6CA094C62C430279000EDBE0 /* rivebg.riv in Resources */,
 				6C3D33B42C63161B0097FDC1 /* cal-ejercicios.riv in Resources */,
+				6CF889632C73D373003305EC /* pablo2.riv in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -639,26 +686,33 @@
 			buildActionMask = 2147483647;
 			files = (
 				6C12CA532C345681005909E0 /* PerfilesViewModel.swift in Sources */,
+				6C18AA222C72EA310011E532 /* Model.xcdatamodeld in Sources */,
 				6CA094C82C430434000EDBE0 /* Fondos.swift in Sources */,
+				6C55B0852C72ED6200B570BA /* SoundManager.swift in Sources */,
 				6CD43F502C4D95D600C1CE55 /* CardModel.swift in Sources */,
 				6C3558422C424CEB0085D615 /* SelectTableView.swift in Sources */,
 				6C12CA6D2C378C6B005909E0 /* MainView.swift in Sources */,
 				2845B4A72C5F4F8A009C12FD /* RetoView.swift in Sources */,
+				6C18AA282C72EABB0011E532 /* CustomNumericKeyboard.swift in Sources */,
 				6C12CA692C373EA5005909E0 /* CustomKeyboardView.swift in Sources */,
 				28BC85692C13D81F00E3B62F /* Dima_MundoApp.swift in Sources */,
 				6C12CA512C345205005909E0 /* DataManager.swift in Sources */,
 				6C12CA552C345720005909E0 /* PerfilesView.swift in Sources */,
 				6C12CA592C3481B4005909E0 /* ColorOption.swift in Sources */,
 				282022D82C6BE6BA00A8551C /* InfoView.swift in Sources */,
+				6C18AA252C72EA5A0011E532 /* LocalizationManager.swift in Sources */,
 				28BC85962C13EC9D00E3B62F /* ContentView.swift in Sources */,
 				6CD43F522C4D95E000C1CE55 /* CardView.swift in Sources */,
 				285346B42C5AB2F500707411 /* TablesExView.swift in Sources */,
 				6CCEC5582C49FAE50053F025 /* AppData.swift in Sources */,
 				28BC85942C13DB1300E3B62F /* Color.swift in Sources */,
-				288B3B382C6673CD00231B23 /* Model.xcdatamodeld in Sources */,
 				2851EAFB2C6D0B58003D16DA /* TutorialView.swift in Sources */,
-				288B3B2C2C66725600231B23 /* SoundManager.swift in Sources */,
+				6C245C382C73B7C80035C4AE /* RiveManager.swift in Sources */,
+				6C18AA2E2C72EC250011E532 /* LoginView.swift in Sources */,
+				6C18AA2D2C72EC250011E532 /* DashboardView.swift in Sources */,
+				6C18AA262C72EA5A0011E532 /* Language.swift in Sources */,
 				6C12CA572C345768005909E0 /* CrearPerfilView.swift in Sources */,
+				6C18AA2C2C72EC250011E532 /* EditProfileView.swift in Sources */,
 				6CD43F4E2C4D88FC00C1CE55 /* RiveModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -825,7 +879,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Dima Mundo/Preview Content\"";
-				DEVELOPMENT_TEAM = X9FRX99HPJ;
+				DEVELOPMENT_TEAM = APGYXJC8A8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Dima-Mundo-Info.plist";
@@ -894,7 +948,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = X9FRX99HPJ;
+				DEVELOPMENT_TEAM = APGYXJC8A8;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Dima-MundoTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
@@ -935,7 +989,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = X9FRX99HPJ;
+				DEVELOPMENT_TEAM = APGYXJC8A8;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Dima-MundoUITests-Info.plist";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "";
@@ -1032,14 +1086,14 @@
 /* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
-		288B3B362C6673CD00231B23 /* Model.xcdatamodeld */ = {
+		6C18AA202C72EA310011E532 /* Model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				288B3B372C6673CD00231B23 /* Model.xcdatamodel */,
+				6C18AA212C72EA310011E532 /* Model.xcdatamodel */,
 			);
-			currentVersion = 288B3B372C6673CD00231B23 /* Model.xcdatamodel */;
+			currentVersion = 6C18AA212C72EA310011E532 /* Model.xcdatamodel */;
 			name = Model.xcdatamodeld;
-			path = /Users/chemapadillafdez/Downloads/Model.xcdatamodeld;
+			path = "/Users/grandybipo/Downloads/Dima-Mundo-Final/Dima Mundo/Model/Model.xcdatamodeld";
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

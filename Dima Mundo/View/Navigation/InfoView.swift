@@ -18,9 +18,6 @@ struct InfoView: View {
     var body: some View {
         ZStack {
             ZStack {
-//                Image("info")
-//                    .resizable()
-//                    .scaledToFit()
 
                 RiveViewModel(fileName: "info-view", stateMachineName: "Actions", artboardName: "infoView").view()
                     .scaleEffect(1.18)

@@ -45,4 +45,14 @@ extension Color {
     public static let moninColor: Color = Color(UIColor(red: 0.03, green: 0.52, blue: 0.78, alpha: 1.00))
     public static let jackColor: Color = Color(UIColor(red: 0.16, green: 0.71, blue: 0.91, alpha: 1.00))
     public static let pabloColor: Color = Color(UIColor(red: 0.23, green: 0.29, blue: 0.62, alpha: 1.00))
+    
+    // MARK: -DashboardView
+    
+    public static let skinMonin: Color = Color(UIColor(red: 9/255, green: 132/255, blue: 199/255, alpha: 1.00))
+    public static let CelesteBG: Color = Color(UIColor(red: 223/255, green: 241/255, blue: 253/255, alpha: 1.00))
+    public static let CelesteLbl: Color = Color(UIColor(red: 135/255, green: 198/255, blue: 239/255, alpha: 1.00))
+    public static let VerdeBtnDash: Color = Color(UIColor(red: 35/255, green: 176/255, blue: 112/255, alpha: 1.00))
+    public static let CelesteBtnDash: Color = Color(UIColor(red: 135/255, green: 198/255, blue: 239/255, alpha: 1.00))
+    public static let AzulBtnDash: Color = Color(UIColor(red: 0/255, green: 74/255, blue: 173/255, alpha: 1.00))
+    public static let RojoBtnDash: Color = Color(UIColor(red: 255/255, green: 87/255, blue: 87/255, alpha: 1.00))
 }

@@ -12,10 +12,7 @@ struct MyApp: App {
 
     var body: some Scene {
         WindowGroup {
-//            CrearPerfilView(onSave: {}, onCancel: {})
-//                .environmentObject(appData)
-//                .environmentObject(PerfilesViewModel())
-            TutorialView(viewType: .ejercicios)
+            ContentView()
                 .environmentObject(appData)
                 .environmentObject(PerfilesViewModel())
         }
