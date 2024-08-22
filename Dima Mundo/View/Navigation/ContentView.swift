@@ -15,10 +15,13 @@ struct ContentView: View {
                 .environmentObject(PerfilesViewModel())
                 .position(x: appData.UISW * 0.5, y: appData.UISH * 0.5)
             
-                RiveViewModel(fileName: "splashScreen", stateMachineName: "Actions").view()
-                    .scaleEffect(1.1)
-                    .ignoresSafeArea()
-                    .allowsHitTesting(false)        }
+            
+            RiveViewModel(fileName: "splashScreen", stateMachineName: "Actions").view()
+                .scaleEffect(1.1)
+                .ignoresSafeArea()
+                .allowsHitTesting(false)
+        }
+        .ignoresSafeArea()
     }
 }
 
