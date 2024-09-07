@@ -12,17 +12,13 @@ struct TablesExView: View {
     @State private var randomNumber: Int = Int.random(in: 1...10)
     @State private var usedRandomNumbers: [Int] = []
     @State private var results: [Bool] = [Bool](repeating: false, count: 5)
+    @State private var userAnswers: [Int] = [] // <-- Nuevo array para almacenar respuestas del usuario
     @State private var showResults: Bool = false
     @State private var correctCount: Int = 0
-    
+    @State private var showPopup: Bool = false
     var selectedAvatar: String
     var incrementExercises: () -> Void
-    
-    var UISW: CGFloat = UIScreen.main.bounds.width
-    var UISH: CGFloat = UIScreen.main.bounds.height
-    
-    var selectedPerfil: Perfil // Recibe el perfil seleccionado
-    
+    var selectedPerfil: Perfil
     let positions: [CGFloat] = [0.07, 0.147, 0.224, 0.301, 0.378, 0.455, 0.531, 0.608, 0.685, 0.764, 0.842]
     let numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", ""]
     
@@ -31,13 +27,12 @@ struct TablesExView: View {
             Image("retof")
                 .resizable()
                 .scaledToFill()
-                .frame(width: UISW, height: UISH)
+                .frame(width: appData.UISW, height: appData.UISH)
             
-            // Usamos el RiveManager compartido para la animación
             RiveManager.shared.riveModel.view()
                 .scaleEffect(0.6)
                 .allowsHitTesting(false)
-                .position(x: UISW * 0.14, y: UISH * 0.57)
+                .position(x: appData.UISW * 0.14, y: appData.UISH * 0.57)
             
             Image("times")
                 .resizable()
@@ -73,14 +68,14 @@ struct TablesExView: View {
                                 .foregroundColor(Color.Cafe)
                         }
                     }
-                }.position(x: UISW * positions[index], y: UISH * 0.9)
+                }.position(x: appData.UISW * positions[index], y: appData.UISH * 0.9)
             }
             
             Image("borrar")
                 .resizable()
                 .scaledToFit()
                 .frame(width: 60)
-                .position(x: UISW * 0.84, y: UISH * 0.9)
+                .position(x: appData.UISW * 0.84, y: appData.UISH * 0.9)
                 .allowsHitTesting(false)
             
             Button {
@@ -94,13 +89,19 @@ struct TablesExView: View {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
                         RiveManager.shared.setInput("selectedState", value: 0.0)
                     }
+                    
                     let expectedValue = table * randomNumber
-                    if let inputValue = Int(inputNumber), inputValue == expectedValue {
-                        resultMessage = "Correcto"
-                        results[exercise - 1] = true
-                    } else {
-                        resultMessage = "Incorrecto"
-                        results[exercise - 1] = false
+                    if let inputValue = Int(inputNumber) {
+                        // Almacenar la respuesta ingresada por el usuario
+                        userAnswers.append(inputValue)  // <-- Aquí se almacena la respuesta del usuario
+                        
+                        if inputValue == expectedValue {
+                            resultMessage = "Correcto"
+                            results[exercise - 1] = true
+                        } else {
+                            resultMessage = "Incorrecto"
+                            results[exercise - 1] = false
+                        }
                     }
                     
                     if exercise < 5 {
@@ -127,7 +128,7 @@ struct TablesExView: View {
                     .frame(width: 85)
             }
             .opacity(inputNumber.isEmpty ? 0.5 : 1.0)
-            .position(x: UISW * 0.93, y: UISH * 0.9)
+            .position(x: appData.UISW * 0.93, y: appData.UISH * 0.9)
             
             ZStack {
                 RoundedRectangle(cornerRadius: 5)
@@ -137,7 +138,7 @@ struct TablesExView: View {
                 Text("\(table)")
                     .font(.custom("RifficFree-Bold", size: 65))
                     .foregroundColor(.white)
-            }.position(x: UISW * 0.33, y: UISH * 0.34)
+            }.position(x: appData.UISW * 0.33, y: appData.UISH * 0.34)
             
             ZStack {
                 RoundedRectangle(cornerRadius: 5)
@@ -147,8 +148,8 @@ struct TablesExView: View {
                 Text("\(randomNumber)")
                     .font(.custom("RifficFree-Bold", size: 65))
                     .foregroundColor(.white)
-            }.position(x: UISW * 0.48, y: UISH * 0.34)
-
+            }.position(x: appData.UISW * 0.48, y: appData.UISH * 0.34)
+            
             ZStack {
                 RoundedRectangle(cornerRadius: 5)
                     .fill(Color.VerdePiz)
@@ -157,8 +158,8 @@ struct TablesExView: View {
                 Text(inputNumber)
                     .font(.custom("RifficFree-Bold", size: 65))
                     .foregroundColor(.white)
-            }.position(x: UISW * 0.66, y: UISH * 0.34)
-
+            }.position(x: appData.UISW * 0.66, y: appData.UISH * 0.34)
+            
             ZStack {
                 RoundedRectangle(cornerRadius: 30)
                     .foregroundColor(Color.VerdeAns)
@@ -167,12 +168,12 @@ struct TablesExView: View {
                 Text("\(exercise) / 5")
                     .font(.custom("RifficFree-Bold", size: 29))
                     .foregroundColor(Color.AmarilloAns)
-            }.position(x: UISW * 0.8, y: UISH * 0.195)
+            }.position(x: appData.UISW * 0.8, y: appData.UISH * 0.195)
             
             Text("Ejercicio")
                 .font(.custom("RifficFree-Bold", size: 29))
                 .foregroundColor(.white)
-                .position(x: UISW * 0.8, y: UISH * 0.14)
+                .position(x: appData.UISW * 0.8, y: appData.UISH * 0.14)
             
             Button {
                 withAnimation(.easeInOut(duration: 0.1)) {
@@ -183,26 +184,20 @@ struct TablesExView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: 60)
-                   
+                
             }.position(x: appData.UISW * 0.94, y: appData.UISH * 0.19)
             
-            Button {
-                withAnimation(.easeInOut(duration: 0.1)) {
-                    appData.sound.toggle()
-                }
-            } label: {
-                Image(appData.sound ? "sound" : "mute")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 60)
-                   
-            }.position(x: UISW * 0.94, y: UISH * 0.09)
-           
             if showResults {
-                Color.black.opacity(0.7)
+                Color.black.opacity(0.85)
+                    .ignoresSafeArea()
+
+                Text("Calificación: \(correctCount) / \(results.count)")
+                    .font(.custom("RifficFree-Bold", size: 35))
+                    .foregroundColor(Color.white)
+                    .position(x: appData.UISW * 0.5, y: appData.UISH * 0.150)
                 
                 let correctCountDouble = Double(correctCount)
-                let rive = RiveViewModel(fileName: "cal-ejercicios", stateMachineName: "State Machine 1", artboardName: selectedAvatar)
+                let rive = RiveViewModel(fileName: "cal-ejercicios", stateMachineName: "Actions", artboardName: selectedAvatar)
                 
                 rive.view()
                     .scaleEffect(1)
@@ -215,6 +210,31 @@ struct TablesExView: View {
                             SoundManager.instance.playSoundFromStart(sound: .ExerciseResult, loop: false)
                         }
                     }
+                if correctCountDouble == 0 {
+                    Text(appData.localizationManager.localizedString(for: "cal-ejercicio0" ))
+                        .font(.custom("RifficFree-Bold", size: 30))
+                        .position(x: appData.UISW * 0.5, y: appData.UISH * 0.65)
+                        .foregroundColor(.buttonLblColor)
+                }
+                if correctCountDouble >= 1 && correctCountDouble <= 2  {
+                    Text(appData.localizationManager.localizedString(for: "cal-ejercicio1-2" ))
+                        .font(.custom("RifficFree-Bold", size: 30))
+                        .position(x: appData.UISW * 0.5, y: appData.UISH * 0.65)
+                        .foregroundColor(.buttonLblColor)
+                }
+                if correctCountDouble >= 3 && correctCountDouble <= 4  {
+                    Text(appData.localizationManager.localizedString(for: "cal-ejercicio3-4" ))
+                        .font(.custom("RifficFree-Bold", size: 30))
+                        .position(x: appData.UISW * 0.5, y: appData.UISH * 0.65)
+                        .foregroundColor(.buttonLblColor)
+                }
+                if correctCountDouble == 5  {
+                    Text(appData.localizationManager.localizedString(for: "cal-ejercicio5" ))
+                        .font(.custom("RifficFree-Bold", size: 30))
+                        .position(x: appData.UISW * 0.5, y: appData.UISH * 0.65)
+                        .foregroundColor(.buttonLblColor)
+                }
+                
             }
             
             Button {
@@ -231,8 +251,58 @@ struct TablesExView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: 60)
-                    
-            }.position(x: UISW * 0.06, y: UISH * 0.09)
+                
+            }.position(x: appData.UISW * 0.06, y: appData.UISH * 0.09)
+            
+            if showPopup {
+                Color.black
+                    .opacity(0.7)
+                    .ignoresSafeArea()
+                    .onTapGesture {
+                        withAnimation(.easeInOut(duration: 0.35)){
+                            showPopup = false
+                        }
+                    }
+                ResultsView(results: results, table: table, randomNumbers: usedRandomNumbers, userAnswers: userAnswers, closeAction: {
+                    showPopup = false
+                })
+                .transition(.scale)
+            }
+            
+            Button {
+                withAnimation(.easeInOut(duration: 0.1)) {
+                    appData.sound.toggle()
+                }
+            } label: {
+                Image(appData.sound ? "sound" : "mute")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 60)
+                
+            }.position(x: appData.UISW * 0.94, y: appData.UISH * 0.09)
+            
+        if showResults{
+            Button {
+                            withAnimation {
+                                showPopup.toggle() // Alternar el estado del popup
+                            }
+                        } label: {
+                            Text(showPopup ? "Cerrar" : "Ver resultados")
+                                .font(.custom("RifficFree-Bold", size: showPopup ? 25 : 25))
+                                .padding()
+                                .padding(.horizontal)
+                                .foregroundColor(.buttonLblColor)
+                                .background(Color.CelesteBG)
+                                .cornerRadius(15)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 15)
+                                        .stroke(Color.white, lineWidth: 7.5)
+                                )
+                                .frame(width: showPopup ? 180 : appData.UISW * 0.2) // Animar el tamaño
+                        }
+                        .position(x: appData.UISW * 0.5, y: appData.UISH * 0.85)
+                        .animation(.bouncy(duration: 0.15), value: showPopup)
+        }
             
             if appData.isTuto {
                 TutorialView(viewType: .ejercicios)

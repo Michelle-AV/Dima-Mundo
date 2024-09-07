@@ -55,4 +55,10 @@ extension Color {
     public static let CelesteBtnDash: Color = Color(UIColor(red: 135/255, green: 198/255, blue: 239/255, alpha: 1.00))
     public static let AzulBtnDash: Color = Color(UIColor(red: 0/255, green: 74/255, blue: 173/255, alpha: 1.00))
     public static let RojoBtnDash: Color = Color(UIColor(red: 255/255, green: 87/255, blue: 87/255, alpha: 1.00))
+    
+    // MARK: -ResultsView
+    public static let numberBG: Color = Color(UIColor(red: 240/255, green: 88/255, blue: 114/255, alpha: 1.00))
+    public static let buttonLblColor: Color = Color(UIColor(red: 57/255, green: 108/255, blue: 158/255, alpha: 1.00))
+
+    
 }

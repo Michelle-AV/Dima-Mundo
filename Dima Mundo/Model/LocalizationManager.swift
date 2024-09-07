@@ -125,5 +125,16 @@ struct LocalizationManager {
         "DashboardHeaderDate":"Fecha",
         "DashboardChartsBtn":"Graficar",
         
+        "cal-reto1":"¡Ánimo! Los comienzos siempre son difíciles. Sigue practicando y verás resultados mejores",
+        "cal-reto2":"¡Bien hecho! Has respondido varias preguntas correctamente, pero aún hay espacio para mejorar. ¡Sigue practicando!",
+        "cal-reto3":"¡Buen trabajo! Estás casi en la cima. Con un poco más de práctica, ¡lograrás mejores resultados!",
+        "cal-reto4":"¡Excelente trabajo! Has respondido todos los ejercicios correctamente, ¡eres un experto en las tablas de multiplicar!",
+        
+        
+        "cal-ejercicio0":"No te preocupes. ¡Sigue intentando y mejorarás con la práctica!",
+        "cal-ejercicio1-2":"No te desanimes, ¡practicar te ayudará a mejorar!",
+        "cal-ejercicio3-4":"¡Vas por buen camino! Continúa practicando y lograrás más aciertos.",
+        "cal-ejercicio5":"¡Buen trabajo! Completaste todos los ejercicios correctamente, ¡sigue así!",
+        
     ]
 }

@@ -81,10 +81,9 @@
 		6C3D33AE2C6313400097FDC1 /* cal-reto.riv in Resources */ = {isa = PBXBuildFile; fileRef = 6C3D33AD2C6313400097FDC1 /* cal-reto.riv */; };
 		6C3D33AF2C6313400097FDC1 /* cal-reto.riv in Resources */ = {isa = PBXBuildFile; fileRef = 6C3D33AD2C6313400097FDC1 /* cal-reto.riv */; };
 		6C3D33B02C6313400097FDC1 /* cal-reto.riv in Resources */ = {isa = PBXBuildFile; fileRef = 6C3D33AD2C6313400097FDC1 /* cal-reto.riv */; };
-		6C3D33B22C63161B0097FDC1 /* cal-ejercicios.riv in Resources */ = {isa = PBXBuildFile; fileRef = 6C3D33B12C63161B0097FDC1 /* cal-ejercicios.riv */; };
-		6C3D33B32C63161B0097FDC1 /* cal-ejercicios.riv in Resources */ = {isa = PBXBuildFile; fileRef = 6C3D33B12C63161B0097FDC1 /* cal-ejercicios.riv */; };
-		6C3D33B42C63161B0097FDC1 /* cal-ejercicios.riv in Resources */ = {isa = PBXBuildFile; fileRef = 6C3D33B12C63161B0097FDC1 /* cal-ejercicios.riv */; };
+		6C46EE382C8BAC1A00D85D3F /* cal-reto.riv in Sources */ = {isa = PBXBuildFile; fileRef = 6C3D33AD2C6313400097FDC1 /* cal-reto.riv */; };
 		6C55B0852C72ED6200B570BA /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C55B0842C72ED6200B570BA /* SoundManager.swift */; };
+		6C59BB592C8B951B00918E9A /* ImageSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C59BB582C8B951B00918E9A /* ImageSetView.swift */; };
 		6C78E6EE2C39DD7400D18852 /* RiveRuntime in Frameworks */ = {isa = PBXBuildFile; productRef = 6C78E6ED2C39DD7400D18852 /* RiveRuntime */; };
 		6CA094C42C430279000EDBE0 /* rivebg.riv in Resources */ = {isa = PBXBuildFile; fileRef = 6CA094BD2C430279000EDBE0 /* rivebg.riv */; };
 		6CA094C52C430279000EDBE0 /* rivebg.riv in Resources */ = {isa = PBXBuildFile; fileRef = 6CA094BD2C430279000EDBE0 /* rivebg.riv */; };
@@ -92,6 +91,11 @@
 		6CA094C82C430434000EDBE0 /* Fondos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA094C72C430434000EDBE0 /* Fondos.swift */; };
 		6CA094C92C430434000EDBE0 /* Fondos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA094C72C430434000EDBE0 /* Fondos.swift */; };
 		6CA094CA2C430434000EDBE0 /* Fondos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA094C72C430434000EDBE0 /* Fondos.swift */; };
+		6CA1474E2C8BAD7F00A589FF /* cal-ejercicios.riv in Resources */ = {isa = PBXBuildFile; fileRef = 6CA1474D2C8BAD7F00A589FF /* cal-ejercicios.riv */; };
+		6CA1474F2C8BAD7F00A589FF /* cal-ejercicios.riv in Resources */ = {isa = PBXBuildFile; fileRef = 6CA1474D2C8BAD7F00A589FF /* cal-ejercicios.riv */; };
+		6CA147502C8BAD7F00A589FF /* cal-ejercicios.riv in Resources */ = {isa = PBXBuildFile; fileRef = 6CA1474D2C8BAD7F00A589FF /* cal-ejercicios.riv */; };
+		6CC2FA782C88D9F800E20432 /* ResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC2FA772C88D9F800E20432 /* ResultsView.swift */; };
+		6CC2FA7A2C8AAD6700E20432 /* ResultRetoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC2FA792C8AAD6700E20432 /* ResultRetoView.swift */; };
 		6CCEC5582C49FAE50053F025 /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CCEC5572C49FAE50053F025 /* AppData.swift */; };
 		6CD43F4E2C4D88FC00C1CE55 /* RiveModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CD43F4D2C4D88FC00C1CE55 /* RiveModel.swift */; };
 		6CD43F502C4D95D600C1CE55 /* CardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CD43F4F2C4D95D500C1CE55 /* CardModel.swift */; };
@@ -190,10 +194,13 @@
 		6C3558412C424CEB0085D615 /* SelectTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectTableView.swift; sourceTree = "<group>"; };
 		6C3D33A52C6309090097FDC1 /* melody.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = melody.riv; sourceTree = "<group>"; };
 		6C3D33AD2C6313400097FDC1 /* cal-reto.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = "cal-reto.riv"; sourceTree = "<group>"; };
-		6C3D33B12C63161B0097FDC1 /* cal-ejercicios.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = "cal-ejercicios.riv"; sourceTree = "<group>"; };
 		6C55B0842C72ED6200B570BA /* SoundManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
+		6C59BB582C8B951B00918E9A /* ImageSetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSetView.swift; sourceTree = "<group>"; };
 		6CA094BD2C430279000EDBE0 /* rivebg.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = rivebg.riv; sourceTree = "<group>"; };
 		6CA094C72C430434000EDBE0 /* Fondos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fondos.swift; sourceTree = "<group>"; };
+		6CA1474D2C8BAD7F00A589FF /* cal-ejercicios.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = "cal-ejercicios.riv"; sourceTree = "<group>"; };
+		6CC2FA772C88D9F800E20432 /* ResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsView.swift; sourceTree = "<group>"; };
+		6CC2FA792C8AAD6700E20432 /* ResultRetoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultRetoView.swift; sourceTree = "<group>"; };
 		6CCEC5572C49FAE50053F025 /* AppData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppData.swift; sourceTree = "<group>"; };
 		6CD43F4D2C4D88FC00C1CE55 /* RiveModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiveModel.swift; sourceTree = "<group>"; };
 		6CD43F4F2C4D95D500C1CE55 /* CardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardModel.swift; sourceTree = "<group>"; };
@@ -406,6 +413,7 @@
 				288B3B2D2C66726200231B23 /* Sounds */,
 				28BC85932C13DB1300E3B62F /* Color.swift */,
 				6C12CA582C3481B4005909E0 /* ColorOption.swift */,
+				6C59BB582C8B951B00918E9A /* ImageSetView.swift */,
 			);
 			path = Extras;
 			sourceTree = "<group>";
@@ -465,6 +473,8 @@
 				6C18AA292C72EC250011E532 /* EditProfileView.swift */,
 				6C18AA2B2C72EC250011E532 /* LoginView.swift */,
 				282022D72C6BE6BA00A8551C /* InfoView.swift */,
+				6CC2FA772C88D9F800E20432 /* ResultsView.swift */,
+				6CC2FA792C8AAD6700E20432 /* ResultRetoView.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -472,12 +482,12 @@
 		6C5BC84A2C3C7C1900CE95F1 /* RiveFiles */ = {
 			isa = PBXGroup;
 			children = (
+				6CA1474D2C8BAD7F00A589FF /* cal-ejercicios.riv */,
 				6CDAC7E82C73FA600065EAB3 /* Jacobo.riv */,
 				6CF889602C73D373003305EC /* pablo2.riv */,
 				6C245C3B2C73CE600035C4AE /* jack.riv */,
 				6C245C392C73CE600035C4AE /* splashScreen.riv */,
 				282022DB2C6BE9B000A8551C /* info-view.riv */,
-				6C3D33B12C63161B0097FDC1 /* cal-ejercicios.riv */,
 				6C3D33AD2C6313400097FDC1 /* cal-reto.riv */,
 				6C3D33A52C6309090097FDC1 /* melody.riv */,
 				6CDF33382C4DCE1A00E9E93E /* fondos.riv */,
@@ -628,11 +638,11 @@
 				6C245C422C73CE600035C4AE /* jack.riv in Resources */,
 				28B5F5462C72D2FF003C4FB9 /* AR4.mp3 in Resources */,
 				289489942C72A5F2004A87E9 /* AT2.mp3 in Resources */,
+				6CA1474E2C8BAD7F00A589FF /* cal-ejercicios.riv in Resources */,
 				2894898F2C72A5BC004A87E9 /* AE4.mp3 in Resources */,
 				2894899A2C72A83C004A87E9 /* Bienvenido.mp3 in Resources */,
 				6C0D20DD2C430E72005FE8BF /* monin.riv in Resources */,
 				6CDAC7E92C73FA600065EAB3 /* Jacobo.riv in Resources */,
-				6C3D33B22C63161B0097FDC1 /* cal-ejercicios.riv in Resources */,
 				289489972C72A619004A87E9 /* AP1.mp3 in Resources */,
 				6C3D33A62C6309090097FDC1 /* melody.riv in Resources */,
 				288B3B332C6672A300231B23 /* ExerciseResult.mp3 in Resources */,
@@ -643,6 +653,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6CA1474F2C8BAD7F00A589FF /* cal-ejercicios.riv in Resources */,
 				6C245C452C73D2280035C4AE /* info-view.riv in Resources */,
 				6C0D20E22C4310B7005FE8BF /* molly.riv in Resources */,
 				6C3D33AF2C6313400097FDC1 /* cal-reto.riv in Resources */,
@@ -655,7 +666,6 @@
 				6CDAC7EA2C73FA600065EAB3 /* Jacobo.riv in Resources */,
 				6CF889622C73D373003305EC /* pablo2.riv in Resources */,
 				6CA094C52C430279000EDBE0 /* rivebg.riv in Resources */,
-				6C3D33B32C63161B0097FDC1 /* cal-ejercicios.riv in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -673,7 +683,7 @@
 				6C0D20DF2C430E72005FE8BF /* monin.riv in Resources */,
 				6CDF333B2C4DCE1A00E9E93E /* fondos.riv in Resources */,
 				6CA094C62C430279000EDBE0 /* rivebg.riv in Resources */,
-				6C3D33B42C63161B0097FDC1 /* cal-ejercicios.riv in Resources */,
+				6CA147502C8BAD7F00A589FF /* cal-ejercicios.riv in Resources */,
 				6CF889632C73D373003305EC /* pablo2.riv in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -685,6 +695,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6C46EE382C8BAC1A00D85D3F /* cal-reto.riv in Sources */,
 				6C12CA532C345681005909E0 /* PerfilesViewModel.swift in Sources */,
 				6C18AA222C72EA310011E532 /* Model.xcdatamodeld in Sources */,
 				6CA094C82C430434000EDBE0 /* Fondos.swift in Sources */,
@@ -698,6 +709,7 @@
 				28BC85692C13D81F00E3B62F /* Dima_MundoApp.swift in Sources */,
 				6C12CA512C345205005909E0 /* DataManager.swift in Sources */,
 				6C12CA552C345720005909E0 /* PerfilesView.swift in Sources */,
+				6CC2FA782C88D9F800E20432 /* ResultsView.swift in Sources */,
 				6C12CA592C3481B4005909E0 /* ColorOption.swift in Sources */,
 				282022D82C6BE6BA00A8551C /* InfoView.swift in Sources */,
 				6C18AA252C72EA5A0011E532 /* LocalizationManager.swift in Sources */,
@@ -710,9 +722,11 @@
 				6C245C382C73B7C80035C4AE /* RiveManager.swift in Sources */,
 				6C18AA2E2C72EC250011E532 /* LoginView.swift in Sources */,
 				6C18AA2D2C72EC250011E532 /* DashboardView.swift in Sources */,
+				6C59BB592C8B951B00918E9A /* ImageSetView.swift in Sources */,
 				6C18AA262C72EA5A0011E532 /* Language.swift in Sources */,
 				6C12CA572C345768005909E0 /* CrearPerfilView.swift in Sources */,
 				6C18AA2C2C72EC250011E532 /* EditProfileView.swift in Sources */,
+				6CC2FA7A2C8AAD6700E20432 /* ResultRetoView.swift in Sources */,
 				6CD43F4E2C4D88FC00C1CE55 /* RiveModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
