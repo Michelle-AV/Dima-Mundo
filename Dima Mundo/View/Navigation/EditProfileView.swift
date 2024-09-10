@@ -27,7 +27,10 @@ struct EditProfileView: View {
                     .scaledToFit()
                     .frame(width: 190, height: 190)
                     .onTapGesture {
-                        showAvatarSelection.toggle()
+                        withAnimation (.smooth(duration: 0.3)){
+                            showAvatarSelection.toggle()
+
+                        }
                     }
 
                 TextField("Nombre", text: $name)
@@ -58,7 +61,8 @@ struct EditProfileView: View {
             // Popup de selección de avatar
             if showAvatarSelection {
                 AvatarSelectionView(selectedAvatar: $avatar, isPresented: $showAvatarSelection)
-                    .transition(.move(edge: .bottom))
+                    /*.transition(.move(edge: .bottom))*/ // Transición de movimiento desde abajo
+                    .offset(y: -50)                    // Desplazamiento opcional si lo necesitas
             }
         }
     }
@@ -73,7 +77,7 @@ struct AvatarSelectionView: View {
     var body: some View {
         VStack(spacing: 20) {
             Text("Cambiar dima-amigo")
-                .font(.custom("RifficFree-Bold", size: 28))
+                .font(.custom("RifficFree-Bold", size: 30))
                 .foregroundColor(Color.skinMonin)
 
             HStack(spacing: 20) {
@@ -81,7 +85,7 @@ struct AvatarSelectionView: View {
                     Image(avatar)
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 50, height: 50)
+                        .frame(width: 70, height: 70)
                         .clipShape(Circle())
                         .onTapGesture {
                             selectedAvatar = avatar
@@ -89,11 +93,11 @@ struct AvatarSelectionView: View {
                         }
                 }
             }
-        }
-        .padding()
-        .background(RoundedRectangle(cornerRadius: 15).fill(Color.CelesteBG))
-        .frame(width: 350, height: 200)
-        
+        }.frame(width: 500, height: 160)
+            .fixedSize()
+            .layoutPriority(1)
+            .padding()
+            .background(RoundedRectangle(cornerRadius: 15).fill(Color.CelesteBG))
     }
 }
 

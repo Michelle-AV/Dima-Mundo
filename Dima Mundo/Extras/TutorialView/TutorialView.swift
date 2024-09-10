@@ -1383,348 +1383,755 @@ struct TutorialView: View {
                 
             case .reto:
                 ZStack {
-                    Color.black
-                        .opacity(0.77)
-                        .ignoresSafeArea()
-                        .mask(
-                            ZStack {
-                                Rectangle()
-                                    .overlay(
-                                        RoundedRectangle(cornerRadius: 25)
-                                            .frame(width: frame.width, height: frame.height)
-                                            .position(x: frame.minX, y: frame.minY)
-                                            .blendMode(.destinationOut)
-                                    )
-                            }
-                        )
-                        .compositingGroup()
-                        .allowsHitTesting(false)
+                   Color.black
+                       .opacity(0.77)
+                       .ignoresSafeArea()
+                       .mask(
+                           ZStack {
+                               Rectangle()
+                                   .overlay(
+                                       RoundedRectangle(cornerRadius: 25)
+                                           .frame(width: frame.width, height: frame.height)
+                                           .position(x: frame.minX, y: frame.minY)
+                                           .blendMode(.destinationOut)
+                                   )
+                           }
+                       )
+                       .compositingGroup()
+                       .allowsHitTesting(false)
 
-                    
-                    Rectangle()
-                        .foregroundColor(.white.opacity(0.0000000000000001))
-                        .frame(width: appData.UISW, height: appData.UISH * 0.3)
-                        .position(x: appData.UISW * 0.5, y: appData.UISH * 0.02)
-                    
+                   
+                   Rectangle()
+                       .foregroundColor(.white.opacity(0.0000000000000001))
+                       .frame(width: appData.UISW, height: appData.UISH * 0.3)
+                       .position(x: appData.UISW * 0.5, y: appData.UISH * 0.02)
+                   
 
-                    
-                    if appData.FlagTuto == 19{
-                        
-                        Rectangle()
-                            .foregroundColor(.white.opacity(0.0000000000000001))
-                            .frame(width: appData.UISW, height: appData.UISH)
-                            .position(x: appData.UISW * 0.5, y: appData.UISH * 0.5)
-                            .onAppear {
-                                opacity = 0
-                            }
-                        
-                        Image(selectedImage)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 130)
-                            .position(x: appData.UISW * 0.5, y: appData.UISH * 0.66)
-                            .onAppear{
-                                dialog = "¿Estás listo para una aventura más desafiante?"
-                                appData.FlagTuto = 19
-                                self.frame = CGRect(x: appData.UISW * 0.5, y: appData.UISH * 0.35, width: appData.UISW * 0, height: appData.UISH * 0)
-                                if appData.sound {
-                                    SoundManager.instance.playDialogES(sound: .AR1, loop: false)
-                                }
-                            }
-                        
-                        ZStack {
-                            Image("triangulo")
-                                .resizable()
-                                .scaledToFit()
-                                .rotationEffect(.degrees(70))
-                                .offset(x: 0, y: 70)
-                                .frame(width: 20)
-                            
-                            RoundedRectangle(cornerRadius: 25)
-                                .foregroundColor(.white)
-                                .frame(width: appData.UISW * 0.34, height: appData.UISH * 0.175)
-                            
-                            Text(dialog)
-                                .font(.custom("RifficFree-Bold", size: 25))
-                                .foregroundColor(selectedColor)
-                                .frame(width: 320)
-                                .multilineTextAlignment(.center)
-                        }
-                        .position(x: appData.UISW * 0.5, y: appData.UISH * 0.45)
-                        
-                        Button{
-                            withAnimation (.spring(duration: 0.2)){
-                                appData.FlagTuto = 12
-                                SoundManager.instance.stopDialog()
-                            }
-                        } label: {
-                            Text("Continuar")
-                                .font(.custom("RifficFree-Bold", size: 20))
-                                .padding(.horizontal)
-                                .padding(.vertical, 10)
-                                .foregroundColor(.white)
-                        }
-                            .background(selectedColor)
-                            .cornerRadius(8)
-                            .position(x: appData.UISW * 0.59, y: appData.UISH * 0.54)
-                        
-                    } else if appData.FlagTuto == 12 {
-                        
-                        Rectangle()                            .foregroundColor(.white.opacity(0.0000000000000001))
-                            .frame(width: appData.UISW, height: appData.UISH)
-                            .position(x: appData.UISW * 0.5, y: appData.UISH * 0.5)
-                            .onAppear {
-                                opacity = 0
-                            }
-                        
-                        Image(selectedImage)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 130)
-                            .position(x: appData.UISW * 0.5, y: appData.UISH * 0.66)
-                            .onAppear{
-                                dialog = "¡Bienvenido al reto de las tablas!"
-                                self.frame = CGRect(x: appData.UISW * 0.5, y: appData.UISH * 0.35, width: appData.UISW * 0, height: appData.UISH * 0)
-                                if appData.sound {
-                                    SoundManager.instance.playDialogES(sound: .AR2, loop: false)
-                                }
-                            }
-                        
-                        ZStack {
-                            Image("triangulo")
-                                .resizable()
-                                .scaledToFit()
-                                .rotationEffect(.degrees(70))
-                                .offset(x: 0, y: 70)
-                                .frame(width: 20)
-                            
-                            RoundedRectangle(cornerRadius: 25)
-                                .foregroundColor(.white)
-                                .frame(width: appData.UISW * 0.4, height: appData.UISH * 0.175)
-                            
-                            Text(dialog)
-                                .font(.custom("RifficFree-Bold", size: 25))
-                                .foregroundColor(selectedColor)
-                                .frame(width: 420)
-                                .multilineTextAlignment(.center)
-                        }
-                        .position(x: appData.UISW * 0.5, y: appData.UISH * 0.45)
-                        
-                        Button{
-                            withAnimation (.spring(duration: 0.2)){
-                                appData.FlagTuto = 13
-                                SoundManager.instance.stopDialog()
-                            }
-                        } label: {
-                            Text("Continuar")
-                                .font(.custom("RifficFree-Bold", size: 20))
-                                .padding(.horizontal)
-                                .padding(.vertical, 10)
-                                .foregroundColor(.white)
-                        }
-                            .background(selectedColor)
-                            .cornerRadius(8)
-                            .position(x: appData.UISW * 0.59, y: appData.UISH * 0.54)
-                        
-                    } else if appData.FlagTuto == 13 {
-                        
-                        Rectangle()
-                            .foregroundColor(.white.opacity(0.0000000000000001))
-                            .frame(width: appData.UISW * 0.95, height: appData.UISH * 0.14)
-                            .position(x: appData.UISW * 0.415, y: appData.UISH * 0.9)
-                            .onAppear {
-                                withAnimation (.smooth(duration: 0.2)){
-                                    opacity = 1
-                                    degrees = 0
-                                    positionX = appData.UISW * 0.2
-                                    positionY = appData.UISH * 0.76
-                                    tiltOffsetX = 0
-                                    tiltOffsetY = 0
-                                }
-                                withAnimation(Animation.easeInOut(duration: 1.0).repeatForever(autoreverses: true)) {
-                                    tiltOffsetX = 10
-                                    tiltOffsetY = 20
-                                }
-                            }
-                        
-                        Image(selectedImage)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 130)
-                            .position(x: appData.UISW * 0.86, y: appData.UISH * 0.8)
-                            .onAppear{
-                                dialog = "Así como lo hiciste con los ejercicios, tienes que completar cada multiplicación."
-                                self.frame = CGRect(x: appData.UISW * 0.5, y: appData.UISH * 0.38, width: appData.UISW * 0.5, height: appData.UISW * 0.38)
-                                if appData.sound {
-                                    SoundManager.instance.playDialogES(sound: .AR3, loop: false)
-                                }
-                            }
-                        
-                        ZStack {
-                            Image("triangulo")
-                                .resizable()
-                                .scaledToFit()
-                                .rotationEffect(.degrees(110))
-                                .offset(x: 274, y: 10)
-                                .frame(width: 20)
-                            
-                            RoundedRectangle(cornerRadius: 25)
-                                .foregroundColor(.white)
-                                .frame(width: appData.UISW * 0.5, height: appData.UISH * 0.175)
-                            
-                            Text(dialog)
-                                .font(.custom("RifficFree-Bold", size: 25))
-                                .foregroundColor(selectedColor)
-                                .frame(width: 500)
-                                .multilineTextAlignment(.center)
-                        }
-                        .position(x: appData.UISW * 0.53, y: appData.UISH * 0.8)
-                        
-                        Button{
-                            withAnimation (.spring(duration: 0.2)){
-                                appData.FlagTuto = 14
-                                SoundManager.instance.stopDialog()
-                            }
-                        } label: {
-                            Text("Continuar")
-                                .font(.custom("RifficFree-Bold", size: 20))
-                                .padding(.horizontal)
-                                .padding(.vertical, 10)
-                                .foregroundColor(.white)
-                        }
-                            .background(selectedColor)
-                            .cornerRadius(8)
-                            .position(x: appData.UISW * 0.69, y: appData.UISH * 0.89)
-                    } else if appData.FlagTuto == 14 {
-                        
-                        Rectangle()
-                            .foregroundColor(.white.opacity(0.0000000000000001))
-                            .frame(width: appData.UISW, height: appData.UISH)
-                            .position(x: appData.UISW * 0.5, y: appData.UISH * 0.5)
-                            .onAppear {
-                                withAnimation (.smooth(duration: 0.2)){
-                                    degrees = 0
-                                    positionX = appData.UISW * 0.72
-                                    positionY = appData.UISH * 0.36
-                                    tiltOffsetX = 0
-                                    tiltOffsetY = 10
-                                }
-                                withAnimation(Animation.easeInOut(duration: 1.0).repeatForever(autoreverses: true)) {
-                                    tiltOffsetX = 10
-                                    tiltOffsetY = 30
-                                }
-                            }
-                        
-                        Image(selectedImage)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 130)
-                            .position(x: appData.UISW * 0.86, y: appData.UISH * 0.6)
-                            .onAppear{
-                                dialog = "Pero para hacerlo más interesante... tienes que pasar 3 rondas, cada una contará con 3 ejercicios."
-                                self.frame = CGRect(x: appData.UISW * 0.8, y: appData.UISH * 0.17, width: 120, height: 120)
-                                if appData.sound {
-                                    SoundManager.instance.playDialogES(sound: .AR4, loop: false)
-                                }
-                            }
-                        
-                        ZStack {
-                            Image("triangulo")
-                                .resizable()
-                                .scaledToFit()
-                                .rotationEffect(.degrees(110))
-                                .offset(x: 274, y: 10)
-                                .frame(width: 20)
-                            
-                            RoundedRectangle(cornerRadius: 25)
-                                .foregroundColor(.white)
-                                .frame(width: appData.UISW * 0.5, height: appData.UISH * 0.175)
-                            
-                            Text(dialog)
-                                .font(.custom("RifficFree-Bold", size: 25))
-                                .foregroundColor(selectedColor)
-                                .frame(width: 480)
-                                .multilineTextAlignment(.center)
-                        }
-                        .position(x: appData.UISW * 0.53, y: appData.UISH * 0.6)
-                        
-                        Button{
-                            withAnimation (.spring(duration: 0.2)){
-                                appData.FlagTuto = 15
-                                SoundManager.instance.stopDialog()
-                            }
-                        } label: {
-                            Text("Continuar")
-                                .font(.custom("RifficFree-Bold", size: 20))
-                                .padding(.horizontal)
-                                .padding(.vertical, 10)
-                                .foregroundColor(.white)
-                        }
-                            .background(selectedColor)
-                            .cornerRadius(8)
-                            .position(x: appData.UISW * 0.69, y: appData.UISH * 0.69)
-                    } else if appData.FlagTuto == 15 {
-                        
-                        Rectangle()
-                            .foregroundColor(.white.opacity(0.0000000000000001))
-                            .frame(width: appData.UISW, height: appData.UISH)
-                            .position(x: appData.UISW * 0.5, y: appData.UISH * 0.5)
-                            .onAppear {
-                                withAnimation (.smooth(duration: 0.2)){
-                                    opacity = 0
-                                }
-                            }
-                        
-                        Image(selectedImage)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 130)
-                            .position(x: appData.UISW * 0.5, y: appData.UISH * 0.62)
-                            .onAppear{
-                                dialog = "¡Vamos, sé que lo harás muy bien! ¡Ánimo y mucha suerte!"
-                                self.frame = CGRect(x: appData.UISW * 0.8, y: appData.UISH * 0.17, width: 0, height: 0)
-                                if appData.sound {
-                                    SoundManager.instance.playDialogES(sound: .AR5, loop: false)
-                                }                            }
-                        
-                        ZStack {
-                            Image("triangulo")
-                                .resizable()
-                                .scaledToFit()
-                                .rotationEffect(.degrees(70))
-                                .offset(x: 0, y: 73)
-                                .frame(width: 20)
-                            
-                            RoundedRectangle(cornerRadius: 25)
-                                .foregroundColor(.white)
-                                .frame(width: appData.UISW * 0.42, height: appData.UISH * 0.175)
-                            
-                            Text(dialog)
-                                .font(.custom("RifficFree-Bold", size: 25))
-                                .foregroundColor(selectedColor)
-                                .frame(width: 480)
-                                .multilineTextAlignment(.center)
-                        }
-                        .position(x: appData.UISW * 0.53, y: appData.UISH * 0.4)
-                        
-                        Button{
-                            withAnimation (.spring(duration: 0.2)){
-                                appData.isTuto = false
-                                opacity = 1
-                                SoundManager.instance.stopDialog()
-                            }
-                        } label: {
-                            Text("Continuar")
-                                .font(.custom("RifficFree-Bold", size: 20))
-                                .padding(.horizontal)
-                                .padding(.vertical, 10)
-                                .foregroundColor(.white)
-                        }
-                            .background(selectedColor)
-                            .cornerRadius(8)
-                            .position(x: appData.UISW * 0.66, y: appData.UISH * 0.49)
-                    }
-                    
+                   
+                   if appData.FlagTuto == 19{
+                       
+                       Rectangle()
+                           .foregroundColor(.white.opacity(0.0000000000000001))
+                           .frame(width: appData.UISW, height: appData.UISH)
+                           .position(x: appData.UISW * 0.5, y: appData.UISH * 0.5)
+                           .onAppear {
+                               opacity = 0
+                           }
+                       
+                       Image(selectedImage)
+                           .resizable()
+                           .scaledToFit()
+                           .frame(width: 130)
+                           .position(x: appData.UISW * 0.5, y: appData.UISH * 0.66)
+                           .onAppear{
+                               dialog = "¿Estás listo para una aventura más desafiante?"
+                               appData.FlagTuto = 19
+                               self.frame = CGRect(x: appData.UISW * 0.5, y: appData.UISH * 0.35, width: appData.UISW * 0, height: appData.UISH * 0)
+                               if appData.sound {
+                                   SoundManager.instance.playDialogES(sound: .AR1, loop: false)
+                               }
+                           }
+                       
+                       ZStack {
+                           Image("triangulo")
+                               .resizable()
+                               .scaledToFit()
+                               .rotationEffect(.degrees(70))
+                               .offset(x: 0, y: 70)
+                               .frame(width: 20)
+                           
+                           RoundedRectangle(cornerRadius: 25)
+                               .foregroundColor(.white)
+                               .frame(width: appData.UISW * 0.34, height: appData.UISH * 0.175)
+                           
+                           Text(dialog)
+                               .font(.custom("RifficFree-Bold", size: 25))
+                               .foregroundColor(selectedColor)
+                               .frame(width: 320)
+                               .multilineTextAlignment(.center)
+                       }
+                       .position(x: appData.UISW * 0.5, y: appData.UISH * 0.45)
+                       
+                       Button{
+                           withAnimation (.spring(duration: 0.2)){
+                               appData.FlagTuto = 12
+                               SoundManager.instance.stopDialog()
+                           }
+                       } label: {
+                           Text("Continuar")
+                               .font(.custom("RifficFree-Bold", size: 20))
+                               .padding(.horizontal)
+                               .padding(.vertical, 10)
+                               .foregroundColor(.white)
+                       }
+                           .background(selectedColor)
+                           .cornerRadius(8)
+                           .position(x: appData.UISW * 0.59, y: appData.UISH * 0.54)
+                       
+                   } else if appData.FlagTuto == 12 {
+                       
+                       Rectangle()                            .foregroundColor(.white.opacity(0.0000000000000001))
+                           .frame(width: appData.UISW, height: appData.UISH)
+                           .position(x: appData.UISW * 0.5, y: appData.UISH * 0.5)
+                           .onAppear {
+                               opacity = 0
+                           }
+                       
+                       Image(selectedImage)
+                           .resizable()
+                           .scaledToFit()
+                           .frame(width: 130)
+                           .position(x: appData.UISW * 0.5, y: appData.UISH * 0.66)
+                           .onAppear{
+                               dialog = "¡Bienvenido al reto de las tablas!"
+                               self.frame = CGRect(x: appData.UISW * 0.5, y: appData.UISH * 0.35, width: appData.UISW * 0, height: appData.UISH * 0)
+                               if appData.sound {
+                                   SoundManager.instance.playDialogES(sound: .AR2, loop: false)
+                               }
+                           }
+                       
+                       ZStack {
+                           Image("triangulo")
+                               .resizable()
+                               .scaledToFit()
+                               .rotationEffect(.degrees(70))
+                               .offset(x: 0, y: 70)
+                               .frame(width: 20)
+                           
+                           RoundedRectangle(cornerRadius: 25)
+                               .foregroundColor(.white)
+                               .frame(width: appData.UISW * 0.4, height: appData.UISH * 0.175)
+                           
+                           Text(dialog)
+                               .font(.custom("RifficFree-Bold", size: 25))
+                               .foregroundColor(selectedColor)
+                               .frame(width: 420)
+                               .multilineTextAlignment(.center)
+                       }
+                       .position(x: appData.UISW * 0.5, y: appData.UISH * 0.45)
+                       
+                       Button{
+                           withAnimation (.spring(duration: 0.2)){
+                               appData.FlagTuto = 13
+                               SoundManager.instance.stopDialog()
+                           }
+                       } label: {
+                           Text("Continuar")
+                               .font(.custom("RifficFree-Bold", size: 20))
+                               .padding(.horizontal)
+                               .padding(.vertical, 10)
+                               .foregroundColor(.white)
+                       }
+                           .background(selectedColor)
+                           .cornerRadius(8)
+                           .position(x: appData.UISW * 0.59, y: appData.UISH * 0.54)
+                       
+                   } else if appData.FlagTuto == 13 {
+                       
+                       Rectangle()
+                           .foregroundColor(.white.opacity(0.0000000000000001))
+                           .frame(width: appData.UISW * 0.95, height: appData.UISH * 0.14)
+                           .position(x: appData.UISW * 0.415, y: appData.UISH * 0.9)
+                           .onAppear {
+                               withAnimation (.smooth(duration: 0.2)){
+                                   opacity = 1
+                                   degrees = 0
+                                   positionX = appData.UISW * 0.2
+                                   positionY = appData.UISH * 0.76
+                                   tiltOffsetX = 0
+                                   tiltOffsetY = 0
+                               }
+                               withAnimation(Animation.easeInOut(duration: 1.0).repeatForever(autoreverses: true)) {
+                                   tiltOffsetX = 10
+                                   tiltOffsetY = 20
+                               }
+                           }
+                       
+                       Image(selectedImage)
+                           .resizable()
+                           .scaledToFit()
+                           .frame(width: 130)
+                           .position(x: appData.UISW * 0.86, y: appData.UISH * 0.8)
+                           .onAppear{
+                               dialog = "Así como lo hiciste con los ejercicios, tienes que completar cada multiplicación."
+                               self.frame = CGRect(x: appData.UISW * 0.5, y: appData.UISH * 0.38, width: appData.UISW * 0.5, height: appData.UISW * 0.38)
+                               if appData.sound {
+                                   SoundManager.instance.playDialogES(sound: .AR3, loop: false)
+                               }
+                           }
+                       
+                       ZStack {
+                           Image("triangulo")
+                               .resizable()
+                               .scaledToFit()
+                               .rotationEffect(.degrees(110))
+                               .offset(x: 274, y: 10)
+                               .frame(width: 20)
+                           
+                           RoundedRectangle(cornerRadius: 25)
+                               .foregroundColor(.white)
+                               .frame(width: appData.UISW * 0.5, height: appData.UISH * 0.175)
+                           
+                           Text(dialog)
+                               .font(.custom("RifficFree-Bold", size: 25))
+                               .foregroundColor(selectedColor)
+                               .frame(width: 500)
+                               .multilineTextAlignment(.center)
+                       }
+                       .position(x: appData.UISW * 0.53, y: appData.UISH * 0.8)
+                       
+                       Button{
+                           withAnimation (.spring(duration: 0.2)){
+                               appData.FlagTuto = 20
+                               SoundManager.instance.stopDialog()
+                           }
+                       } label: {
+                           Text("Continuar")
+                               .font(.custom("RifficFree-Bold", size: 20))
+                               .padding(.horizontal)
+                               .padding(.vertical, 10)
+                               .foregroundColor(.white)
+                       }
+                           .background(selectedColor)
+                           .cornerRadius(8)
+                           .position(x: appData.UISW * 0.69, y: appData.UISH * 0.89)
+                   } else if appData.FlagTuto == 14 {
+                       
+                       Rectangle()
+                           .foregroundColor(.white.opacity(0.0000000000000001))
+                           .frame(width: appData.UISW, height: appData.UISH)
+                           .position(x: appData.UISW * 0.5, y: appData.UISH * 0.5)
+                           .onAppear {
+                               withAnimation (.smooth(duration: 0.2)){
+                                   degrees = 0
+                                   positionX = appData.UISW * 0.72
+                                   positionY = appData.UISH * 0.36
+                                   tiltOffsetX = 0
+                                   tiltOffsetY = 10
+                               }
+                               withAnimation(Animation.easeInOut(duration: 1.0).repeatForever(autoreverses: true)) {
+                                   tiltOffsetX = 10
+                                   tiltOffsetY = 30
+                               }
+                           }
+                       
+                       Image(selectedImage)
+                           .resizable()
+                           .scaledToFit()
+                           .frame(width: 130)
+                           .position(x: appData.UISW * 0.86, y: appData.UISH * 0.6)
+                           .onAppear{
+                               dialog = "Pero para hacerlo más interesante... tienes que pasar 3 rondas, cada una contará con 3 ejercicios."
+                               self.frame = CGRect(x: appData.UISW * 0.8, y: appData.UISH * 0.17, width: 120, height: 120)
+                               if appData.sound {
+                                   SoundManager.instance.playDialogES(sound: .AR4, loop: false)
+                               }
+                           }
+                       
+                       ZStack {
+                           Image("triangulo")
+                               .resizable()
+                               .scaledToFit()
+                               .rotationEffect(.degrees(110))
+                               .offset(x: 274, y: 10)
+                               .frame(width: 20)
+                           
+                           RoundedRectangle(cornerRadius: 25)
+                               .foregroundColor(.white)
+                               .frame(width: appData.UISW * 0.5, height: appData.UISH * 0.175)
+                           
+                           Text(dialog)
+                               .font(.custom("RifficFree-Bold", size: 25))
+                               .foregroundColor(selectedColor)
+                               .frame(width: 480)
+                               .multilineTextAlignment(.center)
+                       }
+                       .position(x: appData.UISW * 0.53, y: appData.UISH * 0.6)
+                       
+                       Button{
+                           withAnimation (.spring(duration: 0.2)){
+                               appData.FlagTuto = 15
+                               SoundManager.instance.stopDialog()
+                           }
+                       } label: {
+                           Text("Continuar")
+                               .font(.custom("RifficFree-Bold", size: 20))
+                               .padding(.horizontal)
+                               .padding(.vertical, 10)
+                               .foregroundColor(.white)
+                       }
+                           .background(selectedColor)
+                           .cornerRadius(8)
+                           .position(x: appData.UISW * 0.69, y: appData.UISH * 0.69)
+                   } else if appData.FlagTuto == 15 {
+                       
+                       Rectangle()
+                           .foregroundColor(.white.opacity(0.0000000000000001))
+                           .frame(width: appData.UISW, height: appData.UISH)
+                           .position(x: appData.UISW * 0.5, y: appData.UISH * 0.5)
+                           .onAppear {
+                               withAnimation (.smooth(duration: 0.2)){
+                                   opacity = 0
+                               }
+                           }
+                       
+                       Image(selectedImage)
+                           .resizable()
+                           .scaledToFit()
+                           .frame(width: 130)
+                           .position(x: appData.UISW * 0.5, y: appData.UISH * 0.62)
+                           .onAppear{
+                               dialog = "¡Vamos, sé que lo harás muy bien! ¡Ánimo y mucha suerte!"
+                               self.frame = CGRect(x: appData.UISW * 0.8, y: appData.UISH * 0.17, width: 0, height: 0)
+                               if appData.sound {
+                                   SoundManager.instance.playDialogES(sound: .AR5, loop: false)
+                               }                            }
+                       
+                       ZStack {
+                           Image("triangulo")
+                               .resizable()
+                               .scaledToFit()
+                               .rotationEffect(.degrees(70))
+                               .offset(x: 0, y: 73)
+                               .frame(width: 20)
+                           
+                           RoundedRectangle(cornerRadius: 25)
+                               .foregroundColor(.white)
+                               .frame(width: appData.UISW * 0.42, height: appData.UISH * 0.175)
+                           
+                           Text(dialog)
+                               .font(.custom("RifficFree-Bold", size: 25))
+                               .foregroundColor(selectedColor)
+                               .frame(width: 480)
+                               .multilineTextAlignment(.center)
+                       }
+                       .position(x: appData.UISW * 0.53, y: appData.UISH * 0.4)
+                       
+                       Button{
+                           withAnimation (.spring(duration: 0.2)){
+                               appData.isTuto = false
+                               opacity = 1
+                               SoundManager.instance.stopDialog()
+                           }
+                       } label: {
+                           Text("Continuar")
+                               .font(.custom("RifficFree-Bold", size: 20))
+                               .padding(.horizontal)
+                               .padding(.vertical, 10)
+                               .foregroundColor(.white)
+                       }
+                           .background(selectedColor)
+                           .cornerRadius(8)
+                           .position(x: appData.UISW * 0.66, y: appData.UISH * 0.49)
+                   } else if appData.FlagTuto == 20 {
+                       
+                       Rectangle()
+                           .foregroundColor(.white.opacity(0.0000000000000001))
+                           .frame(width: appData.UISW, height: appData.UISH)
+                           .position(x: appData.UISW * 0.5, y: appData.UISH * 0.5)
+                           .onAppear {
+                               withAnimation (.smooth(duration: 0.2)){
+                                   opacity = 0
+                               }
+                           }
+                       
+                       Image(selectedImage)
+                           .resizable()
+                           .scaledToFit()
+                           .frame(width: 130)
+                           .position(x: appData.UISW * 0.5, y: appData.UISH * 0.62)
+                           .onAppear{
+                               dialog = "Un pequeño truco, para resolver los ejercicios…"
+                               self.frame = CGRect(x: appData.UISW * 0.8, y: appData.UISH * 0.17, width: 0, height: 0)
+                               if appData.sound {
+                                   SoundManager.instance.stopDialog()
+                                   //                                    SoundManager.instance.playDialogES(sound: .AR5, loop: false)
+                               }
+                           }
+                       
+                       ZStack {
+                           Image("triangulo")
+                               .resizable()
+                               .scaledToFit()
+                               .rotationEffect(.degrees(70))
+                               .offset(x: 0, y: 73)
+                               .frame(width: 20)
+                           
+                           RoundedRectangle(cornerRadius: 25)
+                               .foregroundColor(.white)
+                               .frame(width: appData.UISW * 0.42, height: appData.UISH * 0.175)
+                           
+                           Text(dialog)
+                               .font(.custom("RifficFree-Bold", size: 25))
+                               .foregroundColor(selectedColor)
+                               .frame(width: 480)
+                               .multilineTextAlignment(.center)
+                       }
+                       .position(x: appData.UISW * 0.53, y: appData.UISH * 0.4)
+                       
+                       Button{
+                           withAnimation (.spring(duration: 0.2)){
+                               appData.FlagTuto = 21
+            //                                appData.isTuto = false
+            //                                opacity = 1
+            //                                SoundManager.instance.stopDialog()
+                           }
+                       } label: {
+                           Text("Continuar")
+                               .font(.custom("RifficFree-Bold", size: 20))
+                               .padding(.horizontal)
+                               .padding(.vertical, 10)
+                               .foregroundColor(.white)
+                       }
+                           .background(selectedColor)
+                           .cornerRadius(8)
+                           .position(x: appData.UISW * 0.66, y: appData.UISH * 0.49)
+                   } else if appData.FlagTuto == 21 {
+                       
+                       Rectangle()
+                           .foregroundColor(.white.opacity(0.0000000000000001))
+                           .frame(width: appData.UISW * 1, height: appData.UISH * 0.14)
+                           .position(x: appData.UISW * 0.5, y: appData.UISH * 0.9)
+                           .onAppear {
+                               withAnimation (.smooth(duration: 0.2)){
+                                   opacity = 1
+                                   degrees = 0
+                                   positionX = appData.UISW * 0.2
+                                   positionY = appData.UISH * 0.4
+                                   tiltOffsetX = 0
+                                   tiltOffsetY = 0
+                               }
+                               withAnimation(Animation.easeInOut(duration: 1.0).repeatForever(autoreverses: true)) {
+                                   tiltOffsetX = 10
+                                   tiltOffsetY = 20
+                               }
+                           }
+                       
+                       Image(selectedImage)
+                           .resizable()
+                           .scaledToFit()
+                           .frame(width: 130)
+                           .position(x: appData.UISW * 0.86, y: appData.UISH * 0.68)
+                           .onAppear{
+                               dialog = "Primero deberás multiplicar el número que aparezca en la izquierda."
+                               self.frame = CGRect(x: appData.UISW * 0.32, y: appData.UISH * 0.2, width: 140, height: 140)
+                               if appData.sound {
+            //                                    SoundManager.instance.playDialogES(sound: .AR3, loop: false)
+                               }
+                           }
+                       
+                       ZStack {
+                           Image("triangulo")
+                               .resizable()
+                               .scaledToFit()
+                               .rotationEffect(.degrees(110))
+                               .offset(x: 274, y: 10)
+                               .frame(width: 20)
+                           
+                           RoundedRectangle(cornerRadius: 25)
+                               .foregroundColor(.white)
+                               .frame(width: appData.UISW * 0.5, height: appData.UISH * 0.175)
+                           
+                           Text(dialog)
+                               .font(.custom("RifficFree-Bold", size: 25))
+                               .foregroundColor(selectedColor)
+                               .frame(width: 500)
+                               .multilineTextAlignment(.center)
+                       }
+                       .position(x: appData.UISW * 0.53, y: appData.UISH * 0.68)
+                       
+                       Button{
+                           withAnimation (.spring(duration: 0.2)){
+                               appData.FlagTuto = 22
+                               SoundManager.instance.stopDialog()
+                           }
+                       } label: {
+                           Text("Continuar")
+                               .font(.custom("RifficFree-Bold", size: 20))
+                               .padding(.horizontal)
+                               .padding(.vertical, 10)
+                               .foregroundColor(.white)
+                       }
+                           .background(selectedColor)
+                           .cornerRadius(8)
+                           .position(x: appData.UISW * 0.69, y: appData.UISH * 0.77)
+                   } else if appData.FlagTuto == 22 {
+                       
+                       Rectangle()
+                           .foregroundColor(.white.opacity(0.0000000000000001))
+                           .frame(width: appData.UISW * 1, height: appData.UISH * 0.14)
+                           .position(x: appData.UISW * 0.5, y: appData.UISH * 0.9)
+                           .onAppear {
+                               withAnimation (.smooth(duration: 0.2)){
+                                   opacity = 1
+                                   degrees = 230
+                                   positionX = appData.UISW * 0.7
+                                   positionY = appData.UISH * 0.2
+                                   tiltOffsetX = 0
+                                   tiltOffsetY = 0
+                               }
+                               withAnimation(Animation.easeInOut(duration: 1.0).repeatForever(autoreverses: true)) {
+                                   tiltOffsetX = 20
+                                   tiltOffsetY = 0
+                               }
+                           }
+                       
+                       Image(selectedImage)
+                           .resizable()
+                           .scaledToFit()
+                           .frame(width: 130)
+                           .position(x: appData.UISW * 0.3, y: appData.UISH * 0.68)
+                           .onAppear{
+                               dialog = "Por las unidades..."
+                               self.frame = CGRect(x: appData.UISW * 0.505, y: appData.UISH * 0.2, width: 40, height: 140)
+                               if appData.sound {
+            //                                    SoundManager.instance.playDialogES(sound: .AR3, loop: false)
+                               }
+                           }
+                       
+                       ZStack {
+                           Image("triangulo")
+                               .resizable()
+                               .scaledToFit()
+                               .rotationEffect(.degrees(140))
+                               .offset(x: -150, y: 10)
+                               .frame(width: 20)
+                           
+                           RoundedRectangle(cornerRadius: 25)
+                               .foregroundColor(.white)
+                               .frame(width: appData.UISW * 0.25, height: appData.UISH * 0.175)
+                           
+                           Text(dialog)
+                               .font(.custom("RifficFree-Bold", size: 25))
+                               .foregroundColor(selectedColor)
+                               .frame(width: 500)
+                               .multilineTextAlignment(.center)
+                       }
+                       .position(x: appData.UISW * 0.53, y: appData.UISH * 0.68)
+                       
+                       Button{
+                           withAnimation (.spring(duration: 0.2)){
+                               appData.FlagTuto = 23
+                               SoundManager.instance.stopDialog()
+                           }
+                       } label: {
+                           Text("Continuar")
+                               .font(.custom("RifficFree-Bold", size: 20))
+                               .padding(.horizontal)
+                               .padding(.vertical, 10)
+                               .foregroundColor(.white)
+                       }
+                           .background(selectedColor)
+                           .cornerRadius(8)
+                           .position(x: appData.UISW * 0.58, y: appData.UISH * 0.77)
+                   } else if appData.FlagTuto == 23 {
+                       
+                       Rectangle()
+                           .foregroundColor(.white.opacity(0.0000000000000001))
+                           .frame(width: appData.UISW * 1, height: appData.UISH * 0.14)
+                           .position(x: appData.UISW * 0.5, y: appData.UISH * 0.9)
+                           .onAppear {
+                               withAnimation (.smooth(duration: 0.2)){
+                                   opacity = 1
+                                   degrees = 230
+                                   positionX = appData.UISW * 0.7
+                                   positionY = appData.UISH * 0.2
+                                   tiltOffsetX = 0
+                                   tiltOffsetY = 0
+                               }
+                               withAnimation(Animation.easeInOut(duration: 1.0).repeatForever(autoreverses: true)) {
+                                   tiltOffsetX = 20
+                                   tiltOffsetY = 0
+                               }
+                           }
+                       
+                       Image(selectedImage)
+                           .resizable()
+                           .scaledToFit()
+                           .frame(width: 130)
+                           .position(x: appData.UISW * 0.3, y: appData.UISH * 0.68)
+                           .onAppear{
+                               dialog = "Por las decenas..."
+                               self.frame = CGRect(x: appData.UISW * 0.5, y: appData.UISH * 0.2, width: 70, height: 140)
+                               if appData.sound {
+            //                                    SoundManager.instance.playDialogES(sound: .AR3, loop: false)
+                               }
+                           }
+                       
+                       ZStack {
+                           Image("triangulo")
+                               .resizable()
+                               .scaledToFit()
+                               .rotationEffect(.degrees(140))
+                               .offset(x: -150, y: 10)
+                               .frame(width: 20)
+                           
+                           RoundedRectangle(cornerRadius: 25)
+                               .foregroundColor(.white)
+                               .frame(width: appData.UISW * 0.25, height: appData.UISH * 0.175)
+                           
+                           Text(dialog)
+                               .font(.custom("RifficFree-Bold", size: 25))
+                               .foregroundColor(selectedColor)
+                               .frame(width: 500)
+                               .multilineTextAlignment(.center)
+                       }
+                       .position(x: appData.UISW * 0.53, y: appData.UISH * 0.68)
+                       
+                       Button{
+                           withAnimation (.spring(duration: 0.2)){
+                               appData.FlagTuto = 24
+                               SoundManager.instance.stopDialog()
+                           }
+                       } label: {
+                           Text("Continuar")
+                               .font(.custom("RifficFree-Bold", size: 20))
+                               .padding(.horizontal)
+                               .padding(.vertical, 10)
+                               .foregroundColor(.white)
+                       }
+                           .background(selectedColor)
+                           .cornerRadius(8)
+                           .position(x: appData.UISW * 0.58, y: appData.UISH * 0.77)
+                   } else if appData.FlagTuto == 24 {
+                       
+                       Rectangle()
+                           .foregroundColor(.white.opacity(0.0000000000000001))
+                           .frame(width: appData.UISW * 1, height: appData.UISH * 0.14)
+                           .position(x: appData.UISW * 0.5, y: appData.UISH * 0.9)
+                           .onAppear {
+                               withAnimation (.smooth(duration: 0.2)){
+                                   opacity = 1
+                                   degrees = 230
+                                   positionX = appData.UISW * 0.7
+                                   positionY = appData.UISH * 0.2
+                                   tiltOffsetX = 0
+                                   tiltOffsetY = 0
+                               }
+                               withAnimation(Animation.easeInOut(duration: 1.0).repeatForever(autoreverses: true)) {
+                                   tiltOffsetX = 20
+                                   tiltOffsetY = 0
+                               }
+                           }
+                       
+                       Image(selectedImage)
+                           .resizable()
+                           .scaledToFit()
+                           .frame(width: 130)
+                           .position(x: appData.UISW * 0.3, y: appData.UISH * 0.68)
+                           .onAppear{
+                               dialog = "Y por las centenas..."
+                               self.frame = CGRect(x: appData.UISW * 0.48, y: appData.UISH * 0.2, width: 140, height: 140)
+                               if appData.sound {
+            //                                    SoundManager.instance.playDialogES(sound: .AR3, loop: false)
+                               }
+                           }
+                       
+                       ZStack {
+                           Image("triangulo")
+                               .resizable()
+                               .scaledToFit()
+                               .rotationEffect(.degrees(140))
+                               .offset(x: -150, y: 10)
+                               .frame(width: 20)
+                           
+                           RoundedRectangle(cornerRadius: 25)
+                               .foregroundColor(.white)
+                               .frame(width: appData.UISW * 0.25, height: appData.UISH * 0.175)
+                           
+                           Text(dialog)
+                               .font(.custom("RifficFree-Bold", size: 25))
+                               .foregroundColor(selectedColor)
+                               .frame(width: 500)
+                               .multilineTextAlignment(.center)
+                       }
+                       .position(x: appData.UISW * 0.53, y: appData.UISH * 0.68)
+                       
+                       Button{
+                           withAnimation (.spring(duration: 0.2)){
+                               appData.FlagTuto = 25
+                               SoundManager.instance.stopDialog()
+                           }
+                       } label: {
+                           Text("Continuar")
+                               .font(.custom("RifficFree-Bold", size: 20))
+                               .padding(.horizontal)
+                               .padding(.vertical, 10)
+                               .foregroundColor(.white)
+                       }
+                           .background(selectedColor)
+                           .cornerRadius(8)
+                           .position(x: appData.UISW * 0.58, y: appData.UISH * 0.77)
+                   } else if appData.FlagTuto == 25 {
+                       
+                       Rectangle()
+                           .foregroundColor(.white.opacity(0.0000000000000001))
+                           .frame(width: appData.UISW * 1, height: appData.UISH * 0.14)
+                           .position(x: appData.UISW * 0.5, y: appData.UISH * 0.9)
+                           .onAppear {
+                               withAnimation (.smooth(duration: 0.2)){
+                                   opacity = 1
+                                   degrees = 50
+                                   positionX = appData.UISW * 0.47
+                                   positionY = appData.UISH * 0.2
+                                   tiltOffsetX = 0
+                                   tiltOffsetY = 0
+                               }
+                               withAnimation(Animation.easeInOut(duration: 1.0).repeatForever(autoreverses: true)) {
+                                   tiltOffsetX = 20
+                                   tiltOffsetY = 0
+                               }
+                           }
+                       
+                       Image(selectedImage)
+                           .resizable()
+                           .scaledToFit()
+                           .frame(width: 130)
+                           .position(x: appData.UISW * 0.2, y: appData.UISH * 0.68)
+                           .onAppear{
+                               dialog = "Para después sumar los resultados y colocarlos sobre el recuadro"
+                               self.frame = CGRect(x: appData.UISW * 0.66, y: appData.UISH * 0.2, width: 160, height: 140)
+                               if appData.sound {
+            //                                    SoundManager.instance.playDialogES(sound: .AR3, loop: false)
+                               }
+                           }
+                       
+                       ZStack {
+                           Image("triangulo")
+                               .resizable()
+                               .scaledToFit()
+                               .rotationEffect(.degrees(140))
+                               .offset(x: -266, y: 10)
+                               .frame(width: 20)
+                           
+                           RoundedRectangle(cornerRadius: 25)
+                               .foregroundColor(.white)
+                               .frame(width: appData.UISW * 0.45, height: appData.UISH * 0.175)
+                           
+                           Text(dialog)
+                               .font(.custom("RifficFree-Bold", size: 25))
+                               .foregroundColor(selectedColor)
+                               .frame(width: 500)
+                               .multilineTextAlignment(.center)
+                       }
+                       .position(x: appData.UISW * 0.53, y: appData.UISH * 0.68)
+                       
+                       Button{
+                           withAnimation (.spring(duration: 0.2)){
+                               appData.FlagTuto = 14
+                               SoundManager.instance.stopDialog()
+                           }
+                       } label: {
+                           Text("Continuar")
+                               .font(.custom("RifficFree-Bold", size: 20))
+                               .padding(.horizontal)
+                               .padding(.vertical, 10)
+                               .foregroundColor(.white)
+                       }
+                           .background(selectedColor)
+                           .cornerRadius(8)
+                           .position(x: appData.UISW * 0.58, y: appData.UISH * 0.77)
+                   }
                     Button{
                         withAnimation(.easeInOut(duration: 0.1)) {
                             appData.sound.toggle()
@@ -1780,7 +2187,7 @@ struct TutorialView: View {
 }
 
 #Preview {
-    TutorialView(viewType: .elegirTabla)
+    TutorialView(viewType: .reto)
         .environmentObject(AppData())
         .environmentObject(PerfilesViewModel())
 }

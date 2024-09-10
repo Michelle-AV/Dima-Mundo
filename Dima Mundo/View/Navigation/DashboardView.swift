@@ -18,7 +18,15 @@ struct DashboardView: View {
     @State private var filterType: String = "Reto" // Valores posibles: "Reto", "Ejercicio"
     @State private var sortColumn: SortColumn = .fecha
     @State private var sortAscending: Bool = true
-
+    
+    @State var isTappedPicker: Bool = true
+    @State var isEjercicios: Bool = false
+    
+    @State var isDateSorted: Bool = false
+    @State var isUsernameSorted: Bool = false
+    
+    @State var opacityRows: Double = 1.0
+    
     enum SortColumn {
         case usuario, aciertos, errores, fecha
     }
@@ -30,18 +38,31 @@ struct DashboardView: View {
                 .frame(width: appData.UISW * 0.9, height: appData.UISH * 0.8)
                 .padding(.top, appData.UISH * 0.1)
 
-            VStack(spacing: 50) {
+            ZStack {
                 // Encabezado
                 HStack {
                     Button(action: {
-                        isShowingHistorial = false
+                        withAnimation (.smooth(duration: 0.1)){
+                            isShowingHistorial = false
+                        }
                     }) {
                         Text("Gestionar perfiles")
                             .font(.custom("RifficFree-Bold", size: 20))
-                            .foregroundColor(.white)
+                            .foregroundColor(isShowingHistorial ? Color.skinMonin : .white)
                             .frame(width: appData.UISW * 0.2, height: appData.UISH * 0.07)
-                            .background(isShowingHistorial ? Color.gray : Color.skinMonin)
-                            .cornerRadius(15)
+                            .background(
+                                ZStack {
+                                    if isShowingHistorial {
+                                        RoundedRectangle(cornerRadius: 15)
+                                            .stroke(Color.skinMonin, lineWidth: 3)
+                                            .background(Color.clear)
+                                    } else {
+                                        RoundedRectangle(cornerRadius: 15)
+                                            .fill(Color.skinMonin)
+                                            .stroke(Color.skinMonin, lineWidth: 3)
+                                    }
+                                }
+                            )
                     }
                     
                     Spacer()
@@ -52,27 +73,42 @@ struct DashboardView: View {
 
                     Spacer()
 
+
                     Button(action: {
-                        isShowingHistorial.toggle()
+                        withAnimation (.smooth(duration: 0.1)){
+                            isShowingHistorial = true
+                        }
                         if isShowingHistorial {
                             ejercicios = fetchEjercicios()
                         }
                     }) {
                         Text("Historial")
                             .font(.custom("RifficFree-Bold", size: 20))
-                            .padding(10)
-                            .foregroundColor(isShowingHistorial ? .white : .skinMonin)
+                            .foregroundColor(!isShowingHistorial ? Color.skinMonin : .white)
                             .frame(width: appData.UISW * 0.2, height: appData.UISH * 0.07)
-                            .background(isShowingHistorial ? Color.skinMonin : Color.clear)
-                            .cornerRadius(15)
+                            .background(
+                                ZStack {
+                                    if !isShowingHistorial {
+                                        RoundedRectangle(cornerRadius: 15)
+                                            .stroke(Color.skinMonin, lineWidth: 3)
+                                            .background(Color.clear)
+                                    } else {
+                                        RoundedRectangle(cornerRadius: 15)
+                                            .fill(Color.skinMonin)
+                                            .stroke(Color.skinMonin, lineWidth: 3)
+                                    }
+                                }
+                            )
                     }
-                }
+                }.offset(y: appData.UISH * -0.27)
                 .padding(.top, 40)
 
                 if isShowingHistorial {
                     historialView
+                        .offset(y: appData.UISH * 0.12)
                 } else {
                     gestionarPerfilesView
+                        .offset(y: appData.UISH * 0.12)
                 }
             }
             .frame(width: appData.UISW * 0.8, height: appData.UISH * 0.6)
@@ -92,7 +128,7 @@ struct DashboardView: View {
 
     // Vista para gestionar perfiles
     private var gestionarPerfilesView: some View {
-        ScrollView {
+        ScrollView (showsIndicators: false){
             VStack(spacing: 20) {
                 ForEach(perfiles, id: \.id) { perfil in
                     ProfileRow(perfil: perfil, onEdit: {
@@ -106,65 +142,258 @@ struct DashboardView: View {
             .padding(.horizontal, 20)
             .padding(.top, 20)
         }
-        .frame(width: appData.UISW * 0.8, height: appData.UISH * 0.5)
+        .frame(width: appData.UISW * 0.8, height: appData.UISH * 0.58)
         .background(RoundedRectangle(cornerRadius: 25).fill(Color.CelesteBG))
     }
 
     // Vista para mostrar el historial
     private var historialView: some View {
-        VStack {
-            // Filtros y ordenamiento
-            HStack {
-                Button("Graficar") {
-                    // Acción para graficar
-                }
-                .font(.custom("RifficFree-Bold", size: 20))
-                .foregroundColor(.white)
-                .frame(width: appData.UISW * 0.15, height: appData.UISH * 0.05)
-                .background(Color.green)
-                .cornerRadius(10)
-                
-                Spacer()
-
-                // Filtro por tipo de ejercicio
-                Picker(selection: $filterType, label: Text("")) {
-                    Text("Reto").tag("Reto")
-                    Text("Ejercicio").tag("Ejercicio")
-                }
-                .pickerStyle(MenuPickerStyle())
-                .frame(width: appData.UISW * 0.2)
-                .background(Color.gray.opacity(0.2))
-                .cornerRadius(10)
-                .onChange(of: filterType) { _ in
-                    ejercicios = fetchEjercicios()
-                }
-            }
-            .padding(.horizontal)
-
-            // Tabla de historial
-            HStack {
-                headerColumn(title: "Usuario", column: .usuario)
-                headerColumn(title: "Aciertos", column: .aciertos)
-                headerColumn(title: "Errores", column: .errores)
-                headerColumn(title: "Fecha", column: .fecha)
-            }
-            .position(x: appData.UISW * 0.45)
-            .padding(.vertical)
-            .background(RoundedRectangle(cornerRadius: 25).fill(Color.CelesteBG))
-
-            ScrollView {
-                VStack(spacing: 10) {
-                    ForEach(ejercicios, id: \.ejercicioID) { ejercicio in
-                        historialRow(ejercicio)
-                    }
-                }
-                .padding(.top, 60)
-                .position(x: appData.UISW * 0.45)
-                
-            }
-            .frame(width: appData.UISW * 0.8, height: appData.UISH * 0.4)
-            .background(RoundedRectangle(cornerRadius: 25).fill(Color.CelesteBG))
+        ZStack {
             
+            RoundedRectangle(cornerRadius: 25)
+                .foregroundColor(Color.CelesteBG)
+                .frame(height: appData.UISH * 0.58)
+            
+            VStack {
+                // Filtros y ordenamiento
+                HStack{
+                    Button("Graficar") {
+                        // Acción para graficar
+                    }
+                    .font(.custom("RifficFree-Bold", size: 20))
+                    .foregroundColor(.white)
+//                    .frame(width: appData.UISW * 0.15, height: appData.UISH * 0.05)
+                    .frame(width: 150, height: 50)
+                    .background(Color.VerdeAns)
+                    .cornerRadius(10)
+                    .padding(.leading, 12)
+                    
+                    Spacer()
+                    
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 10)
+                            .foregroundColor(Color.CelesteBtnDash)
+                        
+                        HStack {
+                            Text("\(filterType)")
+                                .font(.custom("RifficFree-Bold", size: 20))
+                                .foregroundColor(.white)
+                                .padding(.leading, 40)
+                            
+                            Spacer()
+                            
+                            Image(systemName: "triangle.fill")
+                                .foregroundColor(.white)
+                                .rotationEffect(.degrees(!isTappedPicker ? 0 : 180))
+                                .padding(.trailing, 30)
+                        }
+                        
+                    }.frame(width: isEjercicios ? 200 : 150, height: 50)
+                        .onTapGesture {
+                            withAnimation (.smooth(duration: 0.3)){
+                                isTappedPicker.toggle()
+                            }
+                        }
+                        .padding(.trailing, 12)
+                    
+//                    // Filtro por tipo de ejercicio
+//                    Picker(selection: $filterType, label: Text("")) {
+//                        Text("Reto").tag("Reto")
+//                        Text("Ejercicio").tag("Ejercicio")
+//                    }
+//                    .pickerStyle(MenuPickerStyle())
+//                    .frame(width: appData.UISW * 0.2)
+//                    .background(Color.gray.opacity(0.2))
+//                    .cornerRadius(10)
+//                    .onChange(of: filterType) { _ in
+//                        ejercicios = fetchEjercicios()
+//                    }
+                }
+                .padding(.horizontal)
+                .offset(y: -20)
+
+                // Tabla de historial
+                ZStack {
+                    RoundedRectangle(cornerRadius: 25)
+                        .foregroundColor(.white)
+                    
+                    ScrollView {
+                        VStack(spacing: 10) {
+                            ForEach(ejercicios, id: \.ejercicioID) { ejercicio in
+                                historialRow(ejercicio)
+                            }
+                        }
+                        .frame(maxWidth: .infinity)
+                        .padding(.top, 0)
+                        .offset(x: 74)
+                    }
+                    .frame(width: appData.UISW * 0.7, height: 250)
+                    .clipped()
+                    .offset(y: 40)
+
+                    
+                    RoundedRectangle(cornerRadius: 25)
+                        .foregroundColor(.white)
+                        .frame(height: 90)
+                        .offset(y: -132)
+                    
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 10)
+                            .foregroundColor(Color.CelesteBtnDash)
+                        HStack {
+                            Text("Usuario")
+                                .font(.custom("RifficFree-Bold", size: 20))
+                                .foregroundColor(.white)
+                            
+                            Image(systemName: "triangle.fill")
+                                .foregroundColor(.white)
+                                .rotationEffect(.degrees(isUsernameSorted ? 0 : 180)) // Rotar la flecha
+                        }
+                    }.frame(width: 150, height: 50)
+                        .position(x: appData.UISW * 0.08, y: appData.UISH * 0.06)
+                        .onTapGesture {
+                            opacityRows = 0.1
+                            withAnimation (.spring(duration: 0.3)){
+                                isUsernameSorted.toggle() // Cambiar el valor para invertir el orden
+                                sortColumn = .usuario // Establecer la columna de orden como usuario
+                                if isUsernameSorted {
+                                    isDateSorted = false
+                                }
+                                ejercicios = fetchEjercicios() // Refrescar la lista de ejercicios
+                            }
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                                withAnimation(.easeInOut(duration: 0.2)) {
+                                    opacityRows = 1
+                                }
+                            }
+                        }
+                    
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 10)
+                            .foregroundColor(Color.CelesteBtnDash)
+                        HStack {
+                            Text("Aciertos")
+                                .font(.custom("RifficFree-Bold", size: 20))
+                                .foregroundColor(.white)
+                        }
+                    }.frame(width: 150, height: 50)
+                        .position(x: appData.UISW * 0.26, y: appData.UISH * 0.06)
+                    
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 10)
+                            .foregroundColor(Color.CelesteBtnDash)
+                        HStack {
+                            Text("Errores")
+                                .font(.custom("RifficFree-Bold", size: 20))
+                                .foregroundColor(.white)
+                        }
+                    }.frame(width: 150, height: 50)
+                        .position(x: appData.UISW * 0.46, y: appData.UISH * 0.06)
+                    
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 10)
+                            .foregroundColor(Color.CelesteBtnDash)
+                        HStack (spacing: 15){
+                            Text("Fecha")
+                                .font(.custom("RifficFree-Bold", size: 20))
+                                .foregroundColor(.white)
+                                                    
+                            Image(systemName: "triangle.fill")
+                                .foregroundColor(.white)
+                                .rotationEffect(.degrees(isDateSorted ? 0 : 180))
+                        }
+                    }.frame(width: 150, height: 50)
+                        .position(x: appData.UISW * 0.67, y: appData.UISH * 0.06)
+                        .onTapGesture {
+                            opacityRows = 0.1
+                            withAnimation (.spring(duration: 0.3)){
+                                isDateSorted.toggle()
+                                if isDateSorted {
+                                    isUsernameSorted = false
+                                }
+                                sortColumn = .fecha
+                                ejercicios = fetchEjercicios()
+                            }
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                                withAnimation(.easeInOut(duration: 0.2)) {
+                                    opacityRows = 1
+                                }
+                            }
+                        }
+                    
+                }.frame(width: appData.UISW * 0.75, height: appData.UISH * 0.43)
+                
+                
+    //            HStack {
+    //                headerColumn(title: "Usuario", column: .usuario)
+    //                headerColumn(title: "Aciertos", column: .aciertos)
+    //                headerColumn(title: "Errores", column: .errores)
+    //                headerColumn(title: "Fecha", column: .fecha)
+    //            }
+    //            .position(x: appData.UISW * 0.45)
+    //            .padding(.vertical)
+    //            .background(RoundedRectangle(cornerRadius: 25).fill(Color.CelesteBG))
+                
+            }.offset(y: 10)
+            
+            ZStack{
+                RoundedRectangle(cornerRadius: 10)
+                    .foregroundColor(Color.CelesteBtnDash)
+                    .opacity(isTappedPicker ? 0 : 1)
+                
+                RoundedRectangle(cornerRadius: 0)
+                        .foregroundColor(.white)
+                        .frame(height: 3)
+                        .opacity(isTappedPicker ? 0 : 1)
+                
+                HStack(spacing: 20){
+                    Image(systemName: filterType == "Reto" ? "checkmark.square.fill" : "square")
+                        .resizable()
+                        .scaledToFit()
+                        .foregroundColor(.white)
+                        .frame(width: 20)
+                    
+                    Text("Reto")
+                        .font(.custom("RifficFree-Bold", size: 20))
+                        .foregroundColor(.white)
+                }.offset(x: -23,y: -30)
+                    .onTapGesture {
+                        withAnimation(.spring(duration: 0.2)) {
+                            isEjercicios = false
+                        }
+                        filterType = "Reto"
+                        ejercicios = fetchEjercicios()
+                    }
+                    .opacity(isTappedPicker ? 0 : 1)
+                
+                
+                HStack(spacing: 20){
+                    Image(systemName: filterType == "Ejercicio" ? "checkmark.square.fill" : "square")
+                        .resizable()
+                        .scaledToFit()
+                        .foregroundColor(.white)
+                        .frame(width: 20)
+                    
+                    Text("Ejercicio")
+                        .font(.custom("RifficFree-Bold", size: 20))
+                        .foregroundColor(.white)
+                }.offset(y: 30)
+                    .onTapGesture {
+                        withAnimation(.spring(duration: 0.2)) {
+                            isEjercicios = true
+                        }
+                        filterType = "Ejercicio"
+                        ejercicios = fetchEjercicios()
+                    }
+                    .opacity(isTappedPicker ? 0 : 1)
+                
+            }.frame(width: isTappedPicker ? 0 : 200, height: isTappedPicker ? 0 : 130)
+                .position(x: appData.UISW * 0.69, y: appData.UISH * 0.18)
+                .offset(x: isTappedPicker ? 50 : 0, y: !isTappedPicker ? 0 : -70)
+            
+        }
+        .onAppear{
+            ejercicios = fetchEjercicios()
         }
     }
 
@@ -201,15 +430,19 @@ struct DashboardView: View {
             Text("\(ejercicio.aciertos)")
                 .font(.custom("RifficFree-Bold", size: 20))
                 .frame(width: appData.UISW * 0.2, alignment: .leading)
+                .offset(x: 25)
             
             Text("\(ejercicio.errores)")
                 .font(.custom("RifficFree-Bold", size: 20))
                 .frame(width: appData.UISW * 0.2, alignment: .leading)
+                .offset(x: 20)
             
             Text(formatDate(ejercicio.fecha))
                 .font(.custom("RifficFree-Bold", size: 20))
                 .frame(width: appData.UISW * 0.2, alignment: .leading)
-        }
+            
+        }.foregroundColor(Color.skinMonin)
+            .opacity(opacityRows)
         .padding(.vertical, 5)
     }
 
@@ -227,13 +460,25 @@ struct DashboardView: View {
 
         switch sortColumn {
         case .usuario:
-            fetchedEjercicios.sort { (sortAscending ? $0.perfil?.nombre ?? "" < $1.perfil?.nombre ?? "" : $0.perfil?.nombre ?? "" > $1.perfil?.nombre ?? "") }
+            fetchedEjercicios.sort {
+                if isUsernameSorted {
+                    return ($0.perfil?.nombre ?? "") > ($1.perfil?.nombre ?? "")
+                } else {
+                    return ($0.perfil?.nombre ?? "") < ($1.perfil?.nombre ?? "")
+                }
+            }
         case .aciertos:
             fetchedEjercicios.sort { sortAscending ? $0.aciertos < $1.aciertos : $0.aciertos > $1.aciertos }
         case .errores:
             fetchedEjercicios.sort { sortAscending ? $0.errores < $1.errores : $0.errores > $1.errores }
         case .fecha:
-            fetchedEjercicios.sort { sortAscending ? $0.fecha ?? Date() < $1.fecha ?? Date() : $0.fecha ?? Date() > $1.fecha ?? Date() }
+            fetchedEjercicios.sort {
+                if isDateSorted {
+                    return $0.fecha ?? Date() > $1.fecha ?? Date()
+                } else {
+                    return $0.fecha ?? Date() < $1.fecha ?? Date()
+                }
+            }
         }
 
         return fetchedEjercicios
