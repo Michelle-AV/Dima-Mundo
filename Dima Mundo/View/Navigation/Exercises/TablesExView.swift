@@ -222,24 +222,28 @@ struct TablesExView: View {
                 if correctCountDouble == 0 {
                     Text(appData.localizationManager.localizedString(for: "cal-ejercicio0" ))
                         .font(.custom("RifficFree-Bold", size: 30))
+                        .frame(width: appData.UISW * 0.9)
                         .position(x: appData.UISW * 0.5, y: appData.UISH * 0.65)
                         .foregroundColor(.buttonLblColor)
                 }
                 if correctCountDouble >= 1 && correctCountDouble <= 2  {
                     Text(appData.localizationManager.localizedString(for: "cal-ejercicio1-2" ))
                         .font(.custom("RifficFree-Bold", size: 30))
+                        .frame(width: appData.UISW * 0.9)
                         .position(x: appData.UISW * 0.5, y: appData.UISH * 0.65)
                         .foregroundColor(.buttonLblColor)
                 }
                 if correctCountDouble >= 3 && correctCountDouble <= 4  {
                     Text(appData.localizationManager.localizedString(for: "cal-ejercicio3-4" ))
                         .font(.custom("RifficFree-Bold", size: 30))
+                        .frame(width: appData.UISW * 0.9)
                         .position(x: appData.UISW * 0.5, y: appData.UISH * 0.65)
                         .foregroundColor(.buttonLblColor)
                 }
                 if correctCountDouble == 5  {
                     Text(appData.localizationManager.localizedString(for: "cal-ejercicio5" ))
                         .font(.custom("RifficFree-Bold", size: 30))
+                        .frame(width: appData.UISW * 0.9)
                         .position(x: appData.UISW * 0.5, y: appData.UISH * 0.65)
                         .foregroundColor(.buttonLblColor)
                 }
@@ -298,7 +302,7 @@ struct TablesExView: View {
                             }
                         } label: {
                             Text(showPopup ? "Cerrar" : "Ver resultados")
-                                .font(.custom("RifficFree-Bold", size: showPopup ? 25 : 25))
+                                .font(.custom("RifficFree-Bold", size: appData.UISW * 0.025))
                                 .padding()
                                 .padding(.horizontal)
                                 .foregroundColor(.buttonLblColor)
@@ -308,7 +312,7 @@ struct TablesExView: View {
                                     RoundedRectangle(cornerRadius: 15)
                                         .stroke(Color.white, lineWidth: 7.5)
                                 )
-                                .frame(width: showPopup ? 180 : appData.UISW * 0.2) // Animar el tamaño
+                                .frame(width: showPopup ? appData.UISW * 0.3 : appData.UISW * 0.3)
                         }
                         .position(x: appData.UISW * 0.5, y: appData.UISH * 0.85)
                         .animation(.bouncy(duration: 0.15), value: showPopup)

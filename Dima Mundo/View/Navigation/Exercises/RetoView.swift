@@ -215,12 +215,14 @@ struct RetoView: View {
                 if correctCount < 3  {
                     Text(appData.localizationManager.localizedString(for: "cal-reto1" ))
                         .font(.custom("RifficFree-Bold", size: 30))
+                        .frame(width: appData.UISW * 0.9)
                         .position(x: appData.UISW * 0.5, y: appData.UISH * 0.65)
                         .foregroundColor(.buttonLblColor)
                 }
                 if correctCount < 6 && correctCount > 2  {
                     Text(appData.localizationManager.localizedString(for: "cal-reto2" ))
                         .font(.custom("RifficFree-Bold", size: 30))
+                        .frame(width: appData.UISW * 0.9)
                         .position(x: appData.UISW * 0.5, y: appData.UISH * 0.65)
                         .foregroundColor(.buttonLblColor)
                 }
@@ -228,6 +230,7 @@ struct RetoView: View {
                 if correctCount < 9 && correctCount > 5  {
                     Text(appData.localizationManager.localizedString(for: "cal-reto3" ))
                         .font(.custom("RifficFree-Bold", size: 30))
+                        .frame(width: appData.UISW * 0.9)
                         .position(x: appData.UISW * 0.5, y: appData.UISH * 0.65)
                         .foregroundColor(.buttonLblColor)
                 }
@@ -235,6 +238,7 @@ struct RetoView: View {
                 if correctCount == 9 {
                     Text(appData.localizationManager.localizedString(for: "cal-reto4" ))
                         .font(.custom("RifficFree-Bold", size: 30))
+                        .frame(width: appData.UISW * 0.9)
                         .position(x: appData.UISW * 0.5, y: appData.UISH * 0.65)
                         .foregroundColor(.buttonLblColor)
                 }
@@ -282,7 +286,7 @@ struct RetoView: View {
                     }
                 } label: {
                     Text(showPopup ? "Cerrar" : "Ver resultados")
-                        .font(.custom("RifficFree-Bold", size: 25))
+                        .font(.custom("RifficFree-Bold", size: appData.UISW * 0.025))
                         .padding()
                         .padding(.horizontal)
                         .foregroundColor(.buttonLblColor)
@@ -292,7 +296,7 @@ struct RetoView: View {
                             RoundedRectangle(cornerRadius: 15)
                                 .stroke(Color.white, lineWidth: 7.5)
                         )
-                        .frame(width: showPopup ? 180 : appData.UISW * 0.2) // Animar el tamaño
+                        .frame(width: showPopup ? appData.UISW * 0.3 : appData.UISW * 0.3)
                 }
                 .position(x: appData.UISW * 0.5, y: appData.UISH * 0.85)
                 .animation(.bouncy(duration: 0.15), value: showPopup)

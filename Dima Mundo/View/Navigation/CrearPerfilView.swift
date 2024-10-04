@@ -13,16 +13,12 @@ struct CrearPerfilView: View {
     @StateObject private var riveModel = RiveModel()
     @State private var selectedAvatarIndex: Int = 2
     @State private var selectedColor: ColorOption = .azul
-    @State private var userName: String = "" {
-        didSet {
-            if userName.count > 8 {
-                userName = String(userName.prefix(8))
-            }
-        }
-    }
+    @State private var userName: String = ""
     @State private var textWidth: CGFloat = 100
     @State private var buttonVisible: Bool = true
     @State private var keyboardVisible: Bool = false
+    @State private var showErrorMessage: Bool = false // Variable para mostrar el error
+    @State private var errorMessage: String = ""      // Texto del mensaje de error
 
     var onSave: () -> Void
     var onCancel: () -> Void
@@ -86,20 +82,22 @@ struct CrearPerfilView: View {
             .position(x: appData.UISW * 0.06, y: appData.UISH * 0.1)
             
             ZStack {
-                Text(appData.localizationManager.localizedString(for: "CrearPerfilTitle" ))
+                Text(appData.localizationManager.localizedString(for: "CrearPerfilTitle"))
                     .font(.custom("RifficFree-Bold", size: 65))
                     .foregroundColor(.white)
                     .position(x: appData.UISW * 0.5, y: appData.UISH * 0.1)
 
-                TextField(appData.localizationManager.localizedString(for: "CrearPerfilTextfield" ), text: $userName)
+                TextField(appData.localizationManager.localizedString(for: "CrearPerfilTextfield"), text: $userName)
                     .disabled(true)
                     .onChange(of: userName) { newValue in
                         DispatchQueue.main.async {
-                            // Limitar el número de caracteres a 8
-                            if newValue.count <= 8 {
-                                userName = newValue.capitalizingFirstLetterAfterSpace()
+                            // Limitar el número de caracteres a 8 y eliminar espacios solo al inicio
+                            let trimmedLeadingSpaces = newValue.drop { $0 == " " }
+
+                            if trimmedLeadingSpaces.count <= 8 {
+                                userName = String(trimmedLeadingSpaces).capitalizingFirstLetterAfterSpace()
                             } else {
-                                userName = String(newValue.prefix(8))
+                                userName = String(trimmedLeadingSpaces.prefix(8))
                             }
                         }
                     }
@@ -118,6 +116,27 @@ struct CrearPerfilView: View {
                         }
                     }
                     .position(x: appData.UISW * 0.5, y: appData.UISH * 0.25)
+
+                // Mostrar el mensaje de error si el campo está vacío o es inválido
+                if showErrorMessage {
+                    RoundedRectangle(cornerRadius: 15)
+                        .fill(Color.white)
+                        .frame(width: appData.UISW * 0.2, height: appData.UISW * 0.2)
+                        .overlay(
+                            HStack {
+                                Text(errorMessage) // Mostrar el mensaje de error dinámicamente
+                                    .font(.custom("RifficFree-Bold", size: 20))
+                                .foregroundColor(.red)
+                                
+                            Image("mascota")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 60, alignment: .trailing)
+                            }
+                        )
+                        .position(x: appData.UISW * 0.85, y: appData.UISH * 0.45)
+                        .transition(.scale)
+                }
             }
             
             Image("podioXL")
@@ -148,14 +167,22 @@ struct CrearPerfilView: View {
                 ZStack {
                     ZStack {
                         Button(action: {
-                            if viewModel.perfiles.count == 0 {
-                                appData.firstTime = true
+                            if userName.trimmingCharacters(in: .whitespaces).isEmpty || !userName.hasPrefixLetter() { // Verificar si el nombre está vacío o no comienza con letra
+                                withAnimation {
+                                    errorMessage = userName.trimmingCharacters(in: .whitespaces).isEmpty ?
+                                        "El nombre no puede quedar vacío" : "El nombre debe comenzar con una letra"
+                                    showErrorMessage = true // Mostrar el mensaje de error
+                                }
                             } else {
-                                appData.firstTime = false
-                            }
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                                saveProfile()
-                                onSave()  // Llamar a la función onSave al guardar el perfil
+                                if viewModel.perfiles.count == 0 {
+                                    appData.firstTime = true
+                                } else {
+                                    appData.firstTime = false
+                                }
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                                    saveProfile()
+                                    onSave()  // Llamar a la función onSave al guardar el perfil
+                                }
                             }
                         }) {
                             Image(systemName: "plus")
@@ -173,7 +200,7 @@ struct CrearPerfilView: View {
                         .opacity(buttonVisible ? 1 : 0)
                         .animation(.easeOut(duration: 0.35), value: buttonVisible)
                         
-                        Text(appData.localizationManager.localizedString(for: "CrearPerfilButton" ))
+                        Text(appData.localizationManager.localizedString(for: "CrearPerfilButton"))
                             .font(.custom("RifficFree-Bold", size: 25))
                             .foregroundColor(.white)
                             .position(x: appData.UISW * 0.5, y: appData.UISH * 0.939)
@@ -186,7 +213,6 @@ struct CrearPerfilView: View {
                         .scaleEffect(0.6)
                         .allowsHitTesting(false)
                         .position(x: appData.UISW * 0.5, y: appData.UISH * 0.589)
-                        
                 }
             }
             
@@ -255,6 +281,13 @@ struct CrearPerfilView: View {
 }
 
 extension String {
+    /// Asegura que el primer carácter sea una letra
+    func hasPrefixLetter() -> Bool {
+        guard let firstChar = self.first else { return false }
+        return firstChar.isLetter
+    }
+
+    /// Capitaliza la primera letra después de cada espacio
     func capitalizingFirstLetterAfterSpace() -> String {
         var result = ""
         var capitalizeNext = true
@@ -279,3 +312,4 @@ extension String {
         .environmentObject(AppData())
         .environmentObject(PerfilesViewModel())
 }
+
