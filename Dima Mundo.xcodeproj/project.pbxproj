@@ -12,6 +12,20 @@
 		2845B4A72C5F4F8A009C12FD /* RetoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2845B4A62C5F4F8A009C12FD /* RetoView.swift */; };
 		2851EAFB2C6D0B58003D16DA /* TutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2851EAFA2C6D0B58003D16DA /* TutorialView.swift */; };
 		285346B42C5AB2F500707411 /* TablesExView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285346B32C5AB2F500707411 /* TablesExView.swift */; };
+		285415DC2CA1E6F100E5B7E9 /* AR9.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 285415D62CA1E6F000E5B7E9 /* AR9.mp3 */; };
+		285415DD2CA1E6F100E5B7E9 /* AR8.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 285415D72CA1E6F000E5B7E9 /* AR8.mp3 */; };
+		285415DE2CA1E6F100E5B7E9 /* AR10.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 285415D82CA1E6F000E5B7E9 /* AR10.mp3 */; };
+		285415DF2CA1E6F100E5B7E9 /* AR11.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 285415D92CA1E6F100E5B7E9 /* AR11.mp3 */; };
+		285415E02CA1E6F100E5B7E9 /* AR7.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 285415DA2CA1E6F100E5B7E9 /* AR7.mp3 */; };
+		285415E12CA1E6F100E5B7E9 /* AR6.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 285415DB2CA1E6F100E5B7E9 /* AR6.mp3 */; };
+		285415E62CA1EAF100E5B7E9 /* ejer4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 285415E22CA1EAF000E5B7E9 /* ejer4.mp3 */; };
+		285415E72CA1EAF100E5B7E9 /* ejer1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 285415E32CA1EAF100E5B7E9 /* ejer1.mp3 */; };
+		285415E82CA1EAF100E5B7E9 /* ejer3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 285415E42CA1EAF100E5B7E9 /* ejer3.mp3 */; };
+		285415E92CA1EAF100E5B7E9 /* ejer2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 285415E52CA1EAF100E5B7E9 /* ejer2.mp3 */; };
+		285415EE2CA1EDEC00E5B7E9 /* reto4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 285415EA2CA1EDEC00E5B7E9 /* reto4.mp3 */; };
+		285415EF2CA1EDEC00E5B7E9 /* reto2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 285415EB2CA1EDEC00E5B7E9 /* reto2.mp3 */; };
+		285415F02CA1EDEC00E5B7E9 /* reto1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 285415EC2CA1EDEC00E5B7E9 /* reto1.mp3 */; };
+		285415F12CA1EDEC00E5B7E9 /* reto3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 285415ED2CA1EDEC00E5B7E9 /* reto3.mp3 */; };
 		288B3B322C6672A300231B23 /* MainTheme.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 288B3B2E2C6672A300231B23 /* MainTheme.mp3 */; };
 		288B3B332C6672A300231B23 /* ExerciseResult.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 288B3B2F2C6672A300231B23 /* ExerciseResult.mp3 */; };
 		288B3B342C6672A300231B23 /* ChallengeFinal.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 288B3B302C6672A300231B23 /* ChallengeFinal.mp3 */; };
@@ -134,6 +148,20 @@
 		2845B4A62C5F4F8A009C12FD /* RetoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetoView.swift; sourceTree = "<group>"; };
 		2851EAFA2C6D0B58003D16DA /* TutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialView.swift; sourceTree = "<group>"; };
 		285346B32C5AB2F500707411 /* TablesExView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TablesExView.swift; sourceTree = "<group>"; };
+		285415D62CA1E6F000E5B7E9 /* AR9.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = AR9.mp3; sourceTree = "<group>"; };
+		285415D72CA1E6F000E5B7E9 /* AR8.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = AR8.mp3; sourceTree = "<group>"; };
+		285415D82CA1E6F000E5B7E9 /* AR10.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = AR10.mp3; sourceTree = "<group>"; };
+		285415D92CA1E6F100E5B7E9 /* AR11.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = AR11.mp3; sourceTree = "<group>"; };
+		285415DA2CA1E6F100E5B7E9 /* AR7.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = AR7.mp3; sourceTree = "<group>"; };
+		285415DB2CA1E6F100E5B7E9 /* AR6.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = AR6.mp3; sourceTree = "<group>"; };
+		285415E22CA1EAF000E5B7E9 /* ejer4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ejer4.mp3; sourceTree = "<group>"; };
+		285415E32CA1EAF100E5B7E9 /* ejer1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ejer1.mp3; sourceTree = "<group>"; };
+		285415E42CA1EAF100E5B7E9 /* ejer3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ejer3.mp3; sourceTree = "<group>"; };
+		285415E52CA1EAF100E5B7E9 /* ejer2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ejer2.mp3; sourceTree = "<group>"; };
+		285415EA2CA1EDEC00E5B7E9 /* reto4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = reto4.mp3; sourceTree = "<group>"; };
+		285415EB2CA1EDEC00E5B7E9 /* reto2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = reto2.mp3; sourceTree = "<group>"; };
+		285415EC2CA1EDEC00E5B7E9 /* reto1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = reto1.mp3; sourceTree = "<group>"; };
+		285415ED2CA1EDEC00E5B7E9 /* reto3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = reto3.mp3; sourceTree = "<group>"; };
 		288B3B2E2C6672A300231B23 /* MainTheme.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = MainTheme.mp3; sourceTree = "<group>"; };
 		288B3B2F2C6672A300231B23 /* ExerciseResult.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ExerciseResult.mp3; sourceTree = "<group>"; };
 		288B3B302C6672A300231B23 /* ChallengeFinal.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ChallengeFinal.mp3; sourceTree = "<group>"; };
@@ -310,6 +338,10 @@
 		289489862C72A571004A87E9 /* Audios-Ejercicios */ = {
 			isa = PBXGroup;
 			children = (
+				285415E32CA1EAF100E5B7E9 /* ejer1.mp3 */,
+				285415E52CA1EAF100E5B7E9 /* ejer2.mp3 */,
+				285415E42CA1EAF100E5B7E9 /* ejer3.mp3 */,
+				285415E22CA1EAF000E5B7E9 /* ejer4.mp3 */,
 				2894898C2C72A5BC004A87E9 /* AE1.mp3 */,
 				289489892C72A5BC004A87E9 /* AE2.mp3 */,
 				2894898A2C72A5BC004A87E9 /* AE3.mp3 */,
@@ -331,8 +363,18 @@
 		289489882C72A591004A87E9 /* Audios-Reto */ = {
 			isa = PBXGroup;
 			children = (
+				285415EC2CA1EDEC00E5B7E9 /* reto1.mp3 */,
+				285415EB2CA1EDEC00E5B7E9 /* reto2.mp3 */,
+				285415ED2CA1EDEC00E5B7E9 /* reto3.mp3 */,
+				285415EA2CA1EDEC00E5B7E9 /* reto4.mp3 */,
 				28B5F5442C72D2FF003C4FB9 /* AR1.mp3 */,
 				28B5F5402C72D2FF003C4FB9 /* AR2.mp3 */,
+				285415DB2CA1E6F100E5B7E9 /* AR6.mp3 */,
+				285415DA2CA1E6F100E5B7E9 /* AR7.mp3 */,
+				285415D72CA1E6F000E5B7E9 /* AR8.mp3 */,
+				285415D62CA1E6F000E5B7E9 /* AR9.mp3 */,
+				285415D82CA1E6F000E5B7E9 /* AR10.mp3 */,
+				285415D92CA1E6F100E5B7E9 /* AR11.mp3 */,
 				28B5F5432C72D2FF003C4FB9 /* AR3.mp3 */,
 				28B5F5412C72D2FF003C4FB9 /* AR4.mp3 */,
 				28B5F5422C72D2FF003C4FB9 /* AR5.mp3 */,
@@ -609,35 +651,48 @@
 			buildActionMask = 2147483647;
 			files = (
 				28B5F5472C72D2FF003C4FB9 /* AR5.mp3 in Resources */,
+				285415E82CA1EAF100E5B7E9 /* ejer3.mp3 in Resources */,
 				6C0D20E12C4310B7005FE8BF /* molly.riv in Resources */,
 				288B3B352C6672A300231B23 /* Exercise.mp3 in Resources */,
 				6CDF33392C4DCE1A00E9E93E /* fondos.riv in Resources */,
 				6C3D33AE2C6313400097FDC1 /* cal-reto.riv in Resources */,
+				285415E62CA1EAF100E5B7E9 /* ejer4.mp3 in Resources */,
 				2894898D2C72A5BC004A87E9 /* AE2.mp3 in Resources */,
 				6CA094C42C430279000EDBE0 /* rivebg.riv in Resources */,
 				28E6AF9B2C72C6AE00B573DA /* AT3.mp3 in Resources */,
+				285415E12CA1E6F100E5B7E9 /* AR6.mp3 in Resources */,
 				28B5F5492C72D2FF003C4FB9 /* AR1.mp3 in Resources */,
 				28BC85702C13D82200E3B62F /* Preview Assets.xcassets in Resources */,
 				288B3B342C6672A300231B23 /* ChallengeFinal.mp3 in Resources */,
 				28E6AF982C72C5C200B573DA /* AC1.mp3 in Resources */,
 				28B5F5482C72D2FF003C4FB9 /* AR3.mp3 in Resources */,
 				6C245C3C2C73CE600035C4AE /* splashScreen.riv in Resources */,
+				285415DD2CA1E6F100E5B7E9 /* AR8.mp3 in Resources */,
 				282022DC2C6BE9B000A8551C /* info-view.riv in Resources */,
+				285415F02CA1EDEC00E5B7E9 /* reto1.mp3 in Resources */,
+				285415DE2CA1E6F100E5B7E9 /* AR10.mp3 in Resources */,
 				28B5F5452C72D2FF003C4FB9 /* AR2.mp3 in Resources */,
 				288B3B322C6672A300231B23 /* MainTheme.mp3 in Resources */,
 				289489932C72A5F2004A87E9 /* AT1.mp3 in Resources */,
 				6C12CA672C372AD4005909E0 /* RifficFree-Bold.ttf in Resources */,
 				28E6AF9D2C72C6B800B573DA /* AP3.mp3 in Resources */,
 				289489902C72A5BC004A87E9 /* AE1.mp3 in Resources */,
+				285415DF2CA1E6F100E5B7E9 /* AR11.mp3 in Resources */,
 				28E6AF972C72C5C200B573DA /* AC2.mp3 in Resources */,
 				2894898E2C72A5BC004A87E9 /* AE3.mp3 in Resources */,
+				285415E72CA1EAF100E5B7E9 /* ejer1.mp3 in Resources */,
 				28E6AF992C72C5C200B573DA /* AC3.mp3 in Resources */,
 				289489982C72A619004A87E9 /* AP2.mp3 in Resources */,
 				6CF889612C73D373003305EC /* pablo2.riv in Resources */,
+				285415EF2CA1EDEC00E5B7E9 /* reto2.mp3 in Resources */,
 				28BC856D2C13D82200E3B62F /* Assets.xcassets in Resources */,
 				6C245C422C73CE600035C4AE /* jack.riv in Resources */,
 				28B5F5462C72D2FF003C4FB9 /* AR4.mp3 in Resources */,
+				285415EE2CA1EDEC00E5B7E9 /* reto4.mp3 in Resources */,
+				285415DC2CA1E6F100E5B7E9 /* AR9.mp3 in Resources */,
+				285415F12CA1EDEC00E5B7E9 /* reto3.mp3 in Resources */,
 				289489942C72A5F2004A87E9 /* AT2.mp3 in Resources */,
+				285415E02CA1E6F100E5B7E9 /* AR7.mp3 in Resources */,
 				6CA1474E2C8BAD7F00A589FF /* cal-ejercicios.riv in Resources */,
 				2894898F2C72A5BC004A87E9 /* AE4.mp3 in Resources */,
 				2894899A2C72A83C004A87E9 /* Bienvenido.mp3 in Resources */,
@@ -646,6 +701,7 @@
 				289489972C72A619004A87E9 /* AP1.mp3 in Resources */,
 				6C3D33A62C6309090097FDC1 /* melody.riv in Resources */,
 				288B3B332C6672A300231B23 /* ExerciseResult.mp3 in Resources */,
+				285415E92CA1EAF100E5B7E9 /* ejer2.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

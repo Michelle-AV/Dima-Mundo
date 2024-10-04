@@ -38,6 +38,20 @@ class SoundManager: NSObject, AVAudioPlayerDelegate {
         case AR3
         case AR4
         case AR5
+        case AR6
+        case AR7
+        case AR8
+        case AR9
+        case AR10
+        case AR11
+        case ejer1
+        case ejer2
+        case ejer3
+        case ejer4
+        case reto1
+        case reto2
+        case reto3
+        case reto4
     }
     
     func setVolume(for sound: SoundOption, volume: Float) {
@@ -96,6 +110,7 @@ class SoundManager: NSObject, AVAudioPlayerDelegate {
             let player = try AVAudioPlayer(contentsOf: url)
             player.numberOfLoops = loop ? -1 : 0
             player.delegate = self
+            player.volume = 0.5
             players[sound] = player
             activeSound = sound
             player.play()

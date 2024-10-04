@@ -1745,7 +1745,7 @@ struct TutorialView: View {
                                self.frame = CGRect(x: appData.UISW * 0.8, y: appData.UISH * 0.17, width: 0, height: 0)
                                if appData.sound {
                                    SoundManager.instance.stopDialog()
-                                   //                                    SoundManager.instance.playDialogES(sound: .AR5, loop: false)
+                                   SoundManager.instance.playDialogES(sound: .AR11, loop: false)
                                }
                            }
                        
@@ -1816,7 +1816,7 @@ struct TutorialView: View {
                                dialog = "Primero deberás multiplicar el número que aparezca en la izquierda."
                                self.frame = CGRect(x: appData.UISW * 0.32, y: appData.UISH * 0.2, width: 140, height: 140)
                                if appData.sound {
-            //                                    SoundManager.instance.playDialogES(sound: .AR3, loop: false)
+                                   SoundManager.instance.playDialogES(sound: .AR6, loop: false)
                                }
                            }
                        
@@ -1885,7 +1885,7 @@ struct TutorialView: View {
                                dialog = "Por las unidades..."
                                self.frame = CGRect(x: appData.UISW * 0.505, y: appData.UISH * 0.2, width: 40, height: 140)
                                if appData.sound {
-            //                                    SoundManager.instance.playDialogES(sound: .AR3, loop: false)
+                                    SoundManager.instance.playDialogES(sound: .AR7, loop: false)
                                }
                            }
                        
@@ -1954,7 +1954,7 @@ struct TutorialView: View {
                                dialog = "Por las decenas..."
                                self.frame = CGRect(x: appData.UISW * 0.5, y: appData.UISH * 0.2, width: 70, height: 140)
                                if appData.sound {
-            //                                    SoundManager.instance.playDialogES(sound: .AR3, loop: false)
+                                    SoundManager.instance.playDialogES(sound: .AR8, loop: false)
                                }
                            }
                        
@@ -2023,7 +2023,7 @@ struct TutorialView: View {
                                dialog = "Y por las centenas..."
                                self.frame = CGRect(x: appData.UISW * 0.48, y: appData.UISH * 0.2, width: 140, height: 140)
                                if appData.sound {
-            //                                    SoundManager.instance.playDialogES(sound: .AR3, loop: false)
+                                    SoundManager.instance.playDialogES(sound: .AR9, loop: false)
                                }
                            }
                        
@@ -2092,7 +2092,7 @@ struct TutorialView: View {
                                dialog = "Para después sumar los resultados y colocarlos sobre el recuadro"
                                self.frame = CGRect(x: appData.UISW * 0.66, y: appData.UISH * 0.2, width: 160, height: 140)
                                if appData.sound {
-            //                                    SoundManager.instance.playDialogES(sound: .AR3, loop: false)
+                                    SoundManager.instance.playDialogES(sound: .AR10, loop: false)
                                }
                            }
                        

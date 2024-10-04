@@ -208,6 +208,15 @@ struct TablesExView: View {
                         if appData.sound {
                             SoundManager.instance.stopSound(for: .Exercise)
                             SoundManager.instance.playSoundFromStart(sound: .ExerciseResult, loop: false)
+                            if correctCountDouble == 0 {
+                                SoundManager.instance.playDialogES(sound: .ejer3, loop: false)
+                            } else if correctCountDouble == 1 || correctCountDouble == 2 {
+                                SoundManager.instance.playDialogES(sound: .ejer4, loop: false)
+                            } else if correctCountDouble == 3 || correctCountDouble == 4 {
+                                SoundManager.instance.playDialogES(sound: .ejer1, loop: false)
+                            } else if correctCountDouble == 5 {
+                                SoundManager.instance.playDialogES(sound: .ejer2, loop: false)
+                            }
                         }
                     }
                 if correctCountDouble == 0 {
@@ -241,6 +250,7 @@ struct TablesExView: View {
                 withAnimation(.easeInOut(duration: 0)) {
                     back = false
                     SoundManager.instance.stopSound(for: .ExerciseResult)
+                    SoundManager.instance.stopDialog()
                     SoundManager.instance.stopSound(for: .Exercise)
                     if appData.sound {
                         SoundManager.instance.playSound(sound: .MainTheme)

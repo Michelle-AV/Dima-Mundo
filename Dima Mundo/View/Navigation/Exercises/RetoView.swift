@@ -200,6 +200,15 @@ struct RetoView: View {
                         SoundManager.instance.stopSound(for: .ChallengeFinal)
                         if appData.sound {
                             SoundManager.instance.playSoundFromStart(sound: .ExerciseResult, loop: false)
+                            if correctCount < 3 {
+                                SoundManager.instance.playDialogES(sound: .reto1, loop: false)
+                            } else if correctCount < 6 && correctCount > 2 {
+                                SoundManager.instance.playDialogES(sound: .reto2, loop: false)
+                            } else if correctCount < 9 && correctCount > 5 {
+                                SoundManager.instance.playDialogES(sound: .reto3, loop: false)
+                            } else if correctCount == 9 {
+                                SoundManager.instance.playDialogES(sound: .reto4, loop: false)
+                            }
                         }
                     }
                 
@@ -234,6 +243,7 @@ struct RetoView: View {
                     withAnimation(.easeInOut(duration: 0)) {
                         back = false
                         SoundManager.instance.stopSound(for: .ChallengeFinal)
+                        SoundManager.instance.stopDialog()
                         SoundManager.instance.stopSound(for: .ExerciseResult)
                         if appData.sound {
                             SoundManager.instance.playSound(sound: .MainTheme)
