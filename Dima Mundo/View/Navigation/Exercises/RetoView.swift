@@ -243,22 +243,6 @@ struct RetoView: View {
                         .foregroundColor(.buttonLblColor)
                 }
                 
-                Button {
-                    withAnimation(.easeInOut(duration: 0)) {
-                        back = false
-                        SoundManager.instance.stopSound(for: .ChallengeFinal)
-                        SoundManager.instance.stopDialog()
-                        SoundManager.instance.stopSound(for: .ExerciseResult)
-                        if appData.sound {
-                            SoundManager.instance.playSound(sound: .MainTheme)
-                        }
-                    }
-                } label: {
-                    Image("back")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 60)
-                }.position(x: appData.UISW * 0.06, y: appData.UISH * 0.09)
                 
                 if showPopup {
                     Color.black.opacity(0.7).ignoresSafeArea()
@@ -302,7 +286,23 @@ struct RetoView: View {
                 .animation(.bouncy(duration: 0.15), value: showPopup)
                 
             }
-               
+            Button {
+                withAnimation(.easeInOut(duration: 0)) {
+                    back = false
+                    SoundManager.instance.stopSound(for: .ChallengeFinal)
+                    SoundManager.instance.stopDialog()
+                    SoundManager.instance.stopSound(for: .ExerciseResult)
+                    if appData.sound {
+                        SoundManager.instance.playSound(sound: .MainTheme)
+                    }
+                }
+            } label: {
+                Image("back")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 60)
+            }.position(x: appData.UISW * 0.06, y: appData.UISH * 0.09)
+            
             Button {
                     withAnimation(.easeInOut(duration: 0.1)) {
                                 appData.sound.toggle()

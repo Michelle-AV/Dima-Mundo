@@ -164,7 +164,7 @@ struct DashboardView: View {
                     .foregroundColor(.white)
 //                    .frame(width: appData.UISW * 0.15, height: appData.UISH * 0.05)
                     .frame(width: 150, height: 50)
-                    .background(Color.VerdeAns)
+                    .background(Color.gray)
                     .cornerRadius(10)
                     .padding(.leading, 12)
                     
