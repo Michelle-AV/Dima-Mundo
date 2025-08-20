@@ -1,5 +1,5 @@
 # DimaMundo 🌎
-<p align="leading">A world were Maths... are funny!</p>
+<p align="leading">A world where math... are fun!</p>
 <img width="3120" height="1755" alt="Dima Mundo (5)" src="https://github.com/user-attachments/assets/ae588e5c-303d-45c8-a70b-72e0113c110d" />
 
 
